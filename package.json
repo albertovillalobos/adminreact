@@ -1,0 +1,22 @@
+{
+  "name": "adminreact",
+  "version": "1.0.0",
+  "description": "Features: - Admin panel - Socket server for real time data - Graphs in real time - React stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertovillalobos/adminreact.git"
+  },
+  "author": "alberto villalobos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertovillalobos/adminreact/issues"
+  },
+  "homepage": "https://github.com/albertovillalobos/adminreact#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0"
+  }
+}
