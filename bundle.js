@@ -9,7 +9,12 @@ var App = React.createClass({
   displayName: 'App',
 
   render: function render() {
-    return React.createElement(NavBar, null);
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(NavBar, null),
+      React.createElement(AnalyticsContainer, null)
+    );
   }
 });
 
@@ -75,6 +80,56 @@ var NavBar = React.createClass({
                 )
               )
             )
+          )
+        )
+      )
+    );
+  }
+});
+
+var AnalyticsContainer = React.createClass({
+  displayName: 'AnalyticsContainer',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'container' },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(CouponCounter, null)
+      )
+    );
+  }
+});
+
+var CouponCounter = React.createClass({
+  displayName: 'CouponCounter',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'col-md-3 ' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'CURRENT'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body text-center' },
+          React.createElement(
+            'h2',
+            null,
+            '4'
+          ),
+          React.createElement(
+            'p',
+            { className: 'lead' },
+            'active coupons'
           )
         )
       )
