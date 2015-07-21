@@ -66,7 +66,7 @@ var NavBar = React.createClass({
             ),
             React.createElement(
               'a',
-              { className: 'navbar-brand', href: '/' },
+              { className: 'navbar-brand', href: '/#/' },
               'AdminReact'
             )
           ),
@@ -81,7 +81,7 @@ var NavBar = React.createClass({
                 { className: 'active' },
                 React.createElement(
                   'a',
-                  { href: '/#/Analytics' },
+                  { href: '/#/analytics' },
                   React.createElement('span', { className: 'glyphicon glyphicon-stats', 'aria-hidden': 'true' }),
                   ' Analytics'
                 )
