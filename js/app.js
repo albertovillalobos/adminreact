@@ -200,11 +200,6 @@ var CouponsContainer = React.createClass({
 
 var CouponCreator = React.createClass({
 
-
-  destroy(id) {
-    console.log('destroying: ', id);
-  },
-
   onSubmit(e) {
     e.preventDefault();
     var description = React.findDOMNode(this.refs.description).value.trim();
@@ -261,32 +256,32 @@ var CouponList = React.createClass({
     };
   },
 
+  destroy(e) {
+    console.log('destroying: ', e.target.id);
+    var id = e.target.id.trim();
+    var target = {
+      className: 'Coupon',
+      objectId: e.target.id
+    };
+    ParseReact.Mutation.Destroy(target).dispatch();
+
+  },
+
   render() {
 
-    // console.log(Parse.Query);
-    // var commentNodes = this.data.comments.map(function (comment) {
-    //   return (
-    //     // <p key={comment.id}>{comment.info}</p>
-    //     <Comment key={comment.id} info={comment.info}/>
-    //
-    //   );
-    // });
-
-    console.log(this.data);
-
-    // var commentNodes = this.data.comments.map(function (comment) {
-    //   return (
-    //     <Comment key={comment.id} info={comment.info}/>
-    //   );
-    // });
+    console.log(this.destroy);
+    var destruction = this.destroy;
 
     var couponNodes = this.data.coupons.map( function(coupon) {
-      // console.log(coupon);
+
       return(
         <tr key={coupon.objectId}>
           <td>{coupon.description}</td>
           <td>{coupon.percentage}%</td>
           <td>{coupon.conditions}</td>
+          <td>
+            <button type="submit" className="btn btn-small btn-danger" id={coupon.objectId} onClick={destruction}>Discontinue</button>
+          </td>
         </tr>
       )
     });
@@ -303,6 +298,7 @@ var CouponList = React.createClass({
                     <th>Name</th>
                     <th>Percentage</th>
                     <th>Conditions</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
