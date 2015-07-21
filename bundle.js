@@ -293,6 +293,7 @@ var NotFound = React.createClass({
 //   document.getElementById('app')
 // );
 
+console.log(RoutedApp, AnalyticsContainer);
 React.render(React.createElement(
   Router,
   null,
