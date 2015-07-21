@@ -25,7 +25,6 @@ var RoutedApp = React.createClass({
   displayName: 'RoutedApp',
 
   render: function render() {
-    console.log(this.props.children);
     return React.createElement(
       'div',
       null,
@@ -305,6 +304,20 @@ var routes = React.createElement(
 );
 
 Router.run(routes, function (Handler) {
+
+  console.log(window.location);
+  $(document).ready(function () {
+    $('li').each(function () {
+      var theli = $(this);
+      console.log($('a', this).attr('href'));
+      if ($('a', this).attr('href') == window.location.href) {
+        // $(this).addClass("active");
+        theli.addClass('active');
+      } else {
+        theli.removeClass('active');
+      }
+    });
+  });
   React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 

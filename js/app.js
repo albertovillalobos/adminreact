@@ -22,7 +22,6 @@ var App = React.createClass({
 
 var RoutedApp = React.createClass({
   render(){
-    console.log(this.props.children);
     return(
       <div>
         <NavBar/>
@@ -189,5 +188,20 @@ var routes = (
 
 
 Router.run(routes, function (Handler) {
+
+  console.log(window.location);
+  $(document).ready(function() {
+      $("li").each(function() {
+        var theli = $(this);
+        console.log($("a",this).attr('href'));
+        if ($("a",this).attr('href') == window.location.href) {
+            // $(this).addClass("active");
+            theli.addClass('active');
+        }
+        else {
+          theli.removeClass('active');
+        }
+      });
+  });
   React.render(<Handler/>, document.getElementById('app'));
 });
