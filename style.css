@@ -18,3 +18,8 @@ body {
 .colored-number {
   color: #37bc9b;
 }
+
+
+#coupon-creator-form .spacey {
+  margin-bottom: 10px;
+}

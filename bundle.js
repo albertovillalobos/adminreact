@@ -6,8 +6,10 @@ var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 var Router = require('react-router');
 var Route = Router.Route;
-
 var RouteHandler = Router.RouteHandler;
+
+Parse.initialize('fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O', 'CkPiEsxSHfqtriaJ266t2yknRXArxBy1lVs5WQvI');
+
 var App = React.createClass({
   displayName: 'App',
 
@@ -34,6 +36,7 @@ var RoutedApp = React.createClass({
   }
 });
 
+// Nav bar
 var NavBar = React.createClass({
   displayName: 'NavBar',
 
@@ -92,7 +95,7 @@ var NavBar = React.createClass({
                   'a',
                   { href: '/#/coupons' },
                   React.createElement('span', { className: 'glyphicon glyphicon-qrcode', 'aria-hidden': 'true' }),
-                  '  Coupons'
+                  'Coupons'
                 )
               )
             )
@@ -103,6 +106,7 @@ var NavBar = React.createClass({
   }
 });
 
+// Analytics page and its components
 var AnalyticsContainer = React.createClass({
   displayName: 'AnalyticsContainer',
 
@@ -258,6 +262,222 @@ var MonthlyProfits = React.createClass({
   }
 });
 
+// var AnalyticsContainer = React.createClass({
+//
+//   render() {
+//     return(
+//       <div className="container">
+//         <div className="row">
+//           <CouponCounter/>
+//           <DailyProfits/>
+//           <WeeklyProfits/>
+//           <MonthlyProfits/>
+//         </div>
+//       </div>
+//     )
+//   }
+// });
+
+// Coupons page and its components
+var CouponsContainer = React.createClass({
+  displayName: 'CouponsContainer',
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'container' },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(CouponCreator, null),
+        React.createElement(CouponList, null)
+      )
+    );
+  }
+});
+
+var CouponCreator = React.createClass({
+  displayName: 'CouponCreator',
+
+  destroy: function destroy(id) {
+    console.log('destroying: ', id);
+  },
+
+  onSubmit: function onSubmit(e) {
+    e.preventDefault();
+    var description = React.findDOMNode(this.refs.description).value.trim();
+    var percentage = React.findDOMNode(this.refs.percentage).value.trim();
+    var conditions = React.findDOMNode(this.refs.conditions).value.trim();
+
+    console.log(description, percentage, conditions);
+
+    var muhRefs = this.refs;
+
+    ParseReact.Mutation.Create('Coupon', {
+      description: description,
+      percentage: percentage,
+      conditions: conditions
+    }).dispatch().then(function () {
+      React.findDOMNode(muhRefs.description).value = '';
+      React.findDOMNode(muhRefs.percentage).value = '';
+      React.findDOMNode(muhRefs.conditions).value = '';
+    });
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'col-md-6' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'Issue a new Coupon'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body text-center' },
+          React.createElement(
+            'form',
+            { className: 'form-group', id: 'coupon-creator-form', onSubmit: this.onSubmit },
+            React.createElement('input', { type: 'text', ref: 'description', className: 'form-control spacey', placeholder: 'Description', required: true }),
+            React.createElement(
+              'div',
+              { className: 'input-group spacey' },
+              React.createElement('input', { type: 'number', ref: 'percentage', className: 'form-control', placeholder: 'Percentage off', min: 1, max: 100, required: true }),
+              React.createElement(
+                'div',
+                { className: 'input-group-addon' },
+                '%'
+              )
+            ),
+            React.createElement('input', { type: 'text', className: 'form-control spacey', ref: 'conditions', placeholder: 'Conditions', required: true }),
+            React.createElement(
+              'button',
+              { type: 'submit', className: 'btn btn-default' },
+              'Submit'
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+var CouponList = React.createClass({
+  displayName: 'CouponList',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      coupons: new Parse.Query('Coupon').descending('createdAt')
+    };
+  },
+
+  render: function render() {
+
+    // console.log(Parse.Query);
+    // var commentNodes = this.data.comments.map(function (comment) {
+    //   return (
+    //     // <p key={comment.id}>{comment.info}</p>
+    //     <Comment key={comment.id} info={comment.info}/>
+    //
+    //   );
+    // });
+
+    console.log(this.data);
+
+    // var commentNodes = this.data.comments.map(function (comment) {
+    //   return (
+    //     <Comment key={comment.id} info={comment.info}/>
+    //   );
+    // });
+
+    var couponNodes = this.data.coupons.map(function (coupon) {
+      // console.log(coupon);
+      return React.createElement(
+        'tr',
+        { key: coupon.objectId },
+        React.createElement(
+          'td',
+          null,
+          coupon.description
+        ),
+        React.createElement(
+          'td',
+          null,
+          coupon.percentage,
+          '%'
+        ),
+        React.createElement(
+          'td',
+          null,
+          coupon.conditions
+        )
+      );
+    });
+
+    return React.createElement(
+      'div',
+      { className: 'col-md-6' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'Current coupons'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body text-center' },
+          React.createElement(
+            'div',
+            { className: 'table-responsive' },
+            React.createElement(
+              'table',
+              { className: 'table table-bordered table-hover' },
+              React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                  'tr',
+                  null,
+                  React.createElement(
+                    'th',
+                    null,
+                    'Name'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'Percentage'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'Conditions'
+                  )
+                )
+              ),
+              React.createElement(
+                'tbody',
+                null,
+                couponNodes
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+
+});
+
+// Normal routing stuff
 var Index = React.createClass({
   displayName: 'Index',
 
@@ -299,7 +519,7 @@ var routes = React.createElement(
   { handler: RoutedApp },
   React.createElement(Route, { path: '/', handler: Index }),
   React.createElement(Route, { path: '/analytics', handler: AnalyticsContainer }),
-  React.createElement(Route, { path: '/coupons', handler: Coupons }),
+  React.createElement(Route, { path: '/coupons', handler: CouponsContainer }),
   React.createElement(Route, { path: '/*', handler: NotFound })
 );
 

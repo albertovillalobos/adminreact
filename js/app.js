@@ -3,11 +3,11 @@ var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 var Router = require('react-router');
 var Route = Router.Route;
-
-
-
-
 var RouteHandler = Router.RouteHandler;
+
+
+Parse.initialize("fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O", "CkPiEsxSHfqtriaJ266t2yknRXArxBy1lVs5WQvI");
+
 var App = React.createClass({
 
   render() {
@@ -32,6 +32,7 @@ var RoutedApp = React.createClass({
 })
 
 
+// Nav bar
 var NavBar = React.createClass({
 
   render: function() {
@@ -56,7 +57,7 @@ var NavBar = React.createClass({
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
               <ul className="nav navbar-nav">
                 <li className="active"><a href="/#/analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
-                <li className=""><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Coupons</a></li>
+                <li className=""><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span>Coupons</a></li>
               </ul>
             </div>
           </div>
@@ -67,6 +68,7 @@ var NavBar = React.createClass({
 });
 
 
+// Analytics page and its components
 var AnalyticsContainer = React.createClass({
 
   render() {
@@ -82,6 +84,9 @@ var AnalyticsContainer = React.createClass({
     )
   }
 });
+
+
+
 
 var CouponCounter = React.createClass({
   render() {
@@ -157,6 +162,163 @@ var MonthlyProfits = React.createClass({
   }
 });
 
+
+
+
+
+// var AnalyticsContainer = React.createClass({
+//
+//   render() {
+//     return(
+//       <div className="container">
+//         <div className="row">
+//           <CouponCounter/>
+//           <DailyProfits/>
+//           <WeeklyProfits/>
+//           <MonthlyProfits/>
+//         </div>
+//       </div>
+//     )
+//   }
+// });
+
+// Coupons page and its components
+var CouponsContainer = React.createClass({
+
+  render() {
+    return(
+      <div className="container">
+        <div className="row">
+          <CouponCreator/>
+          <CouponList/>
+        </div>
+      </div>
+    )
+  }
+})
+
+
+var CouponCreator = React.createClass({
+
+
+  destroy(id) {
+    console.log('destroying: ', id);
+  },
+
+  onSubmit(e) {
+    e.preventDefault();
+    var description = React.findDOMNode(this.refs.description).value.trim();
+    var percentage = React.findDOMNode(this.refs.percentage).value.trim();
+    var conditions = React.findDOMNode(this.refs.conditions).value.trim();
+
+    console.log(description, percentage, conditions);
+
+    var muhRefs = this.refs;
+
+
+    ParseReact.Mutation.Create('Coupon', {
+       description: description,
+       percentage: percentage,
+       conditions: conditions,
+     }).dispatch().then(function() {
+       React.findDOMNode(muhRefs.description).value = '';
+       React.findDOMNode(muhRefs.percentage).value = '';
+       React.findDOMNode(muhRefs.conditions).value = '';
+     })
+  },
+
+
+  render() {
+    return(
+      <div className="col-md-6">
+        <div className="panel panel-default">
+          <div className="panel-heading text-center">Issue a new Coupon</div>
+          <div className="panel-body text-center">
+            <form className="form-group" id="coupon-creator-form" onSubmit={this.onSubmit}>
+              <input type="text" ref="description" className="form-control spacey" placeholder="Description" required/>
+              <div className="input-group spacey">
+                <input type="number"  ref="percentage"className="form-control" placeholder="Percentage off" min={1} max={100} required/>
+                <div className="input-group-addon">%</div>
+              </div>
+              <input type="text" className="form-control spacey" ref="conditions" placeholder="Conditions" required/>
+              <button type="submit" className="btn btn-default">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
+  }
+})
+
+
+
+var CouponList = React.createClass({
+  mixins: [ParseReact.Mixin],
+
+  observe: function() {
+    return {
+      coupons: (new Parse.Query('Coupon').descending("createdAt"))
+    };
+  },
+
+  render() {
+
+    // console.log(Parse.Query);
+    // var commentNodes = this.data.comments.map(function (comment) {
+    //   return (
+    //     // <p key={comment.id}>{comment.info}</p>
+    //     <Comment key={comment.id} info={comment.info}/>
+    //
+    //   );
+    // });
+
+    console.log(this.data);
+
+    // var commentNodes = this.data.comments.map(function (comment) {
+    //   return (
+    //     <Comment key={comment.id} info={comment.info}/>
+    //   );
+    // });
+
+    var couponNodes = this.data.coupons.map( function(coupon) {
+      // console.log(coupon);
+      return(
+        <tr key={coupon.objectId}>
+          <td>{coupon.description}</td>
+          <td>{coupon.percentage}%</td>
+          <td>{coupon.conditions}</td>
+        </tr>
+      )
+    });
+
+    return(
+      <div className="col-md-6">
+        <div className="panel panel-default">
+          <div className="panel-heading text-center">Current coupons</div>
+          <div className="panel-body text-center">
+            <div className="table-responsive">
+              <table className="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Percentage</th>
+                    <th>Conditions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {couponNodes}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+})
+
+// Normal routing stuff
 var Index = React.createClass({
   render() {
     return (<h1>Welcome to the admin panel</h1>);
@@ -181,7 +343,7 @@ var routes = (
   <Route handler={RoutedApp}>
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
-    <Route path="/coupons" handler={Coupons}/>
+    <Route path="/coupons" handler={CouponsContainer}/>
     <Route path="/*" handler={NotFound}/>
   </Route>
 );
