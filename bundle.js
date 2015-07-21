@@ -95,7 +95,7 @@ var NavBar = React.createClass({
                   'a',
                   { href: '/#/coupons' },
                   React.createElement('span', { className: 'glyphicon glyphicon-qrcode', 'aria-hidden': 'true' }),
-                  'Coupons'
+                  ' Coupons'
                 )
               )
             )

@@ -57,7 +57,7 @@ var NavBar = React.createClass({
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
               <ul className="nav navbar-nav">
                 <li className="active"><a href="/#/analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
-                <li className=""><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span>Coupons</a></li>
+                <li className=""><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Coupons</a></li>
               </ul>
             </div>
           </div>
