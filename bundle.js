@@ -4,11 +4,10 @@
 var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var Link = ReactRouter.Link;
+var Router = require('react-router');
+var Route = Router.Route;
 
+var RouteHandler = Router.RouteHandler;
 var App = React.createClass({
   displayName: 'App',
 
@@ -31,11 +30,7 @@ var RoutedApp = React.createClass({
       'div',
       null,
       React.createElement(NavBar, null),
-      React.createElement(
-        'div',
-        { className: 'AppContainer' },
-        this.props.children
-      )
+      React.createElement(RouteHandler, null)
     );
   }
 });
@@ -86,7 +81,7 @@ var NavBar = React.createClass({
                 { className: 'active' },
                 React.createElement(
                   'a',
-                  { href: '/' },
+                  { href: '/#/Analytics' },
                   React.createElement('span', { className: 'glyphicon glyphicon-stats', 'aria-hidden': 'true' }),
                   ' Analytics'
                 )
@@ -96,7 +91,7 @@ var NavBar = React.createClass({
                 { className: '' },
                 React.createElement(
                   'a',
-                  { href: '/coupons' },
+                  { href: '/#/coupons' },
                   React.createElement('span', { className: 'glyphicon glyphicon-qrcode', 'aria-hidden': 'true' }),
                   '  Coupons'
                 )
@@ -276,6 +271,18 @@ var Index = React.createClass({
   }
 });
 
+var Coupons = React.createClass({
+  displayName: 'Coupons',
+
+  render: function render() {
+    return React.createElement(
+      'h1',
+      null,
+      'Welcome to the Coupon panel'
+    );
+  }
+});
+
 var NotFound = React.createClass({
   displayName: 'NotFound',
 
@@ -288,31 +295,18 @@ var NotFound = React.createClass({
   }
 });
 
-// React.render(
-//   <App/>,
-//   document.getElementById('app')
-// );
+var routes = React.createElement(
+  Route,
+  { handler: RoutedApp },
+  React.createElement(Route, { path: '/', handler: Index }),
+  React.createElement(Route, { path: '/analytics', handler: AnalyticsContainer }),
+  React.createElement(Route, { path: '/coupons', handler: Coupons }),
+  React.createElement(Route, { path: '/*', handler: NotFound })
+);
 
-console.log(RoutedApp, AnalyticsContainer);
-React.render(React.createElement(
-  Router,
-  null,
-  React.createElement(
-    Route,
-    { component: RoutedApp },
-    React.createElement(Route, { path: '/', component: AnalyticsContainer })
-  )
-), document.getElementById('app'));
-
-// React.render((
-//   <Router>
-//     <Route component={RoutedApp}>
-//       <Route path="/" component={AnalyticsContainer}/>
-//       <Route path="/analytics" component={AnalyticsContainer}/>
-//       <Route path="*" component={NotFound}/>
-//     </Route>
-//   </Router>
-// ), document.getElementById('app'));
+Router.run(routes, function (Handler) {
+  React.render(React.createElement(Handler, null), document.getElementById('app'));
+});
 
 },{"parse":22,"parse-react":3,"react":216,"react-router":47}],2:[function(require,module,exports){
 // shim for using process in browser

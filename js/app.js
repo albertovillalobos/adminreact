@@ -1,16 +1,13 @@
 var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var Route = ReactRouter.Route;
-var Link = ReactRouter.Link;
+var Router = require('react-router');
+var Route = Router.Route;
 
 
 
 
-
-
+var RouteHandler = Router.RouteHandler;
 var App = React.createClass({
 
   render() {
@@ -29,9 +26,7 @@ var RoutedApp = React.createClass({
     return(
       <div>
         <NavBar/>
-        <div className="AppContainer">
-          {this.props.children}
-        </div>
+        <RouteHandler/>
       </div>
     )
   }
@@ -61,8 +56,8 @@ var NavBar = React.createClass({
 
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
               <ul className="nav navbar-nav">
-                <li className="active"><a href="/"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
-                <li className=""><a href="/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Coupons</a></li>
+                <li className="active"><a href="/#/Analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
+                <li className=""><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span>  Coupons</a></li>
               </ul>
             </div>
           </div>
@@ -169,6 +164,13 @@ var Index = React.createClass({
   }
 });
 
+var Coupons = React.createClass({
+  render() {
+    return (<h1>Welcome to the Coupon panel</h1>);
+  }
+});
+
+
 var NotFound = React.createClass({
   render() {
     return (<h2>Not found</h2>);
@@ -176,30 +178,16 @@ var NotFound = React.createClass({
 });
 
 
-
-// React.render(
-//   <App/>,
-//   document.getElementById('app')
-// );
-
-
-console.log(RoutedApp, AnalyticsContainer);
-React.render(
-  (
-    <Router>
-      <Route component={RoutedApp}>
-        <Route path="/" component={AnalyticsContainer}></Route>
-      </Route>
-    </Router>
-  ), document.getElementById('app')
+var routes = (
+  <Route handler={RoutedApp}>
+    <Route path="/" handler={Index}/>
+    <Route path="/analytics" handler={AnalyticsContainer}/>
+    <Route path="/coupons" handler={Coupons}/>
+    <Route path="/*" handler={NotFound}/>
+  </Route>
 );
 
-// React.render((
-//   <Router>
-//     <Route component={RoutedApp}>
-//       <Route path="/" component={AnalyticsContainer}/>
-//       <Route path="/analytics" component={AnalyticsContainer}/>
-//       <Route path="*" component={NotFound}/>
-//     </Route>
-//   </Router>
-// ), document.getElementById('app'));
+
+Router.run(routes, function (Handler) {
+  React.render(<Handler/>, document.getElementById('app'));
+});
