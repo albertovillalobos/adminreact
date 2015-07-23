@@ -12,6 +12,7 @@ var NotFound = require('./NotFound.react.js');
 var AnalyticsContainer = require('./AnalyticsContainer.react.js');
 var CouponsContainer = require('./CouponsContainer.react.js');
 var Index = require('./Index.react.js');
+var LoginContainer = require('./LoginContainer.react.js');
 
 
 var RoutedApp = React.createClass({
@@ -30,6 +31,7 @@ var routes = (
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
     <Route path="/coupons" handler={CouponsContainer}/>
+    <Route path="/login" handler={LoginContainer}/>
     <Route path="/*" handler={NotFound}/>
   </Route>
 );
