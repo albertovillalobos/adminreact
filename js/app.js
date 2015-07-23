@@ -10,6 +10,8 @@ Parse.initialize("fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O", "CkPiEsxSHfqtriaJ26
 var NavBar = require('./NavBar.react.js');
 var NotFound = require('./NotFound.react.js');
 var AnalyticsContainer = require('./AnalyticsContainer.react.js');
+var CouponsContainer = require('./CouponsContainer.react.js');
+var Index = require('./Index.react.js');
 
 
 var RoutedApp = React.createClass({
@@ -22,154 +24,6 @@ var RoutedApp = React.createClass({
     )
   }
 })
-
-
-
-
-
-
-// Coupons page and its components
-var CouponsContainer = React.createClass({
-
-  render() {
-    return(
-      <div className="container">
-        <div className="row">
-          <CouponCreator/>
-          <CouponList/>
-        </div>
-      </div>
-    )
-  }
-})
-
-
-var CouponCreator = React.createClass({
-
-  onSubmit(e) {
-    e.preventDefault();
-    var description = React.findDOMNode(this.refs.description).value.trim();
-    var percentage = React.findDOMNode(this.refs.percentage).value.trim();
-    var conditions = React.findDOMNode(this.refs.conditions).value.trim();
-
-    console.log(description, percentage, conditions);
-
-    var muhRefs = this.refs;
-
-
-    ParseReact.Mutation.Create('Coupon', {
-       description: description,
-       percentage: percentage,
-       conditions: conditions,
-     }).dispatch().then(function() {
-       React.findDOMNode(muhRefs.description).value = '';
-       React.findDOMNode(muhRefs.percentage).value = '';
-       React.findDOMNode(muhRefs.conditions).value = '';
-     })
-  },
-
-
-  render() {
-    return(
-      <div className="col-md-6">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">Issue a new Coupon</div>
-          <div className="panel-body text-center">
-            <form className="form-group" id="coupon-creator-form" onSubmit={this.onSubmit}>
-              <input type="text" ref="description" className="form-control spacey" placeholder="Description" required/>
-              <div className="input-group spacey">
-                <input type="number"  ref="percentage"className="form-control" placeholder="Percentage off" min={1} max={100} required/>
-                <div className="input-group-addon">%</div>
-              </div>
-              <input type="text" className="form-control spacey" ref="conditions" placeholder="Conditions" required/>
-              <button type="submit" className="btn btn-default">Submit</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    )
-  }
-})
-
-
-
-var CouponList = React.createClass({
-  mixins: [ParseReact.Mixin],
-
-  observe: function() {
-    return {
-      coupons: (new Parse.Query('Coupon').descending("createdAt"))
-    };
-  },
-
-  destroy(e) {
-    console.log('destroying: ', e.target.id);
-    var id = e.target.id.trim();
-    var target = {
-      className: 'Coupon',
-      objectId: e.target.id
-    };
-    ParseReact.Mutation.Destroy(target).dispatch();
-
-  },
-
-  render() {
-
-    console.log(this.destroy);
-    var destruction = this.destroy;
-
-    var couponNodes = this.data.coupons.map( function(coupon) {
-
-      return(
-        <tr key={coupon.objectId}>
-          <td>{coupon.description}</td>
-          <td>{coupon.percentage}%</td>
-          <td>{coupon.conditions}</td>
-          <td>
-            <button type="submit" className="btn btn-small btn-danger" id={coupon.objectId} onClick={destruction}>Discontinue</button>
-          </td>
-        </tr>
-      )
-    });
-
-    return(
-      <div className="col-md-6">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">Current coupons</div>
-          <div className="panel-body text-center">
-            <div className="table-responsive">
-              <table className="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Percentage</th>
-                    <th>Conditions</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {couponNodes}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-})
-
-// Normal routing stuff
-var Index = React.createClass({
-  render() {
-    return (<h1>Welcome to the admin panel</h1>);
-  }
-});
-
-
-
-
 
 var routes = (
   <Route handler={RoutedApp}>
@@ -197,5 +51,6 @@ Router.run(routes, function (Handler) {
         }
       });
   });
+  
   React.render(<Handler/>, document.getElementById('app'));
 });
