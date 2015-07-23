@@ -9,7 +9,7 @@ Parse.initialize("fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O", "CkPiEsxSHfqtriaJ26
 
 var NavBar = require('./NavBar.react.js');
 var NotFound = require('./NotFound.react.js');
-
+var AnalyticsContainer = require('./AnalyticsContainer.react.js');
 
 
 var RoutedApp = React.createClass({
@@ -25,99 +25,6 @@ var RoutedApp = React.createClass({
 
 
 
-// Analytics page and its components
-var AnalyticsContainer = React.createClass({
-
-  render() {
-    return(
-      <div className="container">
-        <div className="row">
-          <CouponCounter/>
-          <DailyProfits/>
-          <WeeklyProfits/>
-          <MonthlyProfits/>
-        </div>
-      </div>
-    )
-  }
-});
-
-
-
-
-var CouponCounter = React.createClass({
-  render() {
-    return(
-      <div className="col-md-3 ">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">CURRENT</div>
-          <div className="panel-body text-center">
-            <h2>4</h2>
-            <p className="lead">
-              active coupons
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-});
-
-var DailyProfits = React.createClass({
-  render() {
-    return(
-      <div className="col-md-3 ">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">DAILY</div>
-          <div className="panel-body text-center">
-            <h2 >$56.23 </h2>
-            <p className="lead">
-              Profits today
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-});
-
-
-var WeeklyProfits = React.createClass({
-  render() {
-    return(
-      <div className="col-md-3 ">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">WEEKLY</div>
-          <div className="panel-body text-center">
-            <h2>$441.91</h2>
-            <p className="lead">
-              Profits this week
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-});
-
-
-var MonthlyProfits = React.createClass({
-  render() {
-    return(
-      <div className="col-md-3 ">
-        <div className="panel panel-default">
-          <div className="panel-heading text-center">MONTHLY</div>
-          <div className="panel-body text-center">
-            <h2>$3,208.76</h2>
-            <p className="lead">
-              Profits this month
-            </p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-});
 
 
 
