@@ -3,7 +3,7 @@ var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 
 var CouponCreator = require('./CouponCreator.react.js');
-var CouponList = require('./CouponList.react.js');
+var CampaignStatus = require('./CampaignStatus.react.js');
 
 var CouponsContainer = React.createClass({
   mixins: [ParseReact.Mixin],
@@ -20,7 +20,7 @@ var CouponsContainer = React.createClass({
         <div className="container">
           <div className="row">
             <CouponCreator/>
-            <CouponList/>
+            <CampaignStatus/>
           </div>
         </div>
       )

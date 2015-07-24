@@ -44,7 +44,146 @@ var AnalyticsContainer = React.createClass({
 
 module.exports = AnalyticsContainer;
 
-},{"./CouponCounter.react.js":2,"./DailyProfits.react.js":6,"./MonthlyProfits.react.js":9,"./Unauthorized.react.js":12,"./WeeklyProfits.react.js":13,"parse":36,"parse-react":17,"react":230}],2:[function(require,module,exports){
+},{"./CouponCounter.react.js":3,"./DailyProfits.react.js":6,"./MonthlyProfits.react.js":9,"./Unauthorized.react.js":12,"./WeeklyProfits.react.js":13,"parse":36,"parse-react":17,"react":230}],2:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
+
+var CampaignStatus = React.createClass({
+  displayName: 'CampaignStatus',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      campaigns: new Parse.Query('Campaign').descending('createdAt')
+    };
+  },
+
+  _destroy: function _destroy() {
+    var id = e.target.id.trim();
+    var target = {
+      className: 'Campaign',
+      objectId: e.target.id
+    };
+    ParseReact.Mutation.Destroy(target).dispatch();
+  },
+
+  render: function render() {
+
+    var destroyMethod = this._destroy;
+
+    var campaignNodes = this.data.campaigns.map(function (campaign) {
+
+      return React.createElement(
+        'tr',
+        { key: campaign.objectId },
+        React.createElement(
+          'td',
+          null,
+          campaign.initialDiscount
+        ),
+        React.createElement(
+          'td',
+          null,
+          campaign.maxDiscount,
+          '%'
+        ),
+        React.createElement(
+          'td',
+          null,
+          campaign.startTime,
+          ':00'
+        ),
+        React.createElement(
+          'td',
+          null,
+          campaign.endTime,
+          ':00'
+        ),
+        React.createElement(
+          'td',
+          null,
+          React.createElement(
+            'button',
+            { type: 'submit', className: 'btn btn-small btn-danger', id: campaign.objectId, onClick: destroyMethod },
+            'End Campaign'
+          )
+        )
+      );
+    });
+
+    return React.createElement(
+      'div',
+      { className: 'col-md-6' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'Campaign Status'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body text-center' },
+          React.createElement(
+            'div',
+            { className: 'table-responsive' },
+            React.createElement(
+              'table',
+              { className: 'table table-bordered table-hover' },
+              React.createElement(
+                'thead',
+                null,
+                React.createElement(
+                  'tr',
+                  null,
+                  React.createElement(
+                    'th',
+                    null,
+                    'Initial Discount'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'Maximum Discount'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'Start Time'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'End Time'
+                  ),
+                  React.createElement(
+                    'th',
+                    null,
+                    'Action'
+                  )
+                )
+              ),
+              React.createElement(
+                'tbody',
+                null,
+                campaignNodes
+              )
+            )
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = CampaignStatus;
+
+},{"parse":36,"parse-react":17,"react":230}],3:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -84,7 +223,7 @@ var CouponCounter = React.createClass({
 
 module.exports = CouponCounter;
 
-},{"react":230}],3:[function(require,module,exports){
+},{"react":230}],4:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -94,24 +233,38 @@ var ParseReact = require('parse-react');
 var CouponCreator = React.createClass({
   displayName: 'CouponCreator',
 
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser
+    };
+  },
+
   onSubmit: function onSubmit(e) {
     e.preventDefault();
-    var description = React.findDOMNode(this.refs.description).value.trim();
-    var percentage = React.findDOMNode(this.refs.percentage).value.trim();
-    var conditions = React.findDOMNode(this.refs.conditions).value.trim();
-
-    console.log(description, percentage, conditions);
+    var initialDiscount = React.findDOMNode(this.refs.initialDiscount).value.trim();
+    var maxDiscount = React.findDOMNode(this.refs.maxDiscount).value.trim();
+    var startTime = React.findDOMNode(this.refs.startTime).value.trim();
+    var endTime = React.findDOMNode(this.refs.endTime).value.trim();
+    var ownerRef = this.data.user;
 
     var muhRefs = this.refs;
 
-    ParseReact.Mutation.Create('Coupon', {
-      description: description,
-      percentage: percentage,
-      conditions: conditions
+    console.log(initialDiscount, maxDiscount, startTime, endTime, ownerRef);
+
+    ParseReact.Mutation.Create('Campaign', {
+      initialDiscount: initialDiscount,
+      maxDiscount: maxDiscount,
+      startTime: startTime,
+      endTime: endTime,
+      merchant: ownerRef
     }).dispatch().then(function () {
-      React.findDOMNode(muhRefs.description).value = '';
-      React.findDOMNode(muhRefs.percentage).value = '';
-      React.findDOMNode(muhRefs.conditions).value = '';
+      React.findDOMNode(muhRefs.initialDiscount).value = '';
+      React.findDOMNode(muhRefs.maxDiscount).value = '';
+      React.findDOMNode(muhRefs.startTime).value = '';
+      React.findDOMNode(muhRefs.endTime).value = '';
+      React.findDOMNode(muhRefs.endTime).value = '';
     });
   },
 
@@ -125,7 +278,7 @@ var CouponCreator = React.createClass({
         React.createElement(
           'div',
           { className: 'panel-heading text-center' },
-          'Issue a new Coupon'
+          'Start a new Campaign'
         ),
         React.createElement(
           'div',
@@ -141,7 +294,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'percentage', className: 'form-control', placeholder: 'Initial percentage off', min: 1, max: 100, required: true }),
+              React.createElement('input', { type: 'number', ref: 'initialDiscount', className: 'form-control', placeholder: 'Initial percentage off', min: 1, max: 100, required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },
@@ -157,7 +310,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'percentage', className: 'form-control', placeholder: 'Max percentage off', min: 1, max: 100, required: true }),
+              React.createElement('input', { type: 'number', ref: 'maxDiscount', className: 'form-control', placeholder: 'Max percentage off', min: 1, max: 100, required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },
@@ -173,7 +326,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'percentage', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
+              React.createElement('input', { type: 'number', ref: 'startTime', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },
@@ -189,7 +342,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'percentage', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
+              React.createElement('input', { type: 'number', ref: 'endTime', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },
@@ -211,181 +364,6 @@ var CouponCreator = React.createClass({
 
 module.exports = CouponCreator;
 
-//
-// <div class="panel panel-default">
-//         <div class="panel-heading text-center">
-//           Coupon Settings
-//         </div>
-//         <div class="panel-body">
-//           <form class="form-group" >
-//
-//             <label for="">Inital Discount</label>
-//             <div class="input-group ">
-//               <input type="number"  ref="percentage"class="form-control" placeholder="Initial percentage off" min=1 max=100 required/>
-//               <div class="input-group-addon">%</div>
-//             </div>
-//             <br>
-//             <label for="">Max Discount</label>
-//             <div class="input-group ">
-//               <input type="number"  ref="percentage"class="form-control" placeholder="Initial percentage off" min=1 max=100 required/>
-//               <div class="input-group-addon">%</div>
-//             </div>
-//             <br>
-//             <label for="">How often would you like a customer to come in?</label>
-//             <div class="input-group ">
-//               <div class="input-group-addon">Every</div>
-//               <input type="number"  ref="percentage"class="form-control" placeholder="amount of" min=1 max=100 required/>
-//               <div class="input-group-addon">Minutes</div>
-//             </div>
-//             <br>
-//             <label for="">Starting time</label>
-//             <div class="input-group ">
-//               <input type="number"  ref="percentage"class="form-control" placeholder="amount of" min=1 max=100 required/>
-//               <select class="form-control" name="">
-//                 <option value="am">AM</option>
-//                 <option value="pm">PM</option>
-//               </select>
-//             </div>
-//             <br>
-//             <label for="">Ending time</label>
-//             <div class="input-group ">
-//               <div class="input-group-addon">Every</div>
-//               <input type="number"  ref="percentage"class="form-control" placeholder="amount of" min=1 max=100 required/>
-//               <div class="input-group-addon">Minutes</div>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-
-},{"parse":36,"parse-react":17,"react":230}],4:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
-var Parse = require('parse').Parse;
-var ParseReact = require('parse-react');
-
-var CouponList = React.createClass({
-  displayName: 'CouponList',
-
-  mixins: [ParseReact.Mixin],
-
-  observe: function observe() {
-    return {
-      coupons: new Parse.Query('Coupon').descending('createdAt')
-    };
-  },
-
-  destroy: function destroy(e) {
-    // console.log('destroying: ', e.target.id);
-    var id = e.target.id.trim();
-    var target = {
-      className: 'Coupon',
-      objectId: e.target.id
-    };
-    ParseReact.Mutation.Destroy(target).dispatch();
-  },
-
-  render: function render() {
-
-    // console.log(this.destroy);
-    var destruction = this.destroy;
-
-    var couponNodes = this.data.coupons.map(function (coupon) {
-
-      return React.createElement(
-        'tr',
-        { key: coupon.objectId },
-        React.createElement(
-          'td',
-          null,
-          coupon.description
-        ),
-        React.createElement(
-          'td',
-          null,
-          coupon.percentage,
-          '%'
-        ),
-        React.createElement(
-          'td',
-          null,
-          coupon.conditions
-        ),
-        React.createElement(
-          'td',
-          null,
-          React.createElement(
-            'button',
-            { type: 'submit', className: 'btn btn-small btn-danger', id: coupon.objectId, onClick: destruction },
-            'Discontinue'
-          )
-        )
-      );
-    });
-
-    return React.createElement(
-      'div',
-      { className: 'col-md-6' },
-      React.createElement(
-        'div',
-        { className: 'panel panel-default' },
-        React.createElement(
-          'div',
-          { className: 'panel-heading text-center' },
-          'Coupon Status'
-        ),
-        React.createElement(
-          'div',
-          { className: 'panel-body text-center' },
-          React.createElement(
-            'div',
-            { className: 'table-responsive' },
-            React.createElement(
-              'table',
-              { className: 'table table-bordered table-hover' },
-              React.createElement(
-                'thead',
-                null,
-                React.createElement(
-                  'tr',
-                  null,
-                  React.createElement(
-                    'th',
-                    null,
-                    'Discount'
-                  ),
-                  React.createElement(
-                    'th',
-                    null,
-                    'Percentage'
-                  ),
-                  React.createElement(
-                    'th',
-                    null,
-                    'Time left'
-                  ),
-                  React.createElement(
-                    'th',
-                    null,
-                    'Times claimed'
-                  )
-                )
-              ),
-              React.createElement(
-                'tbody',
-                null,
-                couponNodes
-              )
-            )
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = CouponList;
-
 },{"parse":36,"parse-react":17,"react":230}],5:[function(require,module,exports){
 'use strict';
 
@@ -394,7 +372,7 @@ var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 
 var CouponCreator = require('./CouponCreator.react.js');
-var CouponList = require('./CouponList.react.js');
+var CampaignStatus = require('./CampaignStatus.react.js');
 
 var CouponsContainer = React.createClass({
   displayName: 'CouponsContainer',
@@ -416,7 +394,7 @@ var CouponsContainer = React.createClass({
           'div',
           { className: 'row' },
           React.createElement(CouponCreator, null),
-          React.createElement(CouponList, null)
+          React.createElement(CampaignStatus, null)
         )
       );
     } else {
@@ -440,7 +418,7 @@ var CouponsContainer = React.createClass({
 
 module.exports = CouponsContainer;
 
-},{"./CouponCreator.react.js":3,"./CouponList.react.js":4,"parse":36,"parse-react":17,"react":230}],6:[function(require,module,exports){
+},{"./CampaignStatus.react.js":2,"./CouponCreator.react.js":4,"parse":36,"parse-react":17,"react":230}],6:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -782,18 +760,26 @@ var NavBar = React.createClass({
 module.exports = NavBar;
 
 },{"parse":36,"parse-react":17,"react":230}],11:[function(require,module,exports){
-'use strict';
+"use strict";
 
-var React = require('react');
+var React = require("react");
 
 var NotFound = React.createClass({
-  displayName: 'NotFound',
+  displayName: "NotFound",
 
   render: function render() {
     return React.createElement(
-      'h2',
-      null,
-      'Not found'
+      "div",
+      { className: "container" },
+      React.createElement(
+        "div",
+        { className: "row" },
+        React.createElement(
+          "h1",
+          null,
+          "Not Found in"
+        )
+      )
     );
   }
 });
