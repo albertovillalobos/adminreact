@@ -7,12 +7,13 @@ var CampaignStatus = React.createClass({
 
   observe: function() {
     return {
-      campaigns: (new Parse.Query('Campaign').descending("createdAt"))
+      user: ParseReact.currentUser,
+      campaigns: (new Parse.Query('Campaign').equalTo('merchant', this.user).descending("createdAt"))
     };
   },
 
 
-  _destroy() {
+  _destroy(e) {
     var id = e.target.id.trim();
     var target = {
       className: 'Campaign',
