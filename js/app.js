@@ -4,8 +4,9 @@ var ParseReact = require('parse-react');
 var Router = require('react-router');
 var Route = Router.Route;
 var RouteHandler = Router.RouteHandler;
+var config = require('./config.js');
 
-Parse.initialize("fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O", "CkPiEsxSHfqtriaJ266t2yknRXArxBy1lVs5WQvI");
+Parse.initialize(config.appkey, config.jskey);
 
 var NavBar = require('./NavBar.react.js');
 var NotFound = require('./NotFound.react.js');
@@ -14,6 +15,25 @@ var CouponsContainer = require('./CouponsContainer.react.js');
 var Index = require('./Index.react.js');
 var LoginContainer = require('./LoginContainer.react.js');
 
+window.fbAsyncInit = function() {
+  Parse.FacebookUtils.init({ // this line replaces FB.init({
+    appId      : config.fbappkey, // Facebook App ID
+    status     : true,  // check Facebook Login status
+    cookie     : true,  // enable cookies to allow Parse to access the session
+    xfbml      : true,  // initialize Facebook social plugins on the page
+    version    : 'v2.4' // point to the latest Facebook Graph API version
+  });
+
+  // Run code after the Facebook SDK is loaded.
+};
+
+(function(d, s, id){
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 var RoutedApp = React.createClass({
   render(){
@@ -30,7 +50,7 @@ var routes = (
   <Route handler={RoutedApp}>
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
-    <Route path="/coupons" handler={CouponsContainer}/>
+    <Route path="/coupon" handler={CouponsContainer}/>
     <Route path="/login" handler={LoginContainer}/>
     <Route path="/*" handler={NotFound}/>
   </Route>

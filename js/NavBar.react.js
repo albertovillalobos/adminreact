@@ -1,8 +1,13 @@
 var React = require('react');
 
 var NavBar = React.createClass({
-
   render: function() {
+
+    // var RightNavbar = return (
+    //   <li><a href="/#/coupon"><span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
+    // );
+
+
 
     return(
 
@@ -23,15 +28,16 @@ var NavBar = React.createClass({
 
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
               <ul className="nav navbar-nav">
-                <li><a href="/#/coupons"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Coupons</a></li>
+                <li><a href="/#/coupon"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Coupon</a></li>
                 <li><a href="/#/analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
               </ul>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
           </div>
         </div>
       </div>
     )
   },
 });
-
 module.exports = NavBar;

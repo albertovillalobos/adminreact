@@ -45,16 +45,16 @@ var CouponList = React.createClass({
     return(
       <div className="col-md-6">
         <div className="panel panel-default">
-          <div className="panel-heading text-center">Current coupons</div>
+          <div className="panel-heading text-center">Coupon Status</div>
           <div className="panel-body text-center">
             <div className="table-responsive">
               <table className="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>Name</th>
+                    <th>Discount</th>
                     <th>Percentage</th>
-                    <th>Conditions</th>
-                    <th>Action</th>
+                    <th>Time left</th>
+                    <th>Times claimed</th>
                   </tr>
                 </thead>
                 <tbody>

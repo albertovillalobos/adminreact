@@ -9,22 +9,19 @@ var uglify = require('gulp-uglify');
 
 gulp.task('webserver', function() {
   connect.server({
-    livereload: true
+    livereload: true,
+    port: 8080
   });
 });
 
 
 gulp.task('browserify', function() {
-
     return browserify('./js/app.js').transform(babelify).bundle()
 
         // vinyl-source-stream makes the bundle compatible with gulp
         .pipe(source('bundle.js')) // Desired filename
         // Output the file
         .pipe(gulp.dest('./'))
-
-
-
 });
 
 
