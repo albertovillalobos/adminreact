@@ -261,7 +261,7 @@ var CouponList = React.createClass({
   },
 
   destroy: function destroy(e) {
-    console.log('destroying: ', e.target.id);
+    // console.log('destroying: ', e.target.id);
     var id = e.target.id.trim();
     var target = {
       className: 'Coupon',
@@ -272,7 +272,7 @@ var CouponList = React.createClass({
 
   render: function render() {
 
-    console.log(this.destroy);
+    // console.log(this.destroy);
     var destruction = this.destroy;
 
     var couponNodes = this.data.coupons.map(function (coupon) {
@@ -443,21 +443,51 @@ module.exports = DailyProfits;
 'use strict';
 
 var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
+
 var Index = React.createClass({
   displayName: 'Index',
 
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser
+    };
+  },
+
   render: function render() {
+
+    var welcomeMessage = {};
+    if (this.data.user) {
+      welcomeMessage = 'Welcome to the admin panel';
+    } else {
+      welcomeMessage = 'Please login to access the admin panel';
+    }
     return React.createElement(
-      'h1',
-      null,
-      'Welcome to the admin Panel'
+      'div',
+      { className: 'container' },
+      React.createElement(
+        'div',
+        { className: 'row' },
+        React.createElement(
+          'div',
+          { className: 'col-lg-12' },
+          React.createElement(
+            'h1',
+            { className: 'text-center' },
+            welcomeMessage
+          )
+        )
+      )
     );
   }
 });
 
 module.exports = Index;
 
-},{"react":229}],8:[function(require,module,exports){
+},{"parse":35,"parse-react":16,"react":229}],8:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -468,12 +498,7 @@ var LoginContainer = React.createClass({
   displayName: 'LoginContainer',
 
   mixins: [ParseReact.Mixin],
-
   getInitialState: function getInitialState() {
-
-    // Parse.User.logOut();
-    console.log('initial state', ParseReact.currentUser);
-
     return {
       error: null,
       signup: false
@@ -488,21 +513,15 @@ var LoginContainer = React.createClass({
 
   _logOut: function _logOut() {
     Parse.User.logOut();
-    console.log('logout');
-    console.log('ParseReact.currentUser', ParseReact.currentUser);
-    console.log('Parse.User.current', Parse.User.current());
+    // console.log('logout');
+    // console.log('ParseReact.currentUser',ParseReact.currentUser);
+    // console.log('Parse.User.current', Parse.User.current());
   },
 
   _facebookLogin: function _facebookLogin() {
     Parse.FacebookUtils.logIn('public_profile', {
-      success: function success(user) {
-        console.log('loggedin');
-        console.log('ParseReact.currentUser', ParseReact.currentUser);
-        console.log('Parse.User.current', Parse.User.current());
-      },
-      error: function error(user, _error) {
-        console.log('user', user, _error);
-      }
+      success: function success(user) {},
+      error: function error(user, _error) {}
     });
   },
 
@@ -542,6 +561,12 @@ var LoginContainer = React.createClass({
 });
 
 module.exports = LoginContainer;
+
+// console.log('loggedin');
+// console.log('ParseReact.currentUser',ParseReact.currentUser);
+// console.log('Parse.User.current', Parse.User.current());
+
+// console.log('user',user, error);
 
 },{"parse":35,"parse-react":16,"react":229}],9:[function(require,module,exports){
 "use strict";
@@ -585,78 +610,126 @@ var MonthlyProfits = React.createClass({
 module.exports = MonthlyProfits;
 
 },{"react":229}],10:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var React = require("react");
+var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
 
 var NavBar = React.createClass({
-  displayName: "NavBar",
+  displayName: 'NavBar',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser
+    };
+  },
+
+  _logOut: function _logOut(e) {
+    e.preventDefault();
+    console.log('logout clicked', this.data.user);
+    Parse.User.logOut();
+  },
+
+  _facebookLogin: function _facebookLogin(e) {
+    e.preventDefault();
+    Parse.FacebookUtils.logIn('public_profile', {
+      success: function success(user) {},
+      error: function error(user, _error) {}
+    });
+  },
 
   render: function render() {
-
-    // var RightNavbar = return (
-    //   <li><a href="/#/coupon"><span className="glyphicon glyphicon-log-out" aria-hidden="true"></span> Log out</a></li>
-    // );
+    var RightNavbar = {};
+    if (this.data.user) {
+      RightNavbar = React.createElement(
+        'li',
+        null,
+        React.createElement(
+          'a',
+          { href: '/#/logout', onClick: this._logOut },
+          React.createElement('span', { className: 'glyphicon glyphicon-log-out', 'aria-hidden': 'true' }),
+          ' Log Out'
+        )
+      );
+    } else {
+      RightNavbar = React.createElement(
+        'li',
+        null,
+        React.createElement(
+          'a',
+          { href: '/#/login', onClick: this._facebookLogin },
+          React.createElement('span', { className: 'glyphicon glyphicon-log-in', 'aria-hidden': 'true' }),
+          ' Log In'
+        )
+      );
+    }
 
     return React.createElement(
-      "div",
-      { className: "theNavbar header" },
+      'div',
+      { className: 'theNavbar header' },
       React.createElement(
-        "div",
-        { className: "navbar navbar-inverse", role: "navigation" },
+        'div',
+        { className: 'navbar navbar-inverse', role: 'navigation' },
         React.createElement(
-          "div",
-          { className: "container" },
+          'div',
+          { className: 'container' },
           React.createElement(
-            "div",
-            { className: "navbar-header" },
+            'div',
+            { className: 'navbar-header' },
             React.createElement(
-              "button",
-              { type: "button", className: "navbar-toggle collapsed", "data-toggle": "collapse", "data-target": "#js-navbar-collapse" },
+              'button',
+              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#js-navbar-collapse' },
               React.createElement(
-                "span",
-                { className: "sr-only" },
-                "Toggle navigation"
+                'span',
+                { className: 'sr-only' },
+                'Toggle navigation'
               ),
-              React.createElement("span", { className: "icon-bar" }),
-              React.createElement("span", { className: "icon-bar" }),
-              React.createElement("span", { className: "icon-bar" })
+              React.createElement('span', { className: 'icon-bar' }),
+              React.createElement('span', { className: 'icon-bar' }),
+              React.createElement('span', { className: 'icon-bar' })
             ),
             React.createElement(
-              "a",
-              { className: "navbar-brand", href: "/#/" },
-              "AdminReact"
+              'a',
+              { className: 'navbar-brand', href: '/#/' },
+              'AdminReact'
             )
           ),
           React.createElement(
-            "div",
-            { className: "collapse navbar-collapse", id: "js-navbar-collapse" },
+            'div',
+            { className: 'collapse navbar-collapse', id: 'js-navbar-collapse' },
             React.createElement(
-              "ul",
-              { className: "nav navbar-nav" },
+              'ul',
+              { className: 'nav navbar-nav' },
               React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { href: "/#/coupon" },
-                  React.createElement("span", { className: "glyphicon glyphicon-qrcode", "aria-hidden": "true" }),
-                  " Coupon"
+                  'a',
+                  { href: '/#/coupon' },
+                  React.createElement('span', { className: 'glyphicon glyphicon-qrcode', 'aria-hidden': 'true' }),
+                  ' Coupon'
                 )
               ),
               React.createElement(
-                "li",
+                'li',
                 null,
                 React.createElement(
-                  "a",
-                  { href: "/#/analytics" },
-                  React.createElement("span", { className: "glyphicon glyphicon-stats", "aria-hidden": "true" }),
-                  " Analytics"
+                  'a',
+                  { href: '/#/analytics' },
+                  React.createElement('span', { className: 'glyphicon glyphicon-stats', 'aria-hidden': 'true' }),
+                  ' Analytics'
                 )
               )
+            ),
+            React.createElement(
+              'ul',
+              { className: 'nav navbar-nav navbar-right' },
+              RightNavbar
             )
-          ),
-          React.createElement("ul", { "class": "nav navbar-nav navbar-right" })
+          )
         )
       )
     );
@@ -664,7 +737,7 @@ var NavBar = React.createClass({
 });
 module.exports = NavBar;
 
-},{"react":229}],11:[function(require,module,exports){
+},{"parse":35,"parse-react":16,"react":229}],11:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -792,31 +865,32 @@ var routes = React.createElement(
 
 Router.run(routes, function (Handler) {
 
-  console.log(window.location);
-  $(document).ready(function () {
-    $('li').each(function () {
-      var theli = $(this);
-      console.log($('a', this).attr('href'));
-      if ($('a', this).attr('href') == window.location.href) {
-        // $(this).addClass("active");
-        theli.addClass('active');
-      } else {
-        theli.removeClass('active');
-      }
-    });
-  });
+  // console.log(window.location);
+  // $(document).ready(function() {
+  //     $("li").each(function() {
+  //       var theli = $(this);
+  //       console.log($("a",this).attr('href'));
+  //       if ($("a",this).attr('href') == window.location.href) {
+  //           // $(this).addClass("active");
+  //           theli.addClass('active');
+  //       }
+  //       else {
+  //         theli.removeClass('active');
+  //       }
+  //     });
+  // });
 
   React.render(React.createElement(Handler, null), document.getElementById('app'));
 });
 
 },{"./AnalyticsContainer.react.js":1,"./CouponsContainer.react.js":5,"./Index.react.js":7,"./LoginContainer.react.js":8,"./NavBar.react.js":10,"./NotFound.react.js":11,"./config.js":14,"parse":35,"parse-react":16,"react":229,"react-router":60}],14:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var config = {};
 
-config.appkey = "cRQxHQFx84ebmEN2sOic8e2cEDWDSKbi4kZHZ38i";
-config.jskey = "XpYVIvpt6Kuvs1luBjG0zFheMsr8mvi0NirxTvst";
-config.fbappkey = 1650333621846173;
+config.appkey = 'fUnC8PIBgPR26VUGhbsZFH4tStFUFyOZJ6baLo8O';
+config.jskey = 'CkPiEsxSHfqtriaJ266t2yknRXArxBy1lVs5WQvI';
+config.fbappkey = '1650333621846173';
 
 module.exports = config;
 

@@ -13,7 +13,7 @@ var CouponList = React.createClass({
   },
 
   destroy(e) {
-    console.log('destroying: ', e.target.id);
+    // console.log('destroying: ', e.target.id);
     var id = e.target.id.trim();
     var target = {
       className: 'Coupon',
@@ -25,7 +25,7 @@ var CouponList = React.createClass({
 
   render() {
 
-    console.log(this.destroy);
+    // console.log(this.destroy);
     var destruction = this.destroy;
 
     var couponNodes = this.data.coupons.map( function(coupon) {
