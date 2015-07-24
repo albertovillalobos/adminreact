@@ -20,9 +20,9 @@ var NavBar = React.createClass({
 
   _facebookLogin: function(e) {
     e.preventDefault();
-    Parse.FacebookUtils.logIn('public_profile', {
+    Parse.FacebookUtils.logIn('public_profile,email,user_about_me', {
       success(user) {
-
+        console.log(user);
       },
       error(user, error) {
       }
@@ -60,7 +60,7 @@ var NavBar = React.createClass({
 
             <div className="collapse navbar-collapse" id="js-navbar-collapse">
               <ul className="nav navbar-nav">
-                <li><a href="/#/coupon"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Coupon</a></li>
+                <li><a href="/#/campaigns"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Campaigns</a></li>
                 <li><a href="/#/analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">

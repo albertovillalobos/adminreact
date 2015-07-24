@@ -50,7 +50,7 @@ var routes = (
   <Route handler={RoutedApp}>
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
-    <Route path="/coupon" handler={CouponsContainer}/>
+    <Route path="/campaigns" handler={CouponsContainer}/>
     <Route path="/login" handler={LoginContainer}/>
     <Route path="/*" handler={NotFound}/>
   </Route>
