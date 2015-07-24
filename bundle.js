@@ -94,14 +94,12 @@ var CampaignStatus = React.createClass({
         React.createElement(
           'td',
           null,
-          campaign.startTime,
-          ':00'
+          campaign.startTime
         ),
         React.createElement(
           'td',
           null,
-          campaign.endTime,
-          ':00'
+          campaign.endTime
         ),
         React.createElement(
           'td',
@@ -326,7 +324,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'startTime', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
+              React.createElement('input', { type: 'time', ref: 'startTime', className: 'form-control', placeholder: 'Hours: 0-24', required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },
@@ -342,7 +340,7 @@ var CouponCreator = React.createClass({
             React.createElement(
               'div',
               { className: 'input-group ' },
-              React.createElement('input', { type: 'number', ref: 'endTime', className: 'form-control', placeholder: 'Hours: 0-24', min: 0, max: 24, required: true }),
+              React.createElement('input', { type: 'time', ref: 'endTime', className: 'form-control', placeholder: 'Hours: 0-24', required: true }),
               React.createElement(
                 'div',
                 { className: 'input-group-addon' },

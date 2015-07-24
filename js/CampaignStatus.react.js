@@ -31,8 +31,8 @@ var CampaignStatus = React.createClass({
         <tr key={campaign.objectId}>
           <td>{campaign.initialDiscount}</td>
           <td>{campaign.maxDiscount}%</td>
-          <td>{campaign.startTime}:00</td>
-          <td>{campaign.endTime}:00</td>
+          <td>{campaign.startTime}</td>
+          <td>{campaign.endTime}</td>
           <td>
             <button type="submit" className="btn btn-small btn-danger" id={campaign.objectId} onClick={destroyMethod}>End Campaign</button>
           </td>

@@ -64,7 +64,7 @@ var CouponCreator = React.createClass({
               <br/>
               <label>Starting time</label>
               <div className="input-group ">
-                <input type="number"  ref="startTime" className="form-control" placeholder="Hours: 0-24" min={0} max={24} required/>
+                <input type="time"  ref="startTime" className="form-control" placeholder="Hours: 0-24" required/>
                 <div className="input-group-addon">
                   <span className="glyphicon glyphicon-time" aria-hidden="true"></span>
                 </div>
@@ -72,7 +72,7 @@ var CouponCreator = React.createClass({
               <br/>
               <label>Ending time</label>
               <div className="input-group ">
-                <input type="number"  ref="endTime" className="form-control" placeholder="Hours: 0-24" min={0} max={24} required/>
+                <input type="time"  ref="endTime" className="form-control" placeholder="Hours: 0-24" required/>
                 <div className="input-group-addon">
                   <span className="glyphicon glyphicon-time" aria-hidden="true"></span>
                 </div>
