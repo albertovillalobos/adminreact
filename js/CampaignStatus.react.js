@@ -12,20 +12,6 @@ var CampaignStatus = React.createClass({
     };
   },
 
-  // componentDidMount() {
-  //   this.refreshQueries;
-  //   var query = new Parse.Query('Campaign').equalTo('merchant',this.data.user).find({
-  //     success: function(result) {
-  //       console.log('found from owner', result.length);
-  //     }
-  //   })
-  //   var query2 = new Parse.Query('Campaign').find({
-  //     success: function(result) {
-  //       console.log('found from all', result.length);
-  //     }
-  //   })
-  // },
-
   _destroy(e) {
     var id = e.target.id.trim();
     var target = {

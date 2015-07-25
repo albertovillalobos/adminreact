@@ -14,6 +14,7 @@ var AnalyticsContainer = require('./AnalyticsContainer.react.js');
 var CouponsContainer = require('./CouponsContainer.react.js');
 var Index = require('./Index.react.js');
 var LoginContainer = require('./LoginContainer.react.js');
+var Simulator = require('./Simulator.react.js');
 
 window.fbAsyncInit = function() {
   Parse.FacebookUtils.init({ // this line replaces FB.init({
@@ -51,7 +52,7 @@ var routes = (
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
     <Route path="/campaigns" handler={CouponsContainer}/>
-    <Route path="/login" handler={LoginContainer}/>
+    <Route path="/simulator" handler={Simulator}/>
     <Route path="/*" handler={NotFound}/>
   </Route>
 );
@@ -59,6 +60,8 @@ var routes = (
 
 Router.run(routes, function (Handler) {
 
+  React.render(<Handler/>, document.getElementById('app'));
+  
   // console.log(window.location);
   // $(document).ready(function() {
   //     $("li").each(function() {
@@ -74,5 +77,4 @@ Router.run(routes, function (Handler) {
   //     });
   // });
 
-  React.render(<Handler/>, document.getElementById('app'));
 });

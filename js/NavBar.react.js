@@ -14,7 +14,6 @@ var NavBar = React.createClass({
 
   _logOut: function(e) {
     e.preventDefault();
-    console.log('logout clicked',this.data.user);
 		Parse.User.logOut();
 	},
 
@@ -22,7 +21,7 @@ var NavBar = React.createClass({
     e.preventDefault();
     Parse.FacebookUtils.logIn('public_profile,email,user_about_me', {
       success(user) {
-        console.log(user);
+        // console.log(user);
       },
       error(user, error) {
       }
@@ -62,6 +61,7 @@ var NavBar = React.createClass({
               <ul className="nav navbar-nav">
                 <li><a href="/#/campaigns"><span className="glyphicon glyphicon-qrcode" aria-hidden="true"></span> Campaigns</a></li>
                 <li><a href="/#/analytics"><span className="glyphicon glyphicon-stats" aria-hidden="true"></span> Analytics</a></li>
+                <li><a href="/#/simulator"><span className="glyphicon glyphicon-tasks" aria-hidden="true"></span> Simulator</a></li>
               </ul>
               <ul className="nav navbar-nav navbar-right">
                 {RightNavbar}
