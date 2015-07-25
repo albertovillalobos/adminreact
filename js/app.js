@@ -11,7 +11,7 @@ Parse.initialize(config.appkey, config.jskey);
 var NavBar = require('./NavBar.react.js');
 var NotFound = require('./NotFound.react.js');
 var AnalyticsContainer = require('./AnalyticsContainer.react.js');
-var CouponsContainer = require('./CouponsContainer.react.js');
+var CampaignContainer = require('./CampaignContainer.react.js');
 var Index = require('./Index.react.js');
 var LoginContainer = require('./LoginContainer.react.js');
 var Simulator = require('./Simulator.react.js');
@@ -51,7 +51,7 @@ var routes = (
   <Route handler={RoutedApp}>
     <Route path="/" handler={Index}/>
     <Route path="/analytics" handler={AnalyticsContainer}/>
-    <Route path="/campaigns" handler={CouponsContainer}/>
+    <Route path="/campaigns" handler={CampaignContainer}/>
     <Route path="/simulator" handler={Simulator}/>
     <Route path="/*" handler={NotFound}/>
   </Route>
@@ -61,7 +61,7 @@ var routes = (
 Router.run(routes, function (Handler) {
 
   React.render(<Handler/>, document.getElementById('app'));
-  
+
   // console.log(window.location);
   // $(document).ready(function() {
   //     $("li").each(function() {

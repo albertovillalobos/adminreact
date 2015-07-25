@@ -5,7 +5,7 @@ var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 
-var CouponCounter = require('./CouponCounter.react.js');
+var CampaignCounter = require('./CampaignCounter.react.js');
 var DailyProfits = require('./DailyProfits.react.js');
 var WeeklyProfits = require('./WeeklyProfits.react.js');
 var MonthlyProfits = require('./MonthlyProfits.react.js');
@@ -30,7 +30,7 @@ var AnalyticsContainer = React.createClass({
         React.createElement(
           'div',
           { className: 'row' },
-          React.createElement(CouponCounter, null),
+          React.createElement(CampaignCounter, null),
           React.createElement(DailyProfits, null),
           React.createElement(WeeklyProfits, null),
           React.createElement(MonthlyProfits, null)
@@ -44,7 +44,113 @@ var AnalyticsContainer = React.createClass({
 
 module.exports = AnalyticsContainer;
 
-},{"./CouponCounter.react.js":3,"./DailyProfits.react.js":6,"./MonthlyProfits.react.js":9,"./Unauthorized.react.js":14,"./WeeklyProfits.react.js":15,"parse":38,"parse-react":19,"react":232}],2:[function(require,module,exports){
+},{"./CampaignCounter.react.js":3,"./DailyProfits.react.js":6,"./MonthlyProfits.react.js":9,"./Unauthorized.react.js":14,"./WeeklyProfits.react.js":15,"parse":38,"parse-react":19,"react":232}],2:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
+
+var CouponCreator = require('./CouponCreator.react.js');
+var CampaignStatus = require('./CampaignStatus.react.js');
+
+var CampaignContainer = React.createClass({
+  displayName: 'CampaignContainer',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser
+    };
+  },
+
+  render: function render() {
+    if (this.data.user) {
+      return React.createElement(
+        'div',
+        { className: 'container' },
+        React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(CouponCreator, null),
+          React.createElement(CampaignStatus, null)
+        )
+      );
+    } else {
+      return React.createElement(
+        'div',
+        { className: 'container' },
+        React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(
+            'h1',
+            null,
+            'Please log in'
+          )
+        )
+      );
+    }
+  }
+
+});
+
+module.exports = CampaignContainer;
+
+},{"./CampaignStatus.react.js":4,"./CouponCreator.react.js":5,"parse":38,"parse-react":19,"react":232}],3:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
+
+var CampaignCounter = React.createClass({
+  displayName: 'CampaignCounter',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser,
+      campaigns: new Parse.Query('Campaign').equalTo('merchant', Parse.User.current()).descending('createdAt')
+    };
+  },
+
+  render: function render() {
+    return React.createElement(
+      'div',
+      { className: 'col-md-3 ' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'CURRENT'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body text-center' },
+          React.createElement(
+            'h2',
+            null,
+            this.data.campaigns.length
+          ),
+          React.createElement(
+            'p',
+            { className: 'lead' },
+            'Active Campaigns'
+          )
+        )
+      )
+    );
+  }
+});
+
+module.exports = CampaignCounter;
+
+},{"parse":38,"parse-react":19,"react":232}],4:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -183,47 +289,7 @@ var CampaignStatus = React.createClass({
 
 module.exports = CampaignStatus;
 
-},{"parse":38,"parse-react":19,"react":232}],3:[function(require,module,exports){
-"use strict";
-
-var React = require("react");
-var CouponCounter = React.createClass({
-  displayName: "CouponCounter",
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "col-md-3 " },
-      React.createElement(
-        "div",
-        { className: "panel panel-default" },
-        React.createElement(
-          "div",
-          { className: "panel-heading text-center" },
-          "CURRENT"
-        ),
-        React.createElement(
-          "div",
-          { className: "panel-body text-center" },
-          React.createElement(
-            "h2",
-            null,
-            "4"
-          ),
-          React.createElement(
-            "p",
-            { className: "lead" },
-            "active coupons"
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = CouponCounter;
-
-},{"react":232}],4:[function(require,module,exports){
+},{"parse":38,"parse-react":19,"react":232}],5:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -364,61 +430,7 @@ var CouponCreator = React.createClass({
 
 module.exports = CouponCreator;
 
-},{"parse":38,"parse-react":19,"react":232}],5:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
-var Parse = require('parse').Parse;
-var ParseReact = require('parse-react');
-
-var CouponCreator = require('./CouponCreator.react.js');
-var CampaignStatus = require('./CampaignStatus.react.js');
-
-var CouponsContainer = React.createClass({
-  displayName: 'CouponsContainer',
-
-  mixins: [ParseReact.Mixin],
-
-  observe: function observe() {
-    return {
-      user: ParseReact.currentUser
-    };
-  },
-
-  render: function render() {
-    if (this.data.user) {
-      return React.createElement(
-        'div',
-        { className: 'container' },
-        React.createElement(
-          'div',
-          { className: 'row' },
-          React.createElement(CouponCreator, null),
-          React.createElement(CampaignStatus, null)
-        )
-      );
-    } else {
-      return React.createElement(
-        'div',
-        { className: 'container' },
-        React.createElement(
-          'div',
-          { className: 'row' },
-          React.createElement(
-            'h1',
-            null,
-            'Please log in'
-          )
-        )
-      );
-    }
-  }
-
-});
-
-module.exports = CouponsContainer;
-
-},{"./CampaignStatus.react.js":2,"./CouponCreator.react.js":4,"parse":38,"parse-react":19,"react":232}],6:[function(require,module,exports){
+},{"parse":38,"parse-react":19,"react":232}],6:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -801,7 +813,6 @@ module.exports = NotFound;
 var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
-var Unauthorized = require('./Unauthorized.react.js');
 
 var SimulationCreator = React.createClass({
   displayName: 'SimulationCreator',
@@ -931,7 +942,7 @@ var SimulationCreator = React.createClass({
 
 module.exports = SimulationCreator;
 
-},{"./Unauthorized.react.js":14,"parse":38,"parse-react":19,"react":232}],13:[function(require,module,exports){
+},{"parse":38,"parse-react":19,"react":232}],13:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -973,7 +984,7 @@ var Simulator = React.createClass({
 
 module.exports = Simulator;
 
-},{"./CampaignStatus.react.js":2,"./SimulationCreator.react.js":12,"./Unauthorized.react.js":14,"parse":38,"parse-react":19,"react":232}],14:[function(require,module,exports){
+},{"./CampaignStatus.react.js":4,"./SimulationCreator.react.js":12,"./Unauthorized.react.js":14,"parse":38,"parse-react":19,"react":232}],14:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -1057,7 +1068,7 @@ Parse.initialize(config.appkey, config.jskey);
 var NavBar = require('./NavBar.react.js');
 var NotFound = require('./NotFound.react.js');
 var AnalyticsContainer = require('./AnalyticsContainer.react.js');
-var CouponsContainer = require('./CouponsContainer.react.js');
+var CampaignContainer = require('./CampaignContainer.react.js');
 var Index = require('./Index.react.js');
 var LoginContainer = require('./LoginContainer.react.js');
 var Simulator = require('./Simulator.react.js');
@@ -1103,7 +1114,7 @@ var routes = React.createElement(
   { handler: RoutedApp },
   React.createElement(Route, { path: '/', handler: Index }),
   React.createElement(Route, { path: '/analytics', handler: AnalyticsContainer }),
-  React.createElement(Route, { path: '/campaigns', handler: CouponsContainer }),
+  React.createElement(Route, { path: '/campaigns', handler: CampaignContainer }),
   React.createElement(Route, { path: '/simulator', handler: Simulator }),
   React.createElement(Route, { path: '/*', handler: NotFound })
 );
@@ -1128,7 +1139,7 @@ Router.run(routes, function (Handler) {
   // });
 });
 
-},{"./AnalyticsContainer.react.js":1,"./CouponsContainer.react.js":5,"./Index.react.js":7,"./LoginContainer.react.js":8,"./NavBar.react.js":10,"./NotFound.react.js":11,"./Simulator.react.js":13,"./config.js":17,"parse":38,"parse-react":19,"react":232,"react-router":63}],17:[function(require,module,exports){
+},{"./AnalyticsContainer.react.js":1,"./CampaignContainer.react.js":2,"./Index.react.js":7,"./LoginContainer.react.js":8,"./NavBar.react.js":10,"./NotFound.react.js":11,"./Simulator.react.js":13,"./config.js":17,"parse":38,"parse-react":19,"react":232,"react-router":63}],17:[function(require,module,exports){
 'use strict';
 
 var config = {};

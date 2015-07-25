@@ -1,7 +1,7 @@
 var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
-var Unauthorized = require('./Unauthorized.react.js');
+
 
 
 var SimulationCreator = React.createClass({

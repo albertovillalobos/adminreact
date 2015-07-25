@@ -5,7 +5,7 @@ var ParseReact = require('parse-react');
 var CouponCreator = require('./CouponCreator.react.js');
 var CampaignStatus = require('./CampaignStatus.react.js');
 
-var CouponsContainer = React.createClass({
+var CampaignContainer = React.createClass({
   mixins: [ParseReact.Mixin],
 
   observe() {
@@ -38,4 +38,4 @@ var CouponsContainer = React.createClass({
 
 })
 
-module.exports = CouponsContainer;
+module.exports = CampaignContainer;

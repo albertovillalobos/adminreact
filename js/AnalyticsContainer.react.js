@@ -2,7 +2,7 @@ var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 
-var CouponCounter = require('./CouponCounter.react.js');
+var CampaignCounter = require('./CampaignCounter.react.js');
 var DailyProfits = require('./DailyProfits.react.js');
 var WeeklyProfits = require('./WeeklyProfits.react.js');
 var MonthlyProfits = require('./MonthlyProfits.react.js');
@@ -24,7 +24,7 @@ var AnalyticsContainer = React.createClass({
       return(
         <div className="container">
           <div className="row">
-            <CouponCounter/>
+            <CampaignCounter/>
             <DailyProfits/>
             <WeeklyProfits/>
             <MonthlyProfits/>
