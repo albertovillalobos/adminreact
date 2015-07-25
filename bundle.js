@@ -7,12 +7,10 @@ var ParseReact = require('parse-react');
 
 var CampaignCounter = require('./CampaignCounter.react.js');
 var ClaimsCounter = require('./ClaimsCounter.react.js');
-var DailyProfits = require('./DailyProfits.react.js');
-var WeeklyProfits = require('./WeeklyProfits.react.js');
-var MonthlyProfits = require('./MonthlyProfits.react.js');
 var Unauthorized = require('./Unauthorized.react.js');
 var AverageSales = require('./AverageSales.react.js');
 var TotalSales = require('./TotalSales.react.js');
+var SalesChart = require('./SalesChart.react.js');
 var AnalyticsContainer = React.createClass({
   displayName: 'AnalyticsContainer',
 
@@ -36,6 +34,11 @@ var AnalyticsContainer = React.createClass({
           React.createElement(ClaimsCounter, null),
           React.createElement(AverageSales, null),
           React.createElement(TotalSales, null)
+        ),
+        React.createElement(
+          'div',
+          { className: 'row' },
+          React.createElement(SalesChart, null)
         )
       );
     } else {
@@ -46,7 +49,7 @@ var AnalyticsContainer = React.createClass({
 
 module.exports = AnalyticsContainer;
 
-},{"./AverageSales.react.js":2,"./CampaignCounter.react.js":4,"./ClaimsCounter.react.js":6,"./DailyProfits.react.js":8,"./MonthlyProfits.react.js":11,"./TotalSales.react.js":16,"./Unauthorized.react.js":17,"./WeeklyProfits.react.js":18,"parse":41,"parse-react":22,"react":235}],2:[function(require,module,exports){
+},{"./AverageSales.react.js":2,"./CampaignCounter.react.js":4,"./ClaimsCounter.react.js":6,"./SalesChart.react.js":12,"./TotalSales.react.js":15,"./Unauthorized.react.js":16,"parse":40,"parse-react":21,"react":242}],2:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -108,7 +111,7 @@ var CampaignCounter = React.createClass({
 
 module.exports = CampaignCounter;
 
-},{"parse":41,"parse-react":22,"react":235}],3:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],3:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -162,7 +165,7 @@ var CampaignContainer = React.createClass({
 
 module.exports = CampaignContainer;
 
-},{"./CampaignStatus.react.js":5,"./CouponCreator.react.js":7,"parse":41,"parse-react":22,"react":235}],4:[function(require,module,exports){
+},{"./CampaignStatus.react.js":5,"./CouponCreator.react.js":7,"parse":40,"parse-react":21,"react":242}],4:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -214,7 +217,7 @@ var CampaignCounter = React.createClass({
 
 module.exports = CampaignCounter;
 
-},{"parse":41,"parse-react":22,"react":235}],5:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],5:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -353,7 +356,7 @@ var CampaignStatus = React.createClass({
 
 module.exports = CampaignStatus;
 
-},{"parse":41,"parse-react":22,"react":235}],6:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],6:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -413,7 +416,7 @@ var CampaignCounter = React.createClass({
 
 module.exports = CampaignCounter;
 
-},{"parse":41,"parse-react":22,"react":235}],7:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],7:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -554,48 +557,7 @@ var CouponCreator = React.createClass({
 
 module.exports = CouponCreator;
 
-},{"parse":41,"parse-react":22,"react":235}],8:[function(require,module,exports){
-"use strict";
-
-var React = require("react");
-
-var DailyProfits = React.createClass({
-  displayName: "DailyProfits",
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "col-md-3 " },
-      React.createElement(
-        "div",
-        { className: "panel panel-default" },
-        React.createElement(
-          "div",
-          { className: "panel-heading text-center" },
-          "DAILY"
-        ),
-        React.createElement(
-          "div",
-          { className: "panel-body text-center" },
-          React.createElement(
-            "h2",
-            null,
-            "$56.23 "
-          ),
-          React.createElement(
-            "p",
-            { className: "lead" },
-            "Profits today"
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = DailyProfits;
-
-},{"react":235}],9:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],8:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -643,7 +605,7 @@ var Index = React.createClass({
 
 module.exports = Index;
 
-},{"parse":41,"parse-react":22,"react":235}],10:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],9:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -724,48 +686,7 @@ module.exports = LoginContainer;
 
 // console.log('user',user, error);
 
-},{"parse":41,"parse-react":22,"react":235}],11:[function(require,module,exports){
-"use strict";
-
-var React = require("react");
-
-var MonthlyProfits = React.createClass({
-  displayName: "MonthlyProfits",
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "col-md-3 " },
-      React.createElement(
-        "div",
-        { className: "panel panel-default" },
-        React.createElement(
-          "div",
-          { className: "panel-heading text-center" },
-          "MONTHLY"
-        ),
-        React.createElement(
-          "div",
-          { className: "panel-body text-center" },
-          React.createElement(
-            "h2",
-            null,
-            "$3,208.76"
-          ),
-          React.createElement(
-            "p",
-            { className: "lead" },
-            "Profits this month"
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = MonthlyProfits;
-
-},{"react":235}],12:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],10:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -904,7 +825,7 @@ module.exports = NavBar;
 
 // console.log(user);
 
-},{"parse":41,"parse-react":22,"react":235}],13:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],11:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -931,7 +852,150 @@ var NotFound = React.createClass({
 
 module.exports = NotFound;
 
-},{"react":235}],14:[function(require,module,exports){
+},{"react":242}],12:[function(require,module,exports){
+'use strict';
+
+var React = require('react');
+var Parse = require('parse').Parse;
+var ParseReact = require('parse-react');
+var LineChart = require('react-chartjs').Line;
+
+var chartOptions = {
+  animation: true,
+  animationSteps: 60,
+  animationEasing: 'easeOutQuart',
+  showScale: true,
+  scaleOverride: false,
+  scaleSteps: null,
+  scaleStepWidth: null,
+  scaleStartValue: null,
+  scaleLineColor: 'rgba(0,0,0,.1)',
+  scaleLineWidth: 1,
+  scaleShowLabels: true,
+  scaleLabel: '<%=value%>',
+  scaleIntegersOnly: true,
+  scaleBeginAtZero: false,
+  scaleFontFamily: '\'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
+  scaleFontSize: 12,
+  scaleFontStyle: 'normal',
+  scaleFontColor: '#666',
+  responsive: true,
+  maintainAspectRatio: true,
+  showTooltips: true,
+  customTooltips: false,
+  tooltipEvents: ['mousemove', 'touchstart', 'touchmove'],
+  tooltipFillColor: 'rgba(0,0,0,0.8)',
+  tooltipFontFamily: '\'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
+  tooltipFontSize: 14,
+  tooltipFontStyle: 'normal',
+  tooltipFontColor: '#fff',
+  tooltipTitleFontFamily: '\'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
+  tooltipTitleFontSize: 14,
+  tooltipTitleFontStyle: 'bold',
+  tooltipTitleFontColor: '#fff',
+  tooltipYPadding: 6,
+  tooltipXPadding: 6,
+  tooltipCaretSize: 8,
+  tooltipCornerRadius: 6,
+  tooltipXOffset: 10,
+  tooltipTemplate: '<%if (label){%><%=label%>: <%}%><%= value %>',
+  multiTooltipTemplate: '<%= value %>',
+  onAnimationProgress: function onAnimationProgress() {},
+  onAnimationComplete: function onAnimationComplete() {}
+};
+
+var SalesChart = React.createClass({
+  displayName: 'SalesChart',
+
+  mixins: [ParseReact.Mixin],
+
+  observe: function observe() {
+    return {
+      user: ParseReact.currentUser,
+      transactions: new Parse.Query('Transaction').equalTo('merchant', Parse.User.current()).descending('createdAt')
+    };
+  },
+
+  render: function render() {
+
+    var labels = [];
+    var yPoints = [];
+    for (var i = 0; i < this.data.transactions.length; i++) {
+      yPoints.push(Number(this.data.transactions[i].expense).toFixed(2));
+      labels.push(this.data.transactions[i].objectId);
+    }
+    var chartData = {
+      labels: labels,
+      datasets: [{
+        label: 'My Second dataset',
+        fillColor: 'rgba(151,187,205,0.2)',
+        strokeColor: 'rgba(151,187,205,1)',
+        pointColor: 'rgba(151,187,205,1)',
+        pointStrokeColor: '#fff',
+        pointHighlightFill: '#fff',
+        pointHighlightStroke: 'rgba(151,187,205,1)',
+        data: yPoints
+      }]
+    };
+
+    if (this.data.transactions.length < 1) {
+      return React.createElement(
+        'div',
+        { className: 'col-lg-12' },
+        React.createElement(
+          'div',
+          { className: 'panel panel-default' },
+          React.createElement(
+            'div',
+            { className: 'panel-heading text-center' },
+            'SALES CHART'
+          ),
+          React.createElement(
+            'div',
+            { className: 'panel-body text-center' },
+            React.createElement(
+              'div',
+              null,
+              React.createElement(
+                'h1',
+                null,
+                'loading...'
+              )
+            )
+          )
+        )
+      );
+    } else {
+      return React.createElement(
+        'div',
+        { className: 'col-lg-12' },
+        React.createElement(
+          'div',
+          { className: 'panel panel-default' },
+          React.createElement(
+            'div',
+            { className: 'panel-heading text-center' },
+            'SALES CHART'
+          ),
+          React.createElement(
+            'div',
+            { className: 'panel-body text-center' },
+            React.createElement(
+              'div',
+              null,
+              React.createElement(LineChart, { data: chartData, options: chartOptions })
+            )
+          )
+        )
+      );
+    }
+  }
+
+});
+
+module.exports = SalesChart;
+
+},{"parse":40,"parse-react":21,"react":242,"react-chartjs":41}],13:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -1066,7 +1130,7 @@ var SimulationCreator = React.createClass({
 
 module.exports = SimulationCreator;
 
-},{"parse":41,"parse-react":22,"react":235}],15:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],14:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -1108,7 +1172,7 @@ var Simulator = React.createClass({
 
 module.exports = Simulator;
 
-},{"./CampaignStatus.react.js":5,"./SimulationCreator.react.js":14,"./Unauthorized.react.js":17,"parse":41,"parse-react":22,"react":235}],16:[function(require,module,exports){
+},{"./CampaignStatus.react.js":5,"./SimulationCreator.react.js":13,"./Unauthorized.react.js":16,"parse":40,"parse-react":21,"react":242}],15:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -1166,7 +1230,7 @@ var CampaignCounter = React.createClass({
 
 module.exports = CampaignCounter;
 
-},{"parse":41,"parse-react":22,"react":235}],17:[function(require,module,exports){
+},{"parse":40,"parse-react":21,"react":242}],16:[function(require,module,exports){
 "use strict";
 
 var React = require("react");
@@ -1193,48 +1257,7 @@ var Unauthorized = React.createClass({
 
 module.exports = Unauthorized;
 
-},{"react":235}],18:[function(require,module,exports){
-"use strict";
-
-var React = require("react");
-
-var WeeklyProfits = React.createClass({
-  displayName: "WeeklyProfits",
-
-  render: function render() {
-    return React.createElement(
-      "div",
-      { className: "col-md-3 " },
-      React.createElement(
-        "div",
-        { className: "panel panel-default" },
-        React.createElement(
-          "div",
-          { className: "panel-heading text-center" },
-          "WEEKLY"
-        ),
-        React.createElement(
-          "div",
-          { className: "panel-body text-center" },
-          React.createElement(
-            "h2",
-            null,
-            "$441.91"
-          ),
-          React.createElement(
-            "p",
-            { className: "lead" },
-            "Profits this week"
-          )
-        )
-      )
-    );
-  }
-});
-
-module.exports = WeeklyProfits;
-
-},{"react":235}],19:[function(require,module,exports){
+},{"react":242}],17:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -1321,7 +1344,7 @@ Router.run(routes, function (Handler) {
   // });
 });
 
-},{"./AnalyticsContainer.react.js":1,"./CampaignContainer.react.js":3,"./Index.react.js":9,"./LoginContainer.react.js":10,"./NavBar.react.js":12,"./NotFound.react.js":13,"./Simulator.react.js":15,"./config.js":20,"parse":41,"parse-react":22,"react":235,"react-router":66}],20:[function(require,module,exports){
+},{"./AnalyticsContainer.react.js":1,"./CampaignContainer.react.js":3,"./Index.react.js":8,"./LoginContainer.react.js":9,"./NavBar.react.js":10,"./NotFound.react.js":11,"./Simulator.react.js":14,"./config.js":18,"parse":40,"parse-react":21,"react":242,"react-router":73}],18:[function(require,module,exports){
 'use strict';
 
 var config = {};
@@ -1332,7 +1355,7 @@ config.fbappkey = '1650333621846173';
 
 module.exports = config;
 
-},{}],21:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -1424,10 +1447,3488 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],22:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.0.2
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+
+
+(function(){
+
+	"use strict";
+
+	//Declare root variable - window in the browser, global on the server
+	var root = this,
+		previous = root.Chart;
+
+	//Occupy the global variable of Chart, and create a simple base class
+	var Chart = function(context){
+		var chart = this;
+		this.canvas = context.canvas;
+
+		this.ctx = context;
+
+		//Variables global to the chart
+		var computeDimension = function(element,dimension)
+		{
+			if (element['offset'+dimension])
+			{
+				return element['offset'+dimension];
+			}
+			else
+			{
+				return document.defaultView.getComputedStyle(element).getPropertyValue(dimension);
+			}
+		}
+
+		var width = this.width = computeDimension(context.canvas,'Width');
+		var height = this.height = computeDimension(context.canvas,'Height');
+
+		// Firefox requires this to work correctly
+		context.canvas.width  = width;
+		context.canvas.height = height;
+
+		var width = this.width = context.canvas.width;
+		var height = this.height = context.canvas.height;
+		this.aspectRatio = this.width / this.height;
+		//High pixel density displays - multiply the size of the canvas height/width by the device pixel ratio, then scale.
+		helpers.retinaScale(this);
+
+		return this;
+	};
+	//Globally expose the defaults to allow for user updating/changing
+	Chart.defaults = {
+		global: {
+			// Boolean - Whether to animate the chart
+			animation: true,
+
+			// Number - Number of animation steps
+			animationSteps: 60,
+
+			// String - Animation easing effect
+			animationEasing: "easeOutQuart",
+
+			// Boolean - If we should show the scale at all
+			showScale: true,
+
+			// Boolean - If we want to override with a hard coded scale
+			scaleOverride: false,
+
+			// ** Required if scaleOverride is true **
+			// Number - The number of steps in a hard coded scale
+			scaleSteps: null,
+			// Number - The value jump in the hard coded scale
+			scaleStepWidth: null,
+			// Number - The scale starting value
+			scaleStartValue: null,
+
+			// String - Colour of the scale line
+			scaleLineColor: "rgba(0,0,0,.1)",
+
+			// Number - Pixel width of the scale line
+			scaleLineWidth: 1,
+
+			// Boolean - Whether to show labels on the scale
+			scaleShowLabels: true,
+
+			// Interpolated JS string - can access value
+			scaleLabel: "<%=value%>",
+
+			// Boolean - Whether the scale should stick to integers, and not show any floats even if drawing space is there
+			scaleIntegersOnly: true,
+
+			// Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+			scaleBeginAtZero: false,
+
+			// String - Scale label font declaration for the scale label
+			scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Scale label font size in pixels
+			scaleFontSize: 12,
+
+			// String - Scale label font weight style
+			scaleFontStyle: "normal",
+
+			// String - Scale label font colour
+			scaleFontColor: "#666",
+
+			// Boolean - whether or not the chart should be responsive and resize when the browser does.
+			responsive: false,
+
+			// Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+			maintainAspectRatio: true,
+
+			// Boolean - Determines whether to draw tooltips on the canvas or not - attaches events to touchmove & mousemove
+			showTooltips: true,
+
+			// Boolean - Determines whether to draw built-in tooltip or call custom tooltip function
+			customTooltips: false,
+
+			// Array - Array of string names to attach tooltip events
+			tooltipEvents: ["mousemove", "touchstart", "touchmove", "mouseout"],
+
+			// String - Tooltip background colour
+			tooltipFillColor: "rgba(0,0,0,0.8)",
+
+			// String - Tooltip label font declaration for the scale label
+			tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip label font size in pixels
+			tooltipFontSize: 14,
+
+			// String - Tooltip font weight style
+			tooltipFontStyle: "normal",
+
+			// String - Tooltip label font colour
+			tooltipFontColor: "#fff",
+
+			// String - Tooltip title font declaration for the scale label
+			tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+
+			// Number - Tooltip title font size in pixels
+			tooltipTitleFontSize: 14,
+
+			// String - Tooltip title font weight style
+			tooltipTitleFontStyle: "bold",
+
+			// String - Tooltip title font colour
+			tooltipTitleFontColor: "#fff",
+
+			// Number - pixel width of padding around tooltip text
+			tooltipYPadding: 6,
+
+			// Number - pixel width of padding around tooltip text
+			tooltipXPadding: 6,
+
+			// Number - Size of the caret on the tooltip
+			tooltipCaretSize: 8,
+
+			// Number - Pixel radius of the tooltip border
+			tooltipCornerRadius: 6,
+
+			// Number - Pixel offset from point x to tooltip edge
+			tooltipXOffset: 10,
+
+			// String - Template string for single tooltips
+			tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+
+			// String - Template string for single tooltips
+			multiTooltipTemplate: "<%= value %>",
+
+			// String - Colour behind the legend colour block
+			multiTooltipKeyBackground: '#fff',
+
+			// Function - Will fire on animation progression.
+			onAnimationProgress: function(){},
+
+			// Function - Will fire on animation completion.
+			onAnimationComplete: function(){}
+
+		}
+	};
+
+	//Create a dictionary of chart types, to allow for extension of existing types
+	Chart.types = {};
+
+	//Global Chart helpers object for utility methods and classes
+	var helpers = Chart.helpers = {};
+
+		//-- Basic js utility methods
+	var each = helpers.each = function(loopable,callback,self){
+			var additionalArgs = Array.prototype.slice.call(arguments, 3);
+			// Check to see if null or undefined firstly.
+			if (loopable){
+				if (loopable.length === +loopable.length){
+					var i;
+					for (i=0; i<loopable.length; i++){
+						callback.apply(self,[loopable[i], i].concat(additionalArgs));
+					}
+				}
+				else{
+					for (var item in loopable){
+						callback.apply(self,[loopable[item],item].concat(additionalArgs));
+					}
+				}
+			}
+		},
+		clone = helpers.clone = function(obj){
+			var objClone = {};
+			each(obj,function(value,key){
+				if (obj.hasOwnProperty(key)) objClone[key] = value;
+			});
+			return objClone;
+		},
+		extend = helpers.extend = function(base){
+			each(Array.prototype.slice.call(arguments,1), function(extensionObject) {
+				each(extensionObject,function(value,key){
+					if (extensionObject.hasOwnProperty(key)) base[key] = value;
+				});
+			});
+			return base;
+		},
+		merge = helpers.merge = function(base,master){
+			//Merge properties in left object over to a shallow clone of object right.
+			var args = Array.prototype.slice.call(arguments,0);
+			args.unshift({});
+			return extend.apply(null, args);
+		},
+		indexOf = helpers.indexOf = function(arrayToSearch, item){
+			if (Array.prototype.indexOf) {
+				return arrayToSearch.indexOf(item);
+			}
+			else{
+				for (var i = 0; i < arrayToSearch.length; i++) {
+					if (arrayToSearch[i] === item) return i;
+				}
+				return -1;
+			}
+		},
+		where = helpers.where = function(collection, filterCallback){
+			var filtered = [];
+
+			helpers.each(collection, function(item){
+				if (filterCallback(item)){
+					filtered.push(item);
+				}
+			});
+
+			return filtered;
+		},
+		findNextWhere = helpers.findNextWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to start of the array
+			if (!startIndex){
+				startIndex = -1;
+			}
+			for (var i = startIndex + 1; i < arrayToSearch.length; i++) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		findPreviousWhere = helpers.findPreviousWhere = function(arrayToSearch, filterCallback, startIndex){
+			// Default to end of the array
+			if (!startIndex){
+				startIndex = arrayToSearch.length;
+			}
+			for (var i = startIndex - 1; i >= 0; i--) {
+				var currentItem = arrayToSearch[i];
+				if (filterCallback(currentItem)){
+					return currentItem;
+				}
+			}
+		},
+		inherits = helpers.inherits = function(extensions){
+			//Basic javascript inheritance based on the model created in Backbone.js
+			var parent = this;
+			var ChartElement = (extensions && extensions.hasOwnProperty("constructor")) ? extensions.constructor : function(){ return parent.apply(this, arguments); };
+
+			var Surrogate = function(){ this.constructor = ChartElement;};
+			Surrogate.prototype = parent.prototype;
+			ChartElement.prototype = new Surrogate();
+
+			ChartElement.extend = inherits;
+
+			if (extensions) extend(ChartElement.prototype, extensions);
+
+			ChartElement.__super__ = parent.prototype;
+
+			return ChartElement;
+		},
+		noop = helpers.noop = function(){},
+		uid = helpers.uid = (function(){
+			var id=0;
+			return function(){
+				return "chart-" + id++;
+			};
+		})(),
+		warn = helpers.warn = function(str){
+			//Method for warning of errors
+			if (window.console && typeof window.console.warn == "function") console.warn(str);
+		},
+		amd = helpers.amd = (typeof define == 'function' && define.amd),
+		//-- Math methods
+		isNumber = helpers.isNumber = function(n){
+			return !isNaN(parseFloat(n)) && isFinite(n);
+		},
+		max = helpers.max = function(array){
+			return Math.max.apply( Math, array );
+		},
+		min = helpers.min = function(array){
+			return Math.min.apply( Math, array );
+		},
+		cap = helpers.cap = function(valueToCap,maxValue,minValue){
+			if(isNumber(maxValue)) {
+				if( valueToCap > maxValue ) {
+					return maxValue;
+				}
+			}
+			else if(isNumber(minValue)){
+				if ( valueToCap < minValue ){
+					return minValue;
+				}
+			}
+			return valueToCap;
+		},
+		getDecimalPlaces = helpers.getDecimalPlaces = function(num){
+			if (num%1!==0 && isNumber(num)){
+				return num.toString().split(".")[1].length;
+			}
+			else {
+				return 0;
+			}
+		},
+		toRadians = helpers.radians = function(degrees){
+			return degrees * (Math.PI/180);
+		},
+		// Gets the angle from vertical upright to the point about a centre.
+		getAngleFromPoint = helpers.getAngleFromPoint = function(centrePoint, anglePoint){
+			var distanceFromXCenter = anglePoint.x - centrePoint.x,
+				distanceFromYCenter = anglePoint.y - centrePoint.y,
+				radialDistanceFromCenter = Math.sqrt( distanceFromXCenter * distanceFromXCenter + distanceFromYCenter * distanceFromYCenter);
+
+
+			var angle = Math.PI * 2 + Math.atan2(distanceFromYCenter, distanceFromXCenter);
+
+			//If the segment is in the top left quadrant, we need to add another rotation to the angle
+			if (distanceFromXCenter < 0 && distanceFromYCenter < 0){
+				angle += Math.PI*2;
+			}
+
+			return {
+				angle: angle,
+				distance: radialDistanceFromCenter
+			};
+		},
+		aliasPixel = helpers.aliasPixel = function(pixelWidth){
+			return (pixelWidth % 2 === 0) ? 0 : 0.5;
+		},
+		splineCurve = helpers.splineCurve = function(FirstPoint,MiddlePoint,AfterPoint,t){
+			//Props to Rob Spencer at scaled innovation for his post on splining between points
+			//http://scaledinnovation.com/analytics/splines/aboutSplines.html
+			var d01=Math.sqrt(Math.pow(MiddlePoint.x-FirstPoint.x,2)+Math.pow(MiddlePoint.y-FirstPoint.y,2)),
+				d12=Math.sqrt(Math.pow(AfterPoint.x-MiddlePoint.x,2)+Math.pow(AfterPoint.y-MiddlePoint.y,2)),
+				fa=t*d01/(d01+d12),// scaling factor for triangle Ta
+				fb=t*d12/(d01+d12);
+			return {
+				inner : {
+					x : MiddlePoint.x-fa*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y-fa*(AfterPoint.y-FirstPoint.y)
+				},
+				outer : {
+					x: MiddlePoint.x+fb*(AfterPoint.x-FirstPoint.x),
+					y : MiddlePoint.y+fb*(AfterPoint.y-FirstPoint.y)
+				}
+			};
+		},
+		calculateOrderOfMagnitude = helpers.calculateOrderOfMagnitude = function(val){
+			return Math.floor(Math.log(val) / Math.LN10);
+		},
+		calculateScaleRange = helpers.calculateScaleRange = function(valuesArray, drawingSize, textSize, startFromZero, integersOnly){
+
+			//Set a minimum step of two - a point at the top of the graph, and a point at the base
+			var minSteps = 2,
+				maxSteps = Math.floor(drawingSize/(textSize * 1.5)),
+				skipFitting = (minSteps >= maxSteps);
+
+			var maxValue = max(valuesArray),
+				minValue = min(valuesArray);
+
+			// We need some degree of seperation here to calculate the scales if all the values are the same
+			// Adding/minusing 0.5 will give us a range of 1.
+			if (maxValue === minValue){
+				maxValue += 0.5;
+				// So we don't end up with a graph with a negative start value if we've said always start from zero
+				if (minValue >= 0.5 && !startFromZero){
+					minValue -= 0.5;
+				}
+				else{
+					// Make up a whole number above the values
+					maxValue += 0.5;
+				}
+			}
+
+			var	valueRange = Math.abs(maxValue - minValue),
+				rangeOrderOfMagnitude = calculateOrderOfMagnitude(valueRange),
+				graphMax = Math.ceil(maxValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphMin = (startFromZero) ? 0 : Math.floor(minValue / (1 * Math.pow(10, rangeOrderOfMagnitude))) * Math.pow(10, rangeOrderOfMagnitude),
+				graphRange = graphMax - graphMin,
+				stepValue = Math.pow(10, rangeOrderOfMagnitude),
+				numberOfSteps = Math.round(graphRange / stepValue);
+
+			//If we have more space on the graph we'll use it to give more definition to the data
+			while((numberOfSteps > maxSteps || (numberOfSteps * 2) < maxSteps) && !skipFitting) {
+				if(numberOfSteps > maxSteps){
+					stepValue *=2;
+					numberOfSteps = Math.round(graphRange/stepValue);
+					// Don't ever deal with a decimal number of steps - cancel fitting and just use the minimum number of steps.
+					if (numberOfSteps % 1 !== 0){
+						skipFitting = true;
+					}
+				}
+				//We can fit in double the amount of scale points on the scale
+				else{
+					//If user has declared ints only, and the step value isn't a decimal
+					if (integersOnly && rangeOrderOfMagnitude >= 0){
+						//If the user has said integers only, we need to check that making the scale more granular wouldn't make it a float
+						if(stepValue/2 % 1 === 0){
+							stepValue /=2;
+							numberOfSteps = Math.round(graphRange/stepValue);
+						}
+						//If it would make it a float break out of the loop
+						else{
+							break;
+						}
+					}
+					//If the scale doesn't have to be an int, make the scale more granular anyway.
+					else{
+						stepValue /=2;
+						numberOfSteps = Math.round(graphRange/stepValue);
+					}
+
+				}
+			}
+
+			if (skipFitting){
+				numberOfSteps = minSteps;
+				stepValue = graphRange / numberOfSteps;
+			}
+
+			return {
+				steps : numberOfSteps,
+				stepValue : stepValue,
+				min : graphMin,
+				max	: graphMin + (numberOfSteps * stepValue)
+			};
+
+		},
+		/* jshint ignore:start */
+		// Blows up jshint errors based on the new Function constructor
+		//Templating methods
+		//Javascript micro templating by John Resig - source at http://ejohn.org/blog/javascript-micro-templating/
+		template = helpers.template = function(templateString, valuesObject){
+
+			// If templateString is function rather than string-template - call the function for valuesObject
+
+			if(templateString instanceof Function){
+			 	return templateString(valuesObject);
+		 	}
+
+			var cache = {};
+			function tmpl(str, data){
+				// Figure out if we're getting a template, or if we need to
+				// load the template - and be sure to cache the result.
+				var fn = !/\W/.test(str) ?
+				cache[str] = cache[str] :
+
+				// Generate a reusable function that will serve as a template
+				// generator (and which will be cached).
+				new Function("obj",
+					"var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+					// Introduce the data as local variables using with(){}
+					"with(obj){p.push('" +
+
+					// Convert the template into pure JavaScript
+					str
+						.replace(/[\r\t\n]/g, " ")
+						.split("<%").join("\t")
+						.replace(/((^|%>)[^\t]*)'/g, "$1\r")
+						.replace(/\t=(.*?)%>/g, "',$1,'")
+						.split("\t").join("');")
+						.split("%>").join("p.push('")
+						.split("\r").join("\\'") +
+					"');}return p.join('');"
+				);
+
+				// Provide some basic currying to the user
+				return data ? fn( data ) : fn;
+			}
+			return tmpl(templateString,valuesObject);
+		},
+		/* jshint ignore:end */
+		generateLabels = helpers.generateLabels = function(templateString,numberOfSteps,graphMin,stepValue){
+			var labelsArray = new Array(numberOfSteps);
+			if (labelTemplateString){
+				each(labelsArray,function(val,index){
+					labelsArray[index] = template(templateString,{value: (graphMin + (stepValue*(index+1)))});
+				});
+			}
+			return labelsArray;
+		},
+		//--Animation methods
+		//Easing functions adapted from Robert Penner's easing equations
+		//http://www.robertpenner.com/easing/
+		easingEffects = helpers.easingEffects = {
+			linear: function (t) {
+				return t;
+			},
+			easeInQuad: function (t) {
+				return t * t;
+			},
+			easeOutQuad: function (t) {
+				return -1 * t * (t - 2);
+			},
+			easeInOutQuad: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t;
+				return -1 / 2 * ((--t) * (t - 2) - 1);
+			},
+			easeInCubic: function (t) {
+				return t * t * t;
+			},
+			easeOutCubic: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t + 1);
+			},
+			easeInOutCubic: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t + 2);
+			},
+			easeInQuart: function (t) {
+				return t * t * t * t;
+			},
+			easeOutQuart: function (t) {
+				return -1 * ((t = t / 1 - 1) * t * t * t - 1);
+			},
+			easeInOutQuart: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t;
+				return -1 / 2 * ((t -= 2) * t * t * t - 2);
+			},
+			easeInQuint: function (t) {
+				return 1 * (t /= 1) * t * t * t * t;
+			},
+			easeOutQuint: function (t) {
+				return 1 * ((t = t / 1 - 1) * t * t * t * t + 1);
+			},
+			easeInOutQuint: function (t) {
+				if ((t /= 1 / 2) < 1) return 1 / 2 * t * t * t * t * t;
+				return 1 / 2 * ((t -= 2) * t * t * t * t + 2);
+			},
+			easeInSine: function (t) {
+				return -1 * Math.cos(t / 1 * (Math.PI / 2)) + 1;
+			},
+			easeOutSine: function (t) {
+				return 1 * Math.sin(t / 1 * (Math.PI / 2));
+			},
+			easeInOutSine: function (t) {
+				return -1 / 2 * (Math.cos(Math.PI * t / 1) - 1);
+			},
+			easeInExpo: function (t) {
+				return (t === 0) ? 1 : 1 * Math.pow(2, 10 * (t / 1 - 1));
+			},
+			easeOutExpo: function (t) {
+				return (t === 1) ? 1 : 1 * (-Math.pow(2, -10 * t / 1) + 1);
+			},
+			easeInOutExpo: function (t) {
+				if (t === 0) return 0;
+				if (t === 1) return 1;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * Math.pow(2, 10 * (t - 1));
+				return 1 / 2 * (-Math.pow(2, -10 * --t) + 2);
+			},
+			easeInCirc: function (t) {
+				if (t >= 1) return t;
+				return -1 * (Math.sqrt(1 - (t /= 1) * t) - 1);
+			},
+			easeOutCirc: function (t) {
+				return 1 * Math.sqrt(1 - (t = t / 1 - 1) * t);
+			},
+			easeInOutCirc: function (t) {
+				if ((t /= 1 / 2) < 1) return -1 / 2 * (Math.sqrt(1 - t * t) - 1);
+				return 1 / 2 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+			},
+			easeInElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+			},
+			easeOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1) == 1) return 1;
+				if (!p) p = 1 * 0.3;
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				return a * Math.pow(2, -10 * t) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) + 1;
+			},
+			easeInOutElastic: function (t) {
+				var s = 1.70158;
+				var p = 0;
+				var a = 1;
+				if (t === 0) return 0;
+				if ((t /= 1 / 2) == 2) return 1;
+				if (!p) p = 1 * (0.3 * 1.5);
+				if (a < Math.abs(1)) {
+					a = 1;
+					s = p / 4;
+				} else s = p / (2 * Math.PI) * Math.asin(1 / a);
+				if (t < 1) return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p));
+				return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t * 1 - s) * (2 * Math.PI) / p) * 0.5 + 1;
+			},
+			easeInBack: function (t) {
+				var s = 1.70158;
+				return 1 * (t /= 1) * t * ((s + 1) * t - s);
+			},
+			easeOutBack: function (t) {
+				var s = 1.70158;
+				return 1 * ((t = t / 1 - 1) * t * ((s + 1) * t + s) + 1);
+			},
+			easeInOutBack: function (t) {
+				var s = 1.70158;
+				if ((t /= 1 / 2) < 1) return 1 / 2 * (t * t * (((s *= (1.525)) + 1) * t - s));
+				return 1 / 2 * ((t -= 2) * t * (((s *= (1.525)) + 1) * t + s) + 2);
+			},
+			easeInBounce: function (t) {
+				return 1 - easingEffects.easeOutBounce(1 - t);
+			},
+			easeOutBounce: function (t) {
+				if ((t /= 1) < (1 / 2.75)) {
+					return 1 * (7.5625 * t * t);
+				} else if (t < (2 / 2.75)) {
+					return 1 * (7.5625 * (t -= (1.5 / 2.75)) * t + 0.75);
+				} else if (t < (2.5 / 2.75)) {
+					return 1 * (7.5625 * (t -= (2.25 / 2.75)) * t + 0.9375);
+				} else {
+					return 1 * (7.5625 * (t -= (2.625 / 2.75)) * t + 0.984375);
+				}
+			},
+			easeInOutBounce: function (t) {
+				if (t < 1 / 2) return easingEffects.easeInBounce(t * 2) * 0.5;
+				return easingEffects.easeOutBounce(t * 2 - 1) * 0.5 + 1 * 0.5;
+			}
+		},
+		//Request animation polyfill - http://www.paulirish.com/2011/requestanimationframe-for-smart-animating/
+		requestAnimFrame = helpers.requestAnimFrame = (function(){
+			return window.requestAnimationFrame ||
+				window.webkitRequestAnimationFrame ||
+				window.mozRequestAnimationFrame ||
+				window.oRequestAnimationFrame ||
+				window.msRequestAnimationFrame ||
+				function(callback) {
+					return window.setTimeout(callback, 1000 / 60);
+				};
+		})(),
+		cancelAnimFrame = helpers.cancelAnimFrame = (function(){
+			return window.cancelAnimationFrame ||
+				window.webkitCancelAnimationFrame ||
+				window.mozCancelAnimationFrame ||
+				window.oCancelAnimationFrame ||
+				window.msCancelAnimationFrame ||
+				function(callback) {
+					return window.clearTimeout(callback, 1000 / 60);
+				};
+		})(),
+		animationLoop = helpers.animationLoop = function(callback,totalSteps,easingString,onProgress,onComplete,chartInstance){
+
+			var currentStep = 0,
+				easingFunction = easingEffects[easingString] || easingEffects.linear;
+
+			var animationFrame = function(){
+				currentStep++;
+				var stepDecimal = currentStep/totalSteps;
+				var easeDecimal = easingFunction(stepDecimal);
+
+				callback.call(chartInstance,easeDecimal,stepDecimal, currentStep);
+				onProgress.call(chartInstance,easeDecimal,stepDecimal);
+				if (currentStep < totalSteps){
+					chartInstance.animationFrame = requestAnimFrame(animationFrame);
+				} else{
+					onComplete.apply(chartInstance);
+				}
+			};
+			requestAnimFrame(animationFrame);
+		},
+		//-- DOM methods
+		getRelativePosition = helpers.getRelativePosition = function(evt){
+			var mouseX, mouseY;
+			var e = evt.originalEvent || evt,
+				canvas = evt.currentTarget || evt.srcElement,
+				boundingRect = canvas.getBoundingClientRect();
+
+			if (e.touches){
+				mouseX = e.touches[0].clientX - boundingRect.left;
+				mouseY = e.touches[0].clientY - boundingRect.top;
+
+			}
+			else{
+				mouseX = e.clientX - boundingRect.left;
+				mouseY = e.clientY - boundingRect.top;
+			}
+
+			return {
+				x : mouseX,
+				y : mouseY
+			};
+
+		},
+		addEvent = helpers.addEvent = function(node,eventType,method){
+			if (node.addEventListener){
+				node.addEventListener(eventType,method);
+			} else if (node.attachEvent){
+				node.attachEvent("on"+eventType, method);
+			} else {
+				node["on"+eventType] = method;
+			}
+		},
+		removeEvent = helpers.removeEvent = function(node, eventType, handler){
+			if (node.removeEventListener){
+				node.removeEventListener(eventType, handler, false);
+			} else if (node.detachEvent){
+				node.detachEvent("on"+eventType,handler);
+			} else{
+				node["on" + eventType] = noop;
+			}
+		},
+		bindEvents = helpers.bindEvents = function(chartInstance, arrayOfEvents, handler){
+			// Create the events object if it's not already present
+			if (!chartInstance.events) chartInstance.events = {};
+
+			each(arrayOfEvents,function(eventName){
+				chartInstance.events[eventName] = function(){
+					handler.apply(chartInstance, arguments);
+				};
+				addEvent(chartInstance.chart.canvas,eventName,chartInstance.events[eventName]);
+			});
+		},
+		unbindEvents = helpers.unbindEvents = function (chartInstance, arrayOfEvents) {
+			each(arrayOfEvents, function(handler,eventName){
+				removeEvent(chartInstance.chart.canvas, eventName, handler);
+			});
+		},
+		getMaximumWidth = helpers.getMaximumWidth = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientWidth;
+		},
+		getMaximumHeight = helpers.getMaximumHeight = function(domNode){
+			var container = domNode.parentNode;
+			// TODO = check cross browser stuff with this.
+			return container.clientHeight;
+		},
+		getMaximumSize = helpers.getMaximumSize = helpers.getMaximumWidth, // legacy support
+		retinaScale = helpers.retinaScale = function(chart){
+			var ctx = chart.ctx,
+				width = chart.canvas.width,
+				height = chart.canvas.height;
+
+			if (window.devicePixelRatio) {
+				ctx.canvas.style.width = width + "px";
+				ctx.canvas.style.height = height + "px";
+				ctx.canvas.height = height * window.devicePixelRatio;
+				ctx.canvas.width = width * window.devicePixelRatio;
+				ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+			}
+		},
+		//-- Canvas methods
+		clear = helpers.clear = function(chart){
+			chart.ctx.clearRect(0,0,chart.width,chart.height);
+		},
+		fontString = helpers.fontString = function(pixelSize,fontStyle,fontFamily){
+			return fontStyle + " " + pixelSize+"px " + fontFamily;
+		},
+		longestText = helpers.longestText = function(ctx,font,arrayOfStrings){
+			ctx.font = font;
+			var longest = 0;
+			each(arrayOfStrings,function(string){
+				var textWidth = ctx.measureText(string).width;
+				longest = (textWidth > longest) ? textWidth : longest;
+			});
+			return longest;
+		},
+		drawRoundedRectangle = helpers.drawRoundedRectangle = function(ctx,x,y,width,height,radius){
+			ctx.beginPath();
+			ctx.moveTo(x + radius, y);
+			ctx.lineTo(x + width - radius, y);
+			ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+			ctx.lineTo(x + width, y + height - radius);
+			ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+			ctx.lineTo(x + radius, y + height);
+			ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+			ctx.lineTo(x, y + radius);
+			ctx.quadraticCurveTo(x, y, x + radius, y);
+			ctx.closePath();
+		};
+
+
+	//Store a reference to each instance - allowing us to globally resize chart instances on window resize.
+	//Destroy method on the chart will remove the instance of the chart from this reference.
+	Chart.instances = {};
+
+	Chart.Type = function(data,options,chart){
+		this.options = options;
+		this.chart = chart;
+		this.id = uid();
+		//Add the chart instance to the global namespace
+		Chart.instances[this.id] = this;
+
+		// Initialize is always called when a chart type is created
+		// By default it is a no op, but it should be extended
+		if (options.responsive){
+			this.resize();
+		}
+		this.initialize.call(this,data);
+	};
+
+	//Core methods that'll be a part of every chart type
+	extend(Chart.Type.prototype,{
+		initialize : function(){return this;},
+		clear : function(){
+			clear(this.chart);
+			return this;
+		},
+		stop : function(){
+			// Stops any current animation loop occuring
+			cancelAnimFrame(this.animationFrame);
+			return this;
+		},
+		resize : function(callback){
+			this.stop();
+			var canvas = this.chart.canvas,
+				newWidth = getMaximumWidth(this.chart.canvas),
+				newHeight = this.options.maintainAspectRatio ? newWidth / this.chart.aspectRatio : getMaximumHeight(this.chart.canvas);
+
+			canvas.width = this.chart.width = newWidth;
+			canvas.height = this.chart.height = newHeight;
+
+			retinaScale(this.chart);
+
+			if (typeof callback === "function"){
+				callback.apply(this, Array.prototype.slice.call(arguments, 1));
+			}
+			return this;
+		},
+		reflow : noop,
+		render : function(reflow){
+			if (reflow){
+				this.reflow();
+			}
+			if (this.options.animation && !reflow){
+				helpers.animationLoop(
+					this.draw,
+					this.options.animationSteps,
+					this.options.animationEasing,
+					this.options.onAnimationProgress,
+					this.options.onAnimationComplete,
+					this
+				);
+			}
+			else{
+				this.draw();
+				this.options.onAnimationComplete.call(this);
+			}
+			return this;
+		},
+		generateLegend : function(){
+			return template(this.options.legendTemplate,this);
+		},
+		destroy : function(){
+			this.clear();
+			unbindEvents(this, this.events);
+			var canvas = this.chart.canvas;
+
+			// Reset canvas height/width attributes starts a fresh with the canvas context
+			canvas.width = this.chart.width;
+			canvas.height = this.chart.height;
+
+			// < IE9 doesn't support removeProperty
+			if (canvas.style.removeProperty) {
+				canvas.style.removeProperty('width');
+				canvas.style.removeProperty('height');
+			} else {
+				canvas.style.removeAttribute('width');
+				canvas.style.removeAttribute('height');
+			}
+
+			delete Chart.instances[this.id];
+		},
+		showTooltip : function(ChartElements, forceRedraw){
+			// Only redraw the chart if we've actually changed what we're hovering on.
+			if (typeof this.activeElements === 'undefined') this.activeElements = [];
+
+			var isChanged = (function(Elements){
+				var changed = false;
+
+				if (Elements.length !== this.activeElements.length){
+					changed = true;
+					return changed;
+				}
+
+				each(Elements, function(element, index){
+					if (element !== this.activeElements[index]){
+						changed = true;
+					}
+				}, this);
+				return changed;
+			}).call(this, ChartElements);
+
+			if (!isChanged && !forceRedraw){
+				return;
+			}
+			else{
+				this.activeElements = ChartElements;
+			}
+			this.draw();
+			if(this.options.customTooltips){
+				this.options.customTooltips(false);
+			}
+			if (ChartElements.length > 0){
+				// If we have multiple datasets, show a MultiTooltip for all of the data points at that index
+				if (this.datasets && this.datasets.length > 1) {
+					var dataArray,
+						dataIndex;
+
+					for (var i = this.datasets.length - 1; i >= 0; i--) {
+						dataArray = this.datasets[i].points || this.datasets[i].bars || this.datasets[i].segments;
+						dataIndex = indexOf(dataArray, ChartElements[0]);
+						if (dataIndex !== -1){
+							break;
+						}
+					}
+					var tooltipLabels = [],
+						tooltipColors = [],
+						medianPosition = (function(index) {
+
+							// Get all the points at that particular index
+							var Elements = [],
+								dataCollection,
+								xPositions = [],
+								yPositions = [],
+								xMax,
+								yMax,
+								xMin,
+								yMin;
+							helpers.each(this.datasets, function(dataset){
+								dataCollection = dataset.points || dataset.bars || dataset.segments;
+								if (dataCollection[dataIndex] && dataCollection[dataIndex].hasValue()){
+									Elements.push(dataCollection[dataIndex]);
+								}
+							});
+
+							helpers.each(Elements, function(element) {
+								xPositions.push(element.x);
+								yPositions.push(element.y);
+
+
+								//Include any colour information about the element
+								tooltipLabels.push(helpers.template(this.options.multiTooltipTemplate, element));
+								tooltipColors.push({
+									fill: element._saved.fillColor || element.fillColor,
+									stroke: element._saved.strokeColor || element.strokeColor
+								});
+
+							}, this);
+
+							yMin = min(yPositions);
+							yMax = max(yPositions);
+
+							xMin = min(xPositions);
+							xMax = max(xPositions);
+
+							return {
+								x: (xMin > this.chart.width/2) ? xMin : xMax,
+								y: (yMin + yMax)/2
+							};
+						}).call(this, dataIndex);
+
+					new Chart.MultiTooltip({
+						x: medianPosition.x,
+						y: medianPosition.y,
+						xPadding: this.options.tooltipXPadding,
+						yPadding: this.options.tooltipYPadding,
+						xOffset: this.options.tooltipXOffset,
+						fillColor: this.options.tooltipFillColor,
+						textColor: this.options.tooltipFontColor,
+						fontFamily: this.options.tooltipFontFamily,
+						fontStyle: this.options.tooltipFontStyle,
+						fontSize: this.options.tooltipFontSize,
+						titleTextColor: this.options.tooltipTitleFontColor,
+						titleFontFamily: this.options.tooltipTitleFontFamily,
+						titleFontStyle: this.options.tooltipTitleFontStyle,
+						titleFontSize: this.options.tooltipTitleFontSize,
+						cornerRadius: this.options.tooltipCornerRadius,
+						labels: tooltipLabels,
+						legendColors: tooltipColors,
+						legendColorBackground : this.options.multiTooltipKeyBackground,
+						title: ChartElements[0].label,
+						chart: this.chart,
+						ctx: this.chart.ctx,
+						custom: this.options.customTooltips
+					}).draw();
+
+				} else {
+					each(ChartElements, function(Element) {
+						var tooltipPosition = Element.tooltipPosition();
+						new Chart.Tooltip({
+							x: Math.round(tooltipPosition.x),
+							y: Math.round(tooltipPosition.y),
+							xPadding: this.options.tooltipXPadding,
+							yPadding: this.options.tooltipYPadding,
+							fillColor: this.options.tooltipFillColor,
+							textColor: this.options.tooltipFontColor,
+							fontFamily: this.options.tooltipFontFamily,
+							fontStyle: this.options.tooltipFontStyle,
+							fontSize: this.options.tooltipFontSize,
+							caretHeight: this.options.tooltipCaretSize,
+							cornerRadius: this.options.tooltipCornerRadius,
+							text: template(this.options.tooltipTemplate, Element),
+							chart: this.chart,
+							custom: this.options.customTooltips
+						}).draw();
+					}, this);
+				}
+			}
+			return this;
+		},
+		toBase64Image : function(){
+			return this.chart.canvas.toDataURL.apply(this.chart.canvas, arguments);
+		}
+	});
+
+	Chart.Type.extend = function(extensions){
+
+		var parent = this;
+
+		var ChartType = function(){
+			return parent.apply(this,arguments);
+		};
+
+		//Copy the prototype object of the this class
+		ChartType.prototype = clone(parent.prototype);
+		//Now overwrite some of the properties in the base class with the new extensions
+		extend(ChartType.prototype, extensions);
+
+		ChartType.extend = Chart.Type.extend;
+
+		if (extensions.name || parent.prototype.name){
+
+			var chartName = extensions.name || parent.prototype.name;
+			//Assign any potential default values of the new chart type
+
+			//If none are defined, we'll use a clone of the chart type this is being extended from.
+			//I.e. if we extend a line chart, we'll use the defaults from the line chart if our new chart
+			//doesn't define some defaults of their own.
+
+			var baseDefaults = (Chart.defaults[parent.prototype.name]) ? clone(Chart.defaults[parent.prototype.name]) : {};
+
+			Chart.defaults[chartName] = extend(baseDefaults,extensions.defaults);
+
+			Chart.types[chartName] = ChartType;
+
+			//Register this new chart type in the Chart prototype
+			Chart.prototype[chartName] = function(data,options){
+				var config = merge(Chart.defaults.global, Chart.defaults[chartName], options || {});
+				return new ChartType(data,config,this);
+			};
+		} else{
+			warn("Name not provided for this chart, so it hasn't been registered");
+		}
+		return parent;
+	};
+
+	Chart.Element = function(configuration){
+		extend(this,configuration);
+		this.initialize.apply(this,arguments);
+		this.save();
+	};
+	extend(Chart.Element.prototype,{
+		initialize : function(){},
+		restore : function(props){
+			if (!props){
+				extend(this,this._saved);
+			} else {
+				each(props,function(key){
+					this[key] = this._saved[key];
+				},this);
+			}
+			return this;
+		},
+		save : function(){
+			this._saved = clone(this);
+			delete this._saved._saved;
+			return this;
+		},
+		update : function(newProps){
+			each(newProps,function(value,key){
+				this._saved[key] = this[key];
+				this[key] = value;
+			},this);
+			return this;
+		},
+		transition : function(props,ease){
+			each(props,function(value,key){
+				this[key] = ((value - this._saved[key]) * ease) + this._saved[key];
+			},this);
+			return this;
+		},
+		tooltipPosition : function(){
+			return {
+				x : this.x,
+				y : this.y
+			};
+		},
+		hasValue: function(){
+			return isNumber(this.value);
+		}
+	});
+
+	Chart.Element.extend = inherits;
+
+
+	Chart.Point = Chart.Element.extend({
+		display: true,
+		inRange: function(chartX,chartY){
+			var hitDetectionRange = this.hitDetectionRadius + this.radius;
+			return ((Math.pow(chartX-this.x, 2)+Math.pow(chartY-this.y, 2)) < Math.pow(hitDetectionRange,2));
+		},
+		draw : function(){
+			if (this.display){
+				var ctx = this.ctx;
+				ctx.beginPath();
+
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+				ctx.closePath();
+
+				ctx.strokeStyle = this.strokeColor;
+				ctx.lineWidth = this.strokeWidth;
+
+				ctx.fillStyle = this.fillColor;
+
+				ctx.fill();
+				ctx.stroke();
+			}
+
+
+			//Quick debug for bezier curve splining
+			//Highlights control points and the line between them.
+			//Handy for dev - stripped in the min version.
+
+			// ctx.save();
+			// ctx.fillStyle = "black";
+			// ctx.strokeStyle = "black"
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.inner.x,this.controlPoints.inner.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.beginPath();
+			// ctx.arc(this.controlPoints.outer.x,this.controlPoints.outer.y, 2, 0, Math.PI*2);
+			// ctx.fill();
+
+			// ctx.moveTo(this.controlPoints.inner.x,this.controlPoints.inner.y);
+			// ctx.lineTo(this.x, this.y);
+			// ctx.lineTo(this.controlPoints.outer.x,this.controlPoints.outer.y);
+			// ctx.stroke();
+
+			// ctx.restore();
+
+
+
+		}
+	});
+
+	Chart.Arc = Chart.Element.extend({
+		inRange : function(chartX,chartY){
+
+			var pointRelativePosition = helpers.getAngleFromPoint(this, {
+				x: chartX,
+				y: chartY
+			});
+
+			//Check if within the range of the open/close angle
+			var betweenAngles = (pointRelativePosition.angle >= this.startAngle && pointRelativePosition.angle <= this.endAngle),
+				withinRadius = (pointRelativePosition.distance >= this.innerRadius && pointRelativePosition.distance <= this.outerRadius);
+
+			return (betweenAngles && withinRadius);
+			//Ensure within the outside of the arc centre, but inside arc outer
+		},
+		tooltipPosition : function(){
+			var centreAngle = this.startAngle + ((this.endAngle - this.startAngle) / 2),
+				rangeFromCentre = (this.outerRadius - this.innerRadius) / 2 + this.innerRadius;
+			return {
+				x : this.x + (Math.cos(centreAngle) * rangeFromCentre),
+				y : this.y + (Math.sin(centreAngle) * rangeFromCentre)
+			};
+		},
+		draw : function(animationPercent){
+
+			var easingDecimal = animationPercent || 1;
+
+			var ctx = this.ctx;
+
+			ctx.beginPath();
+
+			ctx.arc(this.x, this.y, this.outerRadius, this.startAngle, this.endAngle);
+
+			ctx.arc(this.x, this.y, this.innerRadius, this.endAngle, this.startAngle, true);
+
+			ctx.closePath();
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			ctx.fillStyle = this.fillColor;
+
+			ctx.fill();
+			ctx.lineJoin = 'bevel';
+
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		}
+	});
+
+	Chart.Rectangle = Chart.Element.extend({
+		draw : function(){
+			var ctx = this.ctx,
+				halfWidth = this.width/2,
+				leftX = this.x - halfWidth,
+				rightX = this.x + halfWidth,
+				top = this.base - (this.base - this.y),
+				halfStroke = this.strokeWidth / 2;
+
+			// Canvas doesn't allow us to stroke inside the width so we can
+			// adjust the sizes to fit if we're setting a stroke on the line
+			if (this.showStroke){
+				leftX += halfStroke;
+				rightX -= halfStroke;
+				top += halfStroke;
+			}
+
+			ctx.beginPath();
+
+			ctx.fillStyle = this.fillColor;
+			ctx.strokeStyle = this.strokeColor;
+			ctx.lineWidth = this.strokeWidth;
+
+			// It'd be nice to keep this class totally generic to any rectangle
+			// and simply specify which border to miss out.
+			ctx.moveTo(leftX, this.base);
+			ctx.lineTo(leftX, top);
+			ctx.lineTo(rightX, top);
+			ctx.lineTo(rightX, this.base);
+			ctx.fill();
+			if (this.showStroke){
+				ctx.stroke();
+			}
+		},
+		height : function(){
+			return this.base - this.y;
+		},
+		inRange : function(chartX,chartY){
+			return (chartX >= this.x - this.width/2 && chartX <= this.x + this.width/2) && (chartY >= this.y && chartY <= this.base);
+		}
+	});
+
+	Chart.Tooltip = Chart.Element.extend({
+		draw : function(){
+
+			var ctx = this.chart.ctx;
+
+			ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.xAlign = "center";
+			this.yAlign = "above";
+
+			//Distance between the actual element.y position and the start of the tooltip caret
+			var caretPadding = this.caretPadding = 2;
+
+			var tooltipWidth = ctx.measureText(this.text).width + 2*this.xPadding,
+				tooltipRectHeight = this.fontSize + 2*this.yPadding,
+				tooltipHeight = tooltipRectHeight + this.caretHeight + caretPadding;
+
+			if (this.x + tooltipWidth/2 >this.chart.width){
+				this.xAlign = "left";
+			} else if (this.x - tooltipWidth/2 < 0){
+				this.xAlign = "right";
+			}
+
+			if (this.y - tooltipHeight < 0){
+				this.yAlign = "below";
+			}
+
+
+			var tooltipX = this.x - tooltipWidth/2,
+				tooltipY = this.y - tooltipHeight;
+
+			ctx.fillStyle = this.fillColor;
+
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				switch(this.yAlign)
+				{
+				case "above":
+					//Draw a caret above the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x,this.y - caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.lineTo(this.x - this.caretHeight, this.y - (caretPadding + this.caretHeight));
+					ctx.closePath();
+					ctx.fill();
+					break;
+				case "below":
+					tooltipY = this.y + caretPadding + this.caretHeight;
+					//Draw a caret below the x/y
+					ctx.beginPath();
+					ctx.moveTo(this.x, this.y + caretPadding);
+					ctx.lineTo(this.x + this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.lineTo(this.x - this.caretHeight, this.y + caretPadding + this.caretHeight);
+					ctx.closePath();
+					ctx.fill();
+					break;
+				}
+
+				switch(this.xAlign)
+				{
+				case "left":
+					tooltipX = this.x - tooltipWidth + (this.cornerRadius + this.caretHeight);
+					break;
+				case "right":
+					tooltipX = this.x - (this.cornerRadius + this.caretHeight);
+					break;
+				}
+
+				drawRoundedRectangle(ctx,tooltipX,tooltipY,tooltipWidth,tooltipRectHeight,this.cornerRadius);
+
+				ctx.fill();
+
+				ctx.fillStyle = this.textColor;
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.fillText(this.text, tooltipX + tooltipWidth/2, tooltipY + tooltipRectHeight/2);
+			}
+		}
+	});
+
+	Chart.MultiTooltip = Chart.Element.extend({
+		initialize : function(){
+			this.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+
+			this.titleFont = fontString(this.titleFontSize,this.titleFontStyle,this.titleFontFamily);
+
+			this.height = (this.labels.length * this.fontSize) + ((this.labels.length-1) * (this.fontSize/2)) + (this.yPadding*2) + this.titleFontSize *1.5;
+
+			this.ctx.font = this.titleFont;
+
+			var titleWidth = this.ctx.measureText(this.title).width,
+				//Label has a legend square as well so account for this.
+				labelWidth = longestText(this.ctx,this.font,this.labels) + this.fontSize + 3,
+				longestTextWidth = max([labelWidth,titleWidth]);
+
+			this.width = longestTextWidth + (this.xPadding*2);
+
+
+			var halfHeight = this.height/2;
+
+			//Check to ensure the height will fit on the canvas
+			if (this.y - halfHeight < 0 ){
+				this.y = halfHeight;
+			} else if (this.y + halfHeight > this.chart.height){
+				this.y = this.chart.height - halfHeight;
+			}
+
+			//Decide whether to align left or right based on position on canvas
+			if (this.x > this.chart.width/2){
+				this.x -= this.xOffset + this.width;
+			} else {
+				this.x += this.xOffset;
+			}
+
+
+		},
+		getLineHeight : function(index){
+			var baseLineHeight = this.y - (this.height/2) + this.yPadding,
+				afterTitleIndex = index-1;
+
+			//If the index is zero, we're getting the title
+			if (index === 0){
+				return baseLineHeight + this.titleFontSize/2;
+			} else{
+				return baseLineHeight + ((this.fontSize*1.5*afterTitleIndex) + this.fontSize/2) + this.titleFontSize * 1.5;
+			}
+
+		},
+		draw : function(){
+			// Custom Tooltips
+			if(this.custom){
+				this.custom(this);
+			}
+			else{
+				drawRoundedRectangle(this.ctx,this.x,this.y - this.height/2,this.width,this.height,this.cornerRadius);
+				var ctx = this.ctx;
+				ctx.fillStyle = this.fillColor;
+				ctx.fill();
+				ctx.closePath();
+
+				ctx.textAlign = "left";
+				ctx.textBaseline = "middle";
+				ctx.fillStyle = this.titleTextColor;
+				ctx.font = this.titleFont;
+
+				ctx.fillText(this.title,this.x + this.xPadding, this.getLineHeight(0));
+
+				ctx.font = this.font;
+				helpers.each(this.labels,function(label,index){
+					ctx.fillStyle = this.textColor;
+					ctx.fillText(label,this.x + this.xPadding + this.fontSize + 3, this.getLineHeight(index + 1));
+
+					//A bit gnarly, but clearing this rectangle breaks when using explorercanvas (clears whole canvas)
+					//ctx.clearRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+					//Instead we'll make a white filled block to put the legendColour palette over.
+
+					ctx.fillStyle = this.legendColorBackground;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+					ctx.fillStyle = this.legendColors[index].fill;
+					ctx.fillRect(this.x + this.xPadding, this.getLineHeight(index + 1) - this.fontSize/2, this.fontSize, this.fontSize);
+
+
+				},this);
+			}
+		}
+	});
+
+	Chart.Scale = Chart.Element.extend({
+		initialize : function(){
+			this.fit();
+		},
+		buildYLabels : function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+			this.yLabelWidth = (this.display && this.showLabels) ? longestText(this.ctx,this.font,this.yLabels) : 0;
+		},
+		addXLabel : function(label){
+			this.xLabels.push(label);
+			this.valuesCount++;
+			this.fit();
+		},
+		removeXLabel : function(){
+			this.xLabels.shift();
+			this.valuesCount--;
+			this.fit();
+		},
+		// Fitting loop to rotate x Labels and figure out what fits there, and also calculate how many Y steps to use
+		fit: function(){
+			// First we need the width of the yLabels, assuming the xLabels aren't rotated
+
+			// To do that we need the base line at the top and base of the chart, assuming there is no x label rotation
+			this.startPoint = (this.display) ? this.fontSize : 0;
+			this.endPoint = (this.display) ? this.height - (this.fontSize * 1.5) - 5 : this.height; // -5 to pad labels
+
+			// Apply padding settings to the start and end point.
+			this.startPoint += this.padding;
+			this.endPoint -= this.padding;
+
+			// Cache the starting height, so can determine if we need to recalculate the scale yAxis
+			var cachedHeight = this.endPoint - this.startPoint,
+				cachedYLabelWidth;
+
+			// Build the current yLabels so we have an idea of what size they'll be to start
+			/*
+			 *	This sets what is returned from calculateScaleRange as static properties of this class:
+			 *
+				this.steps;
+				this.stepValue;
+				this.min;
+				this.max;
+			 *
+			 */
+			this.calculateYRange(cachedHeight);
+
+			// With these properties set we can now build the array of yLabels
+			// and also the width of the largest yLabel
+			this.buildYLabels();
+
+			this.calculateXLabelRotation();
+
+			while((cachedHeight > this.endPoint - this.startPoint)){
+				cachedHeight = this.endPoint - this.startPoint;
+				cachedYLabelWidth = this.yLabelWidth;
+
+				this.calculateYRange(cachedHeight);
+				this.buildYLabels();
+
+				// Only go through the xLabel loop again if the yLabel width has changed
+				if (cachedYLabelWidth < this.yLabelWidth){
+					this.calculateXLabelRotation();
+				}
+			}
+
+		},
+		calculateXLabelRotation : function(){
+			//Get the width of each grid by calculating the difference
+			//between x offsets between 0 and 1.
+
+			this.ctx.font = this.font;
+
+			var firstWidth = this.ctx.measureText(this.xLabels[0]).width,
+				lastWidth = this.ctx.measureText(this.xLabels[this.xLabels.length - 1]).width,
+				firstRotated,
+				lastRotated;
+
+
+			this.xScalePaddingRight = lastWidth/2 + 3;
+			this.xScalePaddingLeft = (firstWidth/2 > this.yLabelWidth + 10) ? firstWidth/2 : this.yLabelWidth + 10;
+
+			this.xLabelRotation = 0;
+			if (this.display){
+				var originalLabelWidth = longestText(this.ctx,this.font,this.xLabels),
+					cosRotation,
+					firstRotatedWidth;
+				this.xLabelWidth = originalLabelWidth;
+				//Allow 3 pixels x2 padding either side for label readability
+				var xGridWidth = Math.floor(this.calculateX(1) - this.calculateX(0)) - 6;
+
+				//Max label rotate should be 90 - also act as a loop counter
+				while ((this.xLabelWidth > xGridWidth && this.xLabelRotation === 0) || (this.xLabelWidth > xGridWidth && this.xLabelRotation <= 90 && this.xLabelRotation > 0)){
+					cosRotation = Math.cos(toRadians(this.xLabelRotation));
+
+					firstRotated = cosRotation * firstWidth;
+					lastRotated = cosRotation * lastWidth;
+
+					// We're right aligning the text now.
+					if (firstRotated + this.fontSize / 2 > this.yLabelWidth + 8){
+						this.xScalePaddingLeft = firstRotated + this.fontSize / 2;
+					}
+					this.xScalePaddingRight = this.fontSize/2;
+
+
+					this.xLabelRotation++;
+					this.xLabelWidth = cosRotation * originalLabelWidth;
+
+				}
+				if (this.xLabelRotation > 0){
+					this.endPoint -= Math.sin(toRadians(this.xLabelRotation))*originalLabelWidth + 3;
+				}
+			}
+			else{
+				this.xLabelWidth = 0;
+				this.xScalePaddingRight = this.padding;
+				this.xScalePaddingLeft = this.padding;
+			}
+
+		},
+		// Needs to be overidden in each Chart type
+		// Otherwise we need to pass all the data into the scale class
+		calculateYRange: noop,
+		drawingArea: function(){
+			return this.startPoint - this.endPoint;
+		},
+		calculateY : function(value){
+			var scalingFactor = this.drawingArea() / (this.min - this.max);
+			return this.endPoint - (scalingFactor * (value - this.min));
+		},
+		calculateX : function(index){
+			var isRotated = (this.xLabelRotation > 0),
+				// innerWidth = (this.offsetGridLines) ? this.width - offsetLeft - this.padding : this.width - (offsetLeft + halfLabelWidth * 2) - this.padding,
+				innerWidth = this.width - (this.xScalePaddingLeft + this.xScalePaddingRight),
+				valueWidth = innerWidth/Math.max((this.valuesCount - ((this.offsetGridLines) ? 0 : 1)), 1),
+				valueOffset = (valueWidth * index) + this.xScalePaddingLeft;
+
+			if (this.offsetGridLines){
+				valueOffset += (valueWidth/2);
+			}
+
+			return Math.round(valueOffset);
+		},
+		update : function(newProps){
+			helpers.extend(this, newProps);
+			this.fit();
+		},
+		draw : function(){
+			var ctx = this.ctx,
+				yLabelGap = (this.endPoint - this.startPoint) / this.steps,
+				xStart = Math.round(this.xScalePaddingLeft);
+			if (this.display){
+				ctx.fillStyle = this.textColor;
+				ctx.font = this.font;
+				each(this.yLabels,function(labelString,index){
+					var yLabelCenter = this.endPoint - (yLabelGap * index),
+						linePositionY = Math.round(yLabelCenter),
+						drawHorizontalLine = this.showHorizontalLines;
+
+					ctx.textAlign = "right";
+					ctx.textBaseline = "middle";
+					if (this.showLabels){
+						ctx.fillText(labelString,xStart - 10,yLabelCenter);
+					}
+
+					// This is X axis, so draw it
+					if (index === 0 && !drawHorizontalLine){
+						drawHorizontalLine = true;
+					}
+
+					if (drawHorizontalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					linePositionY += helpers.aliasPixel(ctx.lineWidth);
+
+					if(drawHorizontalLine){
+						ctx.moveTo(xStart, linePositionY);
+						ctx.lineTo(this.width, linePositionY);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+					ctx.beginPath();
+					ctx.moveTo(xStart - 5, linePositionY);
+					ctx.lineTo(xStart, linePositionY);
+					ctx.stroke();
+					ctx.closePath();
+
+				},this);
+
+				each(this.xLabels,function(label,index){
+					var xPos = this.calculateX(index) + aliasPixel(this.lineWidth),
+						// Check to see if line/bar here and decide where to place the line
+						linePos = this.calculateX(index - (this.offsetGridLines ? 0.5 : 0)) + aliasPixel(this.lineWidth),
+						isRotated = (this.xLabelRotation > 0),
+						drawVerticalLine = this.showVerticalLines;
+
+					// This is Y axis, so draw it
+					if (index === 0 && !drawVerticalLine){
+						drawVerticalLine = true;
+					}
+
+					if (drawVerticalLine){
+						ctx.beginPath();
+					}
+
+					if (index > 0){
+						// This is a grid line in the centre, so drop that
+						ctx.lineWidth = this.gridLineWidth;
+						ctx.strokeStyle = this.gridLineColor;
+					} else {
+						// This is the first line on the scale
+						ctx.lineWidth = this.lineWidth;
+						ctx.strokeStyle = this.lineColor;
+					}
+
+					if (drawVerticalLine){
+						ctx.moveTo(linePos,this.endPoint);
+						ctx.lineTo(linePos,this.startPoint - 3);
+						ctx.stroke();
+						ctx.closePath();
+					}
+
+
+					ctx.lineWidth = this.lineWidth;
+					ctx.strokeStyle = this.lineColor;
+
+
+					// Small lines at the bottom of the base grid line
+					ctx.beginPath();
+					ctx.moveTo(linePos,this.endPoint);
+					ctx.lineTo(linePos,this.endPoint + 5);
+					ctx.stroke();
+					ctx.closePath();
+
+					ctx.save();
+					ctx.translate(xPos,(isRotated) ? this.endPoint + 12 : this.endPoint + 8);
+					ctx.rotate(toRadians(this.xLabelRotation)*-1);
+					ctx.font = this.font;
+					ctx.textAlign = (isRotated) ? "right" : "center";
+					ctx.textBaseline = (isRotated) ? "middle" : "top";
+					ctx.fillText(label, 0, 0);
+					ctx.restore();
+				},this);
+
+			}
+		}
+
+	});
+
+	Chart.RadialScale = Chart.Element.extend({
+		initialize: function(){
+			this.size = min([this.height, this.width]);
+			this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+		},
+		calculateCenterOffset: function(value){
+			// Take into account half font size + the yPadding of the top value
+			var scalingFactor = this.drawingArea / (this.max - this.min);
+
+			return (value - this.min) * scalingFactor;
+		},
+		update : function(){
+			if (!this.lineArc){
+				this.setScaleSize();
+			} else {
+				this.drawingArea = (this.display) ? (this.size/2) - (this.fontSize/2 + this.backdropPaddingY) : (this.size/2);
+			}
+			this.buildYLabels();
+		},
+		buildYLabels: function(){
+			this.yLabels = [];
+
+			var stepDecimalPlaces = getDecimalPlaces(this.stepValue);
+
+			for (var i=0; i<=this.steps; i++){
+				this.yLabels.push(template(this.templateString,{value:(this.min + (i * this.stepValue)).toFixed(stepDecimalPlaces)}));
+			}
+		},
+		getCircumference : function(){
+			return ((Math.PI*2) / this.valuesCount);
+		},
+		setScaleSize: function(){
+			/*
+			 * Right, this is really confusing and there is a lot of maths going on here
+			 * The gist of the problem is here: https://gist.github.com/nnnick/696cc9c55f4b0beb8fe9
+			 *
+			 * Reaction: https://dl.dropboxusercontent.com/u/34601363/toomuchscience.gif
+			 *
+			 * Solution:
+			 *
+			 * We assume the radius of the polygon is half the size of the canvas at first
+			 * at each index we check if the text overlaps.
+			 *
+			 * Where it does, we store that angle and that index.
+			 *
+			 * After finding the largest index and angle we calculate how much we need to remove
+			 * from the shape radius to move the point inwards by that x.
+			 *
+			 * We average the left and right distances to get the maximum shape radius that can fit in the box
+			 * along with labels.
+			 *
+			 * Once we have that, we can find the centre point for the chart, by taking the x text protrusion
+			 * on each side, removing that from the size, halving it and adding the left x protrusion width.
+			 *
+			 * This will mean we have a shape fitted to the canvas, as large as it can be with the labels
+			 * and position it in the most space efficient manner
+			 *
+			 * https://dl.dropboxusercontent.com/u/34601363/yeahscience.gif
+			 */
+
+
+			// Get maximum radius of the polygon. Either half the height (minus the text width) or half the width.
+			// Use this to calculate the offset + change. - Make sure L/R protrusion is at least 0 to stop issues with centre points
+			var largestPossibleRadius = min([(this.height/2 - this.pointLabelFontSize - 5), this.width/2]),
+				pointPosition,
+				i,
+				textWidth,
+				halfTextWidth,
+				furthestRight = this.width,
+				furthestRightIndex,
+				furthestRightAngle,
+				furthestLeft = 0,
+				furthestLeftIndex,
+				furthestLeftAngle,
+				xProtrusionLeft,
+				xProtrusionRight,
+				radiusReductionRight,
+				radiusReductionLeft,
+				maxWidthRadius;
+			this.ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+			for (i=0;i<this.valuesCount;i++){
+				// 5px to space the text slightly out - similar to what we do in the draw function.
+				pointPosition = this.getPointPosition(i, largestPossibleRadius);
+				textWidth = this.ctx.measureText(template(this.templateString, { value: this.labels[i] })).width + 5;
+				if (i === 0 || i === this.valuesCount/2){
+					// If we're at index zero, or exactly the middle, we're at exactly the top/bottom
+					// of the radar chart, so text will be aligned centrally, so we'll half it and compare
+					// w/left and right text sizes
+					halfTextWidth = textWidth/2;
+					if (pointPosition.x + halfTextWidth > furthestRight) {
+						furthestRight = pointPosition.x + halfTextWidth;
+						furthestRightIndex = i;
+					}
+					if (pointPosition.x - halfTextWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - halfTextWidth;
+						furthestLeftIndex = i;
+					}
+				}
+				else if (i < this.valuesCount/2) {
+					// Less than half the values means we'll left align the text
+					if (pointPosition.x + textWidth > furthestRight) {
+						furthestRight = pointPosition.x + textWidth;
+						furthestRightIndex = i;
+					}
+				}
+				else if (i > this.valuesCount/2){
+					// More than half the values means we'll right align the text
+					if (pointPosition.x - textWidth < furthestLeft) {
+						furthestLeft = pointPosition.x - textWidth;
+						furthestLeftIndex = i;
+					}
+				}
+			}
+
+			xProtrusionLeft = furthestLeft;
+
+			xProtrusionRight = Math.ceil(furthestRight - this.width);
+
+			furthestRightAngle = this.getIndexAngle(furthestRightIndex);
+
+			furthestLeftAngle = this.getIndexAngle(furthestLeftIndex);
+
+			radiusReductionRight = xProtrusionRight / Math.sin(furthestRightAngle + Math.PI/2);
+
+			radiusReductionLeft = xProtrusionLeft / Math.sin(furthestLeftAngle + Math.PI/2);
+
+			// Ensure we actually need to reduce the size of the chart
+			radiusReductionRight = (isNumber(radiusReductionRight)) ? radiusReductionRight : 0;
+			radiusReductionLeft = (isNumber(radiusReductionLeft)) ? radiusReductionLeft : 0;
+
+			this.drawingArea = largestPossibleRadius - (radiusReductionLeft + radiusReductionRight)/2;
+
+			//this.drawingArea = min([maxWidthRadius, (this.height - (2 * (this.pointLabelFontSize + 5)))/2])
+			this.setCenterPoint(radiusReductionLeft, radiusReductionRight);
+
+		},
+		setCenterPoint: function(leftMovement, rightMovement){
+
+			var maxRight = this.width - rightMovement - this.drawingArea,
+				maxLeft = leftMovement + this.drawingArea;
+
+			this.xCenter = (maxLeft + maxRight)/2;
+			// Always vertically in the centre as the text height doesn't change
+			this.yCenter = (this.height/2);
+		},
+
+		getIndexAngle : function(index){
+			var angleMultiplier = (Math.PI * 2) / this.valuesCount;
+			// Start from the top instead of right, so remove a quarter of the circle
+
+			return index * angleMultiplier - (Math.PI/2);
+		},
+		getPointPosition : function(index, distanceFromCenter){
+			var thisAngle = this.getIndexAngle(index);
+			return {
+				x : (Math.cos(thisAngle) * distanceFromCenter) + this.xCenter,
+				y : (Math.sin(thisAngle) * distanceFromCenter) + this.yCenter
+			};
+		},
+		draw: function(){
+			if (this.display){
+				var ctx = this.ctx;
+				each(this.yLabels, function(label, index){
+					// Don't draw a centre value
+					if (index > 0){
+						var yCenterOffset = index * (this.drawingArea/this.steps),
+							yHeight = this.yCenter - yCenterOffset,
+							pointPosition;
+
+						// Draw circular lines around the scale
+						if (this.lineWidth > 0){
+							ctx.strokeStyle = this.lineColor;
+							ctx.lineWidth = this.lineWidth;
+
+							if(this.lineArc){
+								ctx.beginPath();
+								ctx.arc(this.xCenter, this.yCenter, yCenterOffset, 0, Math.PI*2);
+								ctx.closePath();
+								ctx.stroke();
+							} else{
+								ctx.beginPath();
+								for (var i=0;i<this.valuesCount;i++)
+								{
+									pointPosition = this.getPointPosition(i, this.calculateCenterOffset(this.min + (index * this.stepValue)));
+									if (i === 0){
+										ctx.moveTo(pointPosition.x, pointPosition.y);
+									} else {
+										ctx.lineTo(pointPosition.x, pointPosition.y);
+									}
+								}
+								ctx.closePath();
+								ctx.stroke();
+							}
+						}
+						if(this.showLabels){
+							ctx.font = fontString(this.fontSize,this.fontStyle,this.fontFamily);
+							if (this.showLabelBackdrop){
+								var labelWidth = ctx.measureText(label).width;
+								ctx.fillStyle = this.backdropColor;
+								ctx.fillRect(
+									this.xCenter - labelWidth/2 - this.backdropPaddingX,
+									yHeight - this.fontSize/2 - this.backdropPaddingY,
+									labelWidth + this.backdropPaddingX*2,
+									this.fontSize + this.backdropPaddingY*2
+								);
+							}
+							ctx.textAlign = 'center';
+							ctx.textBaseline = "middle";
+							ctx.fillStyle = this.fontColor;
+							ctx.fillText(label, this.xCenter, yHeight);
+						}
+					}
+				}, this);
+
+				if (!this.lineArc){
+					ctx.lineWidth = this.angleLineWidth;
+					ctx.strokeStyle = this.angleLineColor;
+					for (var i = this.valuesCount - 1; i >= 0; i--) {
+						if (this.angleLineWidth > 0){
+							var outerPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max));
+							ctx.beginPath();
+							ctx.moveTo(this.xCenter, this.yCenter);
+							ctx.lineTo(outerPosition.x, outerPosition.y);
+							ctx.stroke();
+							ctx.closePath();
+						}
+						// Extra 3px out for some label spacing
+						var pointLabelPosition = this.getPointPosition(i, this.calculateCenterOffset(this.max) + 5);
+						ctx.font = fontString(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily);
+						ctx.fillStyle = this.pointLabelFontColor;
+
+						var labelsCount = this.labels.length,
+							halfLabelsCount = this.labels.length/2,
+							quarterLabelsCount = halfLabelsCount/2,
+							upperHalf = (i < quarterLabelsCount || i > labelsCount - quarterLabelsCount),
+							exactQuarter = (i === quarterLabelsCount || i === labelsCount - quarterLabelsCount);
+						if (i === 0){
+							ctx.textAlign = 'center';
+						} else if(i === halfLabelsCount){
+							ctx.textAlign = 'center';
+						} else if (i < halfLabelsCount){
+							ctx.textAlign = 'left';
+						} else {
+							ctx.textAlign = 'right';
+						}
+
+						// Set the correct text baseline based on outer positioning
+						if (exactQuarter){
+							ctx.textBaseline = 'middle';
+						} else if (upperHalf){
+							ctx.textBaseline = 'bottom';
+						} else {
+							ctx.textBaseline = 'top';
+						}
+
+						ctx.fillText(this.labels[i], pointLabelPosition.x, pointLabelPosition.y);
+					}
+				}
+			}
+		}
+	});
+
+	// Attach global event to resize each chart instance when the browser resizes
+	helpers.addEvent(window, "resize", (function(){
+		// Basic debounce of resize function so it doesn't hurt performance when resizing browser.
+		var timeout;
+		return function(){
+			clearTimeout(timeout);
+			timeout = setTimeout(function(){
+				each(Chart.instances,function(instance){
+					// If the responsive flag is set in the chart instance config
+					// Cascade the resize event down to the chart.
+					if (instance.options.responsive){
+						instance.resize(instance.render, true);
+					}
+				});
+			}, 50);
+		};
+	})());
+
+
+	if (amd) {
+		define(function(){
+			return Chart;
+		});
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = Chart;
+	}
+
+	root.Chart = Chart;
+
+	Chart.noConflict = function(){
+		root.Chart = previous;
+		return Chart;
+	};
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+	var defaultConfig = {
+		//Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+		scaleBeginAtZero : true,
+
+		//Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - If there is a stroke on each bar
+		barShowStroke : true,
+
+		//Number - Pixel width of the bar stroke
+		barStrokeWidth : 2,
+
+		//Number - Spacing between each of the X value sets
+		barValueSpacing : 5,
+
+		//Number - Spacing between data sets within X values
+		barDatasetSpacing : 1,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Bar",
+		defaults : defaultConfig,
+		initialize:  function(data){
+
+			//Expose options as a scope variable here so we can access it in the ScaleClass
+			var options = this.options;
+
+			this.ScaleClass = Chart.Scale.extend({
+				offsetGridLines : true,
+				calculateBarX : function(datasetCount, datasetIndex, barIndex){
+					//Reusable method for calculating the xPosition of a given bar based on datasetIndex & width of the bar
+					var xWidth = this.calculateBaseWidth(),
+						xAbsolute = this.calculateX(barIndex) - (xWidth/2),
+						barWidth = this.calculateBarWidth(datasetCount);
+
+					return xAbsolute + (barWidth * datasetIndex) + (datasetIndex * options.barDatasetSpacing) + barWidth/2;
+				},
+				calculateBaseWidth : function(){
+					return (this.calculateX(1) - this.calculateX(0)) - (2*options.barValueSpacing);
+				},
+				calculateBarWidth : function(datasetCount){
+					//The padding between datasets is to the right of each bar, providing that there are more than 1 dataset
+					var baseWidth = this.calculateBaseWidth() - ((datasetCount - 1) * options.barDatasetSpacing);
+
+					return (baseWidth / datasetCount);
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeBars = (evt.type !== 'mouseout') ? this.getBarsAtEvent(evt) : [];
+
+					this.eachBars(function(bar){
+						bar.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activeBars, function(activeBar){
+						activeBar.fillColor = activeBar.highlightFill;
+						activeBar.strokeColor = activeBar.highlightStroke;
+					});
+					this.showTooltip(activeBars);
+				});
+			}
+
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.BarClass = Chart.Rectangle.extend({
+				strokeWidth : this.options.barStrokeWidth,
+				showStroke : this.options.barShowStroke,
+				ctx : this.chart.ctx
+			});
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset,datasetIndex){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					bars : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.bars.push(new this.BarClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.strokeColor,
+						fillColor : dataset.fillColor,
+						highlightFill : dataset.highlightFill || dataset.fillColor,
+						highlightStroke : dataset.highlightStroke || dataset.strokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.buildScale(data.labels);
+
+			this.BarClass.prototype.base = this.scale.endPoint;
+
+			this.eachBars(function(bar, index, datasetIndex){
+				helpers.extend(bar, {
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+					y: this.scale.endPoint
+				});
+				bar.save();
+			}, this);
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+
+			this.eachBars(function(bar){
+				bar.save();
+			});
+			this.render();
+		},
+		eachBars : function(callback){
+			helpers.each(this.datasets,function(dataset, datasetIndex){
+				helpers.each(dataset.bars, callback, this, datasetIndex);
+			},this);
+		},
+		getBarsAtEvent : function(e){
+			var barsArray = [],
+				eventPosition = helpers.getRelativePosition(e),
+				datasetIterator = function(dataset){
+					barsArray.push(dataset.bars[barIndex]);
+				},
+				barIndex;
+
+			for (var datasetIndex = 0; datasetIndex < this.datasets.length; datasetIndex++) {
+				for (barIndex = 0; barIndex < this.datasets[datasetIndex].bars.length; barIndex++) {
+					if (this.datasets[datasetIndex].bars[barIndex].inRange(eventPosition.x,eventPosition.y)){
+						helpers.each(this.datasets, datasetIterator);
+						return barsArray;
+					}
+				}
+			}
+
+			return barsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachBars(function(bar){
+					values.push(bar.value);
+				});
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange: function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding : (this.options.showScale) ? 0 : (this.options.barShowStroke) ? this.options.barStrokeWidth : 0,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+			this.scale = new this.ScaleClass(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].bars.push(new this.BarClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateBarX(this.datasets.length, datasetIndex, this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					width : this.scale.calculateBarWidth(this.datasets.length),
+					base : this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].strokeColor,
+					fillColor : this.datasets[datasetIndex].fillColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.bars.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			helpers.extend(this.BarClass.prototype,{
+				y: this.scale.endPoint,
+				base : this.scale.endPoint
+			});
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			this.scale.draw(easingDecimal);
+
+			//Draw all the bars for each dataset
+			helpers.each(this.datasets,function(dataset,datasetIndex){
+				helpers.each(dataset.bars,function(bar,index){
+					if (bar.hasValue()){
+						bar.base = this.scale.endPoint;
+						//Transition then draw
+						bar.transition({
+							x : this.scale.calculateBarX(this.datasets.length, datasetIndex, index),
+							y : this.scale.calculateY(bar.value),
+							width : this.scale.calculateBarWidth(this.datasets.length)
+						}, easingDecimal).draw();
+					}
+				},this);
+
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Whether we should show a stroke on each segment
+		segmentShowStroke : true,
+
+		//String - The colour of each segment stroke
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of each segment stroke
+		segmentStrokeWidth : 2,
+
+		//The percentage of the chart that we cut out of the middle.
+		percentageInnerCutout : 50,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether we animate the rotation of the Doughnut
+		animateRotate : true,
+
+		//Boolean - Whether we animate scaling the Doughnut from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "Doughnut",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+
+			//Declare segments as a static property to prevent inheriting across the Chart type prototype
+			this.segments = [];
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+
+			this.SegmentArc = Chart.Arc.extend({
+				ctx : this.chart.ctx,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+			this.calculateTotal(data);
+
+			helpers.each(data,function(datapoint, index){
+				this.addData(datapoint, index, true);
+			},this);
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+			this.segments.splice(index, 0, new this.SegmentArc({
+				value : segment.value,
+				outerRadius : (this.options.animateScale) ? 0 : this.outerRadius,
+				innerRadius : (this.options.animateScale) ? 0 : (this.outerRadius/100) * this.options.percentageInnerCutout,
+				fillColor : segment.color,
+				highlightColor : segment.highlight || segment.color,
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				startAngle : Math.PI * 1.5,
+				circumference : (this.options.animateRotate) ? 0 : this.calculateCircumference(segment.value),
+				label : segment.label
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		calculateCircumference : function(value){
+			return (Math.PI*2)*(Math.abs(value) / this.total);
+		},
+		calculateTotal : function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += Math.abs(segment.value);
+			},this);
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor']);
+			});
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			this.render();
+		},
+
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.outerRadius = (helpers.min([this.chart.width,this.chart.height]) -	this.options.segmentStrokeWidth/2)/2;
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				});
+			}, this);
+		},
+		draw : function(easeDecimal){
+			var animDecimal = (easeDecimal) ? easeDecimal : 1;
+			this.clear();
+			helpers.each(this.segments,function(segment,index){
+				segment.transition({
+					circumference : this.calculateCircumference(segment.value),
+					outerRadius : this.outerRadius,
+					innerRadius : (this.outerRadius/100) * this.options.percentageInnerCutout
+				},animDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				segment.draw();
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length-1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+			},this);
+
+		}
+	});
+
+	Chart.types.Doughnut.extend({
+		name : "Pie",
+		defaults : helpers.merge(defaultConfig,{percentageInnerCutout : 0})
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+
+		///Boolean - Whether grid lines are shown across the chart
+		scaleShowGridLines : true,
+
+		//String - Colour of the grid lines
+		scaleGridLineColor : "rgba(0,0,0,.05)",
+
+		//Number - Width of the grid lines
+		scaleGridLineWidth : 1,
+
+		//Boolean - Whether to show horizontal lines (except X axis)
+		scaleShowHorizontalLines: true,
+
+		//Boolean - Whether to show vertical lines (except Y axis)
+		scaleShowVerticalLines: true,
+
+		//Boolean - Whether the line is curved between points
+		bezierCurve : true,
+
+		//Number - Tension of the bezier curve between points
+		bezierCurveTension : 0.4,
+
+		//Boolean - Whether to show a dot for each point
+		pointDot : true,
+
+		//Number - Radius of each point dot in pixels
+		pointDotRadius : 4,
+
+		//Number - Pixel width of point dot stroke
+		pointDotStrokeWidth : 1,
+
+		//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+		pointHitDetectionRadius : 20,
+
+		//Boolean - Whether to show a stroke for datasets
+		datasetStroke : true,
+
+		//Number - Pixel width of dataset stroke
+		datasetStrokeWidth : 2,
+
+		//Boolean - Whether to fill the dataset with a colour
+		datasetFill : true,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+	};
+
+
+	Chart.Type.extend({
+		name: "Line",
+		defaults : defaultConfig,
+		initialize:  function(data){
+			//Declare the extension of the default point, to cater for the options passed in to the constructor
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx,
+				inRange : function(mouseX){
+					return (Math.pow(mouseX-this.x, 2) < Math.pow(this.radius + this.hitDetectionRadius,2));
+				}
+			});
+
+			this.datasets = [];
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePoints = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePoints, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+					this.showTooltip(activePoints);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label : dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+				this.buildScale(data.labels);
+
+
+				this.eachPoints(function(point, index){
+					helpers.extend(point, {
+						x: this.scale.calculateX(index),
+						y: this.scale.endPoint
+					});
+					point.save();
+				}, this);
+
+			},this);
+
+
+			this.render();
+		},
+		update : function(){
+			this.scale.update();
+			// Reset any highlight colours before updating.
+			helpers.each(this.activeElements, function(activeElement){
+				activeElement.restore(['fillColor', 'strokeColor']);
+			});
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+		getPointsAtEvent : function(e){
+			var pointsArray = [],
+				eventPosition = helpers.getRelativePosition(e);
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,function(point){
+					if (point.inRange(eventPosition.x,eventPosition.y)) pointsArray.push(point);
+				});
+			},this);
+			return pointsArray;
+		},
+		buildScale : function(labels){
+			var self = this;
+
+			var dataTotal = function(){
+				var values = [];
+				self.eachPoints(function(point){
+					values.push(point.value);
+				});
+
+				return values;
+			};
+
+			var scaleOptions = {
+				templateString : this.options.scaleLabel,
+				height : this.chart.height,
+				width : this.chart.width,
+				ctx : this.chart.ctx,
+				textColor : this.options.scaleFontColor,
+				fontSize : this.options.scaleFontSize,
+				fontStyle : this.options.scaleFontStyle,
+				fontFamily : this.options.scaleFontFamily,
+				valuesCount : labels.length,
+				beginAtZero : this.options.scaleBeginAtZero,
+				integersOnly : this.options.scaleIntegersOnly,
+				calculateYRange : function(currentHeight){
+					var updatedRanges = helpers.calculateScaleRange(
+						dataTotal(),
+						currentHeight,
+						this.fontSize,
+						this.beginAtZero,
+						this.integersOnly
+					);
+					helpers.extend(this, updatedRanges);
+				},
+				xLabels : labels,
+				font : helpers.fontString(this.options.scaleFontSize, this.options.scaleFontStyle, this.options.scaleFontFamily),
+				lineWidth : this.options.scaleLineWidth,
+				lineColor : this.options.scaleLineColor,
+				showHorizontalLines : this.options.scaleShowHorizontalLines,
+				showVerticalLines : this.options.scaleShowVerticalLines,
+				gridLineWidth : (this.options.scaleShowGridLines) ? this.options.scaleGridLineWidth : 0,
+				gridLineColor : (this.options.scaleShowGridLines) ? this.options.scaleGridLineColor : "rgba(0,0,0,0)",
+				padding: (this.options.showScale) ? 0 : this.options.pointDotRadius + this.options.pointDotStrokeWidth,
+				showLabels : this.options.scaleShowLabels,
+				display : this.options.showScale
+			};
+
+			if (this.options.scaleOverride){
+				helpers.extend(scaleOptions, {
+					calculateYRange: helpers.noop,
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				});
+			}
+
+
+			this.scale = new Chart.Scale(scaleOptions);
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+
+			helpers.each(valuesArray,function(value,datasetIndex){
+				//Add a new point for each piece of data, passing any required data to draw.
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: this.scale.calculateX(this.scale.valuesCount+1),
+					y: this.scale.endPoint,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.addXLabel(label);
+			//Then re-render the chart.
+			this.update();
+		},
+		removeData : function(){
+			this.scale.removeXLabel();
+			//Then re-render the chart.
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.update();
+		},
+		reflow : function(){
+			var newScaleProps = helpers.extend({
+				height : this.chart.height,
+				width : this.chart.width
+			});
+			this.scale.update(newScaleProps);
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			this.clear();
+
+			var ctx = this.chart.ctx;
+
+			// Some helper methods for getting the next/prev points
+			var hasValue = function(item){
+				return item.value !== null;
+			},
+			nextPoint = function(point, collection, index){
+				return helpers.findNextWhere(collection, hasValue, index) || point;
+			},
+			previousPoint = function(point, collection, index){
+				return helpers.findPreviousWhere(collection, hasValue, index) || point;
+			};
+
+			this.scale.draw(easingDecimal);
+
+
+			helpers.each(this.datasets,function(dataset){
+				var pointsWithValues = helpers.where(dataset.points, hasValue);
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				//We can use this extra loop to calculate the control points of this dataset also in this loop
+
+				helpers.each(dataset.points, function(point, index){
+					if (point.hasValue()){
+						point.transition({
+							y : this.scale.calculateY(point.value),
+							x : this.scale.calculateX(index)
+						}, easingDecimal);
+					}
+				},this);
+
+
+				// Control points need to be calculated in a seperate loop, because we need to know the current x/y of the point
+				// This would cause issues when there is no animation, because the y of the next point would be 0, so beziers would be skewed
+				if (this.options.bezierCurve){
+					helpers.each(pointsWithValues, function(point, index){
+						var tension = (index > 0 && index < pointsWithValues.length - 1) ? this.options.bezierCurveTension : 0;
+						point.controlPoints = helpers.splineCurve(
+							previousPoint(point, pointsWithValues, index),
+							point,
+							nextPoint(point, pointsWithValues, index),
+							tension
+						);
+
+						// Prevent the bezier going outside of the bounds of the graph
+
+						// Cap puter bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.outer.y > this.scale.endPoint){
+							point.controlPoints.outer.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.outer.y < this.scale.startPoint){
+							point.controlPoints.outer.y = this.scale.startPoint;
+						}
+
+						// Cap inner bezier handles to the upper/lower scale bounds
+						if (point.controlPoints.inner.y > this.scale.endPoint){
+							point.controlPoints.inner.y = this.scale.endPoint;
+						}
+						else if (point.controlPoints.inner.y < this.scale.startPoint){
+							point.controlPoints.inner.y = this.scale.startPoint;
+						}
+					},this);
+				}
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+
+				helpers.each(pointsWithValues, function(point, index){
+					if (index === 0){
+						ctx.moveTo(point.x, point.y);
+					}
+					else{
+						if(this.options.bezierCurve){
+							var previous = previousPoint(point, pointsWithValues, index);
+
+							ctx.bezierCurveTo(
+								previous.controlPoints.outer.x,
+								previous.controlPoints.outer.y,
+								point.controlPoints.inner.x,
+								point.controlPoints.inner.y,
+								point.x,
+								point.y
+							);
+						}
+						else{
+							ctx.lineTo(point.x,point.y);
+						}
+					}
+				}, this);
+
+				ctx.stroke();
+
+				if (this.options.datasetFill && pointsWithValues.length > 0){
+					//Round off the line by going to the base of the chart, back to the start, then fill.
+					ctx.lineTo(pointsWithValues[pointsWithValues.length - 1].x, this.scale.endPoint);
+					ctx.lineTo(pointsWithValues[0].x, this.scale.endPoint);
+					ctx.fillStyle = dataset.fillColor;
+					ctx.closePath();
+					ctx.fill();
+				}
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(pointsWithValues,function(point){
+					point.draw();
+				});
+			},this);
+		}
+	});
+
+
+}).call(this);
+
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		//Cache a local reference to Chart.helpers
+		helpers = Chart.helpers;
+
+	var defaultConfig = {
+		//Boolean - Show a backdrop to the scale label
+		scaleShowLabelBackdrop : true,
+
+		//String - The colour of the label backdrop
+		scaleBackdropColor : "rgba(255,255,255,0.75)",
+
+		// Boolean - Whether the scale should begin at zero
+		scaleBeginAtZero : true,
+
+		//Number - The backdrop padding above & below the label in pixels
+		scaleBackdropPaddingY : 2,
+
+		//Number - The backdrop padding to the side of the label in pixels
+		scaleBackdropPaddingX : 2,
+
+		//Boolean - Show line for each value in the scale
+		scaleShowLine : true,
+
+		//Boolean - Stroke a line around each segment in the chart
+		segmentShowStroke : true,
+
+		//String - The colour of the stroke on each segement.
+		segmentStrokeColor : "#fff",
+
+		//Number - The width of the stroke value in pixels
+		segmentStrokeWidth : 2,
+
+		//Number - Amount of animation steps
+		animationSteps : 100,
+
+		//String - Animation easing effect.
+		animationEasing : "easeOutBounce",
+
+		//Boolean - Whether to animate the rotation of the chart
+		animateRotate : true,
+
+		//Boolean - Whether to animate scaling the chart from the centre
+		animateScale : false,
+
+		//String - A legend template
+		legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+	};
+
+
+	Chart.Type.extend({
+		//Passing in a name registers this chart in the Chart namespace
+		name: "PolarArea",
+		//Providing a defaults will also register the deafults in the chart namespace
+		defaults : defaultConfig,
+		//Initialize is fired when the chart is initialized - Data is passed in as a parameter
+		//Config is automatically merged by the core of Chart.js, and is available at this.options
+		initialize:  function(data){
+			this.segments = [];
+			//Declare segment class as a chart instance specific class, so it can share props for this instance
+			this.SegmentArc = Chart.Arc.extend({
+				showStroke : this.options.segmentShowStroke,
+				strokeWidth : this.options.segmentStrokeWidth,
+				strokeColor : this.options.segmentStrokeColor,
+				ctx : this.chart.ctx,
+				innerRadius : 0,
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				lineArc: true,
+				width: this.chart.width,
+				height: this.chart.height,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				valuesCount: data.length
+			});
+
+			this.updateScaleRange(data);
+
+			this.scale.update();
+
+			helpers.each(data,function(segment,index){
+				this.addData(segment,index,true);
+			},this);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activeSegments = (evt.type !== 'mouseout') ? this.getSegmentsAtEvent(evt) : [];
+					helpers.each(this.segments,function(segment){
+						segment.restore(["fillColor"]);
+					});
+					helpers.each(activeSegments,function(activeSegment){
+						activeSegment.fillColor = activeSegment.highlightColor;
+					});
+					this.showTooltip(activeSegments);
+				});
+			}
+
+			this.render();
+		},
+		getSegmentsAtEvent : function(e){
+			var segmentsArray = [];
+
+			var location = helpers.getRelativePosition(e);
+
+			helpers.each(this.segments,function(segment){
+				if (segment.inRange(location.x,location.y)) segmentsArray.push(segment);
+			},this);
+			return segmentsArray;
+		},
+		addData : function(segment, atIndex, silent){
+			var index = atIndex || this.segments.length;
+
+			this.segments.splice(index, 0, new this.SegmentArc({
+				fillColor: segment.color,
+				highlightColor: segment.highlight || segment.color,
+				label: segment.label,
+				value: segment.value,
+				outerRadius: (this.options.animateScale) ? 0 : this.scale.calculateCenterOffset(segment.value),
+				circumference: (this.options.animateRotate) ? 0 : this.scale.getCircumference(),
+				startAngle: Math.PI * 1.5
+			}));
+			if (!silent){
+				this.reflow();
+				this.update();
+			}
+		},
+		removeData: function(atIndex){
+			var indexToDelete = (helpers.isNumber(atIndex)) ? atIndex : this.segments.length-1;
+			this.segments.splice(indexToDelete, 1);
+			this.reflow();
+			this.update();
+		},
+		calculateTotal: function(data){
+			this.total = 0;
+			helpers.each(data,function(segment){
+				this.total += segment.value;
+			},this);
+			this.scale.valuesCount = this.segments.length;
+		},
+		updateScaleRange: function(datapoints){
+			var valuesArray = [];
+			helpers.each(datapoints,function(segment){
+				valuesArray.push(segment.value);
+			});
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes,
+				{
+					size: helpers.min([this.chart.width, this.chart.height]),
+					xCenter: this.chart.width/2,
+					yCenter: this.chart.height/2
+				}
+			);
+
+		},
+		update : function(){
+			this.calculateTotal(this.segments);
+
+			helpers.each(this.segments,function(segment){
+				segment.save();
+			});
+			
+			this.reflow();
+			this.render();
+		},
+		reflow : function(){
+			helpers.extend(this.SegmentArc.prototype,{
+				x : this.chart.width/2,
+				y : this.chart.height/2
+			});
+			this.updateScaleRange(this.segments);
+			this.scale.update();
+
+			helpers.extend(this.scale,{
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+
+			helpers.each(this.segments, function(segment){
+				segment.update({
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				});
+			}, this);
+
+		},
+		draw : function(ease){
+			var easingDecimal = ease || 1;
+			//Clear & draw the canvas
+			this.clear();
+			helpers.each(this.segments,function(segment, index){
+				segment.transition({
+					circumference : this.scale.getCircumference(),
+					outerRadius : this.scale.calculateCenterOffset(segment.value)
+				},easingDecimal);
+
+				segment.endAngle = segment.startAngle + segment.circumference;
+
+				// If we've removed the first segment we need to set the first one to
+				// start at the top.
+				if (index === 0){
+					segment.startAngle = Math.PI * 1.5;
+				}
+
+				//Check to see if it's the last segment, if not get the next and update the start angle
+				if (index < this.segments.length - 1){
+					this.segments[index+1].startAngle = segment.endAngle;
+				}
+				segment.draw();
+			}, this);
+			this.scale.draw();
+		}
+	});
+
+}).call(this);
+(function(){
+	"use strict";
+
+	var root = this,
+		Chart = root.Chart,
+		helpers = Chart.helpers;
+
+
+
+	Chart.Type.extend({
+		name: "Radar",
+		defaults:{
+			//Boolean - Whether to show lines for each scale point
+			scaleShowLine : true,
+
+			//Boolean - Whether we show the angle lines out of the radar
+			angleShowLineOut : true,
+
+			//Boolean - Whether to show labels on the scale
+			scaleShowLabels : false,
+
+			// Boolean - Whether the scale should begin at zero
+			scaleBeginAtZero : true,
+
+			//String - Colour of the angle line
+			angleLineColor : "rgba(0,0,0,.1)",
+
+			//Number - Pixel width of the angle line
+			angleLineWidth : 1,
+
+			//String - Point label font declaration
+			pointLabelFontFamily : "'Arial'",
+
+			//String - Point label font weight
+			pointLabelFontStyle : "normal",
+
+			//Number - Point label font size in pixels
+			pointLabelFontSize : 10,
+
+			//String - Point label font colour
+			pointLabelFontColor : "#666",
+
+			//Boolean - Whether to show a dot for each point
+			pointDot : true,
+
+			//Number - Radius of each point dot in pixels
+			pointDotRadius : 3,
+
+			//Number - Pixel width of point dot stroke
+			pointDotStrokeWidth : 1,
+
+			//Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+			pointHitDetectionRadius : 20,
+
+			//Boolean - Whether to show a stroke for datasets
+			datasetStroke : true,
+
+			//Number - Pixel width of dataset stroke
+			datasetStrokeWidth : 2,
+
+			//Boolean - Whether to fill the dataset with a colour
+			datasetFill : true,
+
+			//String - A legend template
+			legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+
+		},
+
+		initialize: function(data){
+			this.PointClass = Chart.Point.extend({
+				strokeWidth : this.options.pointDotStrokeWidth,
+				radius : this.options.pointDotRadius,
+				display: this.options.pointDot,
+				hitDetectionRadius : this.options.pointHitDetectionRadius,
+				ctx : this.chart.ctx
+			});
+
+			this.datasets = [];
+
+			this.buildScale(data);
+
+			//Set up tooltip events on the chart
+			if (this.options.showTooltips){
+				helpers.bindEvents(this, this.options.tooltipEvents, function(evt){
+					var activePointsCollection = (evt.type !== 'mouseout') ? this.getPointsAtEvent(evt) : [];
+
+					this.eachPoints(function(point){
+						point.restore(['fillColor', 'strokeColor']);
+					});
+					helpers.each(activePointsCollection, function(activePoint){
+						activePoint.fillColor = activePoint.highlightFill;
+						activePoint.strokeColor = activePoint.highlightStroke;
+					});
+
+					this.showTooltip(activePointsCollection);
+				});
+			}
+
+			//Iterate through each of the datasets, and build this into a property of the chart
+			helpers.each(data.datasets,function(dataset){
+
+				var datasetObject = {
+					label: dataset.label || null,
+					fillColor : dataset.fillColor,
+					strokeColor : dataset.strokeColor,
+					pointColor : dataset.pointColor,
+					pointStrokeColor : dataset.pointStrokeColor,
+					points : []
+				};
+
+				this.datasets.push(datasetObject);
+
+				helpers.each(dataset.data,function(dataPoint,index){
+					//Add a new point for each piece of data, passing any required data to draw.
+					var pointPosition;
+					if (!this.scale.animation){
+						pointPosition = this.scale.getPointPosition(index, this.scale.calculateCenterOffset(dataPoint));
+					}
+					datasetObject.points.push(new this.PointClass({
+						value : dataPoint,
+						label : data.labels[index],
+						datasetLabel: dataset.label,
+						x: (this.options.animation) ? this.scale.xCenter : pointPosition.x,
+						y: (this.options.animation) ? this.scale.yCenter : pointPosition.y,
+						strokeColor : dataset.pointStrokeColor,
+						fillColor : dataset.pointColor,
+						highlightFill : dataset.pointHighlightFill || dataset.pointColor,
+						highlightStroke : dataset.pointHighlightStroke || dataset.pointStrokeColor
+					}));
+				},this);
+
+			},this);
+
+			this.render();
+		},
+		eachPoints : function(callback){
+			helpers.each(this.datasets,function(dataset){
+				helpers.each(dataset.points,callback,this);
+			},this);
+		},
+
+		getPointsAtEvent : function(evt){
+			var mousePosition = helpers.getRelativePosition(evt),
+				fromCenter = helpers.getAngleFromPoint({
+					x: this.scale.xCenter,
+					y: this.scale.yCenter
+				}, mousePosition);
+
+			var anglePerIndex = (Math.PI * 2) /this.scale.valuesCount,
+				pointIndex = Math.round((fromCenter.angle - Math.PI * 1.5) / anglePerIndex),
+				activePointsCollection = [];
+
+			// If we're at the top, make the pointIndex 0 to get the first of the array.
+			if (pointIndex >= this.scale.valuesCount || pointIndex < 0){
+				pointIndex = 0;
+			}
+
+			if (fromCenter.distance <= this.scale.drawingArea){
+				helpers.each(this.datasets, function(dataset){
+					activePointsCollection.push(dataset.points[pointIndex]);
+				});
+			}
+
+			return activePointsCollection;
+		},
+
+		buildScale : function(data){
+			this.scale = new Chart.RadialScale({
+				display: this.options.showScale,
+				fontStyle: this.options.scaleFontStyle,
+				fontSize: this.options.scaleFontSize,
+				fontFamily: this.options.scaleFontFamily,
+				fontColor: this.options.scaleFontColor,
+				showLabels: this.options.scaleShowLabels,
+				showLabelBackdrop: this.options.scaleShowLabelBackdrop,
+				backdropColor: this.options.scaleBackdropColor,
+				backdropPaddingY : this.options.scaleBackdropPaddingY,
+				backdropPaddingX: this.options.scaleBackdropPaddingX,
+				lineWidth: (this.options.scaleShowLine) ? this.options.scaleLineWidth : 0,
+				lineColor: this.options.scaleLineColor,
+				angleLineColor : this.options.angleLineColor,
+				angleLineWidth : (this.options.angleShowLineOut) ? this.options.angleLineWidth : 0,
+				// Point labels at the edge of each line
+				pointLabelFontColor : this.options.pointLabelFontColor,
+				pointLabelFontSize : this.options.pointLabelFontSize,
+				pointLabelFontFamily : this.options.pointLabelFontFamily,
+				pointLabelFontStyle : this.options.pointLabelFontStyle,
+				height : this.chart.height,
+				width: this.chart.width,
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2,
+				ctx : this.chart.ctx,
+				templateString: this.options.scaleLabel,
+				labels: data.labels,
+				valuesCount: data.datasets[0].data.length
+			});
+
+			this.scale.setScaleSize();
+			this.updateScaleRange(data.datasets);
+			this.scale.buildYLabels();
+		},
+		updateScaleRange: function(datasets){
+			var valuesArray = (function(){
+				var totalDataArray = [];
+				helpers.each(datasets,function(dataset){
+					if (dataset.data){
+						totalDataArray = totalDataArray.concat(dataset.data);
+					}
+					else {
+						helpers.each(dataset.points, function(point){
+							totalDataArray.push(point.value);
+						});
+					}
+				});
+				return totalDataArray;
+			})();
+
+
+			var scaleSizes = (this.options.scaleOverride) ?
+				{
+					steps: this.options.scaleSteps,
+					stepValue: this.options.scaleStepWidth,
+					min: this.options.scaleStartValue,
+					max: this.options.scaleStartValue + (this.options.scaleSteps * this.options.scaleStepWidth)
+				} :
+				helpers.calculateScaleRange(
+					valuesArray,
+					helpers.min([this.chart.width, this.chart.height])/2,
+					this.options.scaleFontSize,
+					this.options.scaleBeginAtZero,
+					this.options.scaleIntegersOnly
+				);
+
+			helpers.extend(
+				this.scale,
+				scaleSizes
+			);
+
+		},
+		addData : function(valuesArray,label){
+			//Map the values array for each of the datasets
+			this.scale.valuesCount++;
+			helpers.each(valuesArray,function(value,datasetIndex){
+				var pointPosition = this.scale.getPointPosition(this.scale.valuesCount, this.scale.calculateCenterOffset(value));
+				this.datasets[datasetIndex].points.push(new this.PointClass({
+					value : value,
+					label : label,
+					x: pointPosition.x,
+					y: pointPosition.y,
+					strokeColor : this.datasets[datasetIndex].pointStrokeColor,
+					fillColor : this.datasets[datasetIndex].pointColor
+				}));
+			},this);
+
+			this.scale.labels.push(label);
+
+			this.reflow();
+
+			this.update();
+		},
+		removeData : function(){
+			this.scale.valuesCount--;
+			this.scale.labels.shift();
+			helpers.each(this.datasets,function(dataset){
+				dataset.points.shift();
+			},this);
+			this.reflow();
+			this.update();
+		},
+		update : function(){
+			this.eachPoints(function(point){
+				point.save();
+			});
+			this.reflow();
+			this.render();
+		},
+		reflow: function(){
+			helpers.extend(this.scale, {
+				width : this.chart.width,
+				height: this.chart.height,
+				size : helpers.min([this.chart.width, this.chart.height]),
+				xCenter: this.chart.width/2,
+				yCenter: this.chart.height/2
+			});
+			this.updateScaleRange(this.datasets);
+			this.scale.setScaleSize();
+			this.scale.buildYLabels();
+		},
+		draw : function(ease){
+			var easeDecimal = ease || 1,
+				ctx = this.chart.ctx;
+			this.clear();
+			this.scale.draw();
+
+			helpers.each(this.datasets,function(dataset){
+
+				//Transition each point first so that the line and point drawing isn't out of sync
+				helpers.each(dataset.points,function(point,index){
+					if (point.hasValue()){
+						point.transition(this.scale.getPointPosition(index, this.scale.calculateCenterOffset(point.value)), easeDecimal);
+					}
+				},this);
+
+
+
+				//Draw the line between all the points
+				ctx.lineWidth = this.options.datasetStrokeWidth;
+				ctx.strokeStyle = dataset.strokeColor;
+				ctx.beginPath();
+				helpers.each(dataset.points,function(point,index){
+					if (index === 0){
+						ctx.moveTo(point.x,point.y);
+					}
+					else{
+						ctx.lineTo(point.x,point.y);
+					}
+				},this);
+				ctx.closePath();
+				ctx.stroke();
+
+				ctx.fillStyle = dataset.fillColor;
+				ctx.fill();
+
+				//Now draw the points over the line
+				//A little inefficient double looping, but better than the line
+				//lagging behind the point positions
+				helpers.each(dataset.points,function(point){
+					if (point.hasValue()){
+						point.draw();
+					}
+				});
+
+			},this);
+
+		}
+
+	});
+
+
+
+
+
+}).call(this);
+},{}],21:[function(require,module,exports){
 module.exports = require('./lib/ParseReact.js');
 
-},{"./lib/ParseReact.js":32}],23:[function(require,module,exports){
+},{"./lib/ParseReact.js":31}],22:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -1520,7 +5021,7 @@ var Delta = (function () {
 })();
 
 module.exports = Delta;
-},{"./Id":24}],24:[function(require,module,exports){
+},{"./Id":23}],23:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -1584,7 +5085,7 @@ var Id = (function () {
 })();
 
 module.exports = Id;
-},{}],25:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -1687,7 +5188,7 @@ var LocalSubscriptions = {
 };
 
 module.exports = LocalSubscriptions;
-},{"./Id":24,"./ObjectStore":30,"./StubParse":34,"./flatten":39}],26:[function(require,module,exports){
+},{"./Id":23,"./ObjectStore":29,"./StubParse":33,"./flatten":38}],25:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -1846,7 +5347,7 @@ var Mixin = {
 };
 
 module.exports = Mixin;
-},{"./StubParse":34,"./warning":40}],27:[function(require,module,exports){
+},{"./StubParse":33,"./warning":39}],26:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -2131,7 +5632,7 @@ module.exports = {
     return new Mutation('REMOVERELATION', normalizeTarget(id), payload);
   }
 };
-},{"./Delta":23,"./Id":24,"./MutationBatch":28,"./StubParse":34,"./UpdateChannel":37,"./warning":40}],28:[function(require,module,exports){
+},{"./Delta":22,"./Id":23,"./MutationBatch":27,"./StubParse":33,"./UpdateChannel":36,"./warning":39}],27:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -2231,7 +5732,7 @@ var MutationBatch = (function () {
 MutationBatch.maxBatchSize = 50;
 
 module.exports = MutationBatch;
-},{"./StubParse":34}],29:[function(require,module,exports){
+},{"./StubParse":33}],28:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -2464,7 +5965,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
 
 module.exports = MutationExecutor;
 }).call(this,require('_process'))
-},{"./Id":24,"./StubParse":34,"_process":21}],30:[function(require,module,exports){
+},{"./Id":23,"./StubParse":33,"_process":19}],29:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -2897,7 +6398,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
 
 module.exports = ObjectStore;
 }).call(this,require('_process'))
-},{"./Id":24,"./QueryTools":33,"./flatten":39,"_process":21}],31:[function(require,module,exports){
+},{"./Id":23,"./QueryTools":32,"./flatten":38,"_process":19}],30:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -3032,7 +6533,7 @@ var ParsePatches = {
 };
 
 module.exports = ParsePatches;
-},{"./Id":24,"./LocalSubscriptions":25,"./StubParse":34,"./SubscriptionManager":36,"./flatten":39}],32:[function(require,module,exports){
+},{"./Id":23,"./LocalSubscriptions":24,"./StubParse":33,"./SubscriptionManager":35,"./flatten":38}],31:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -3067,7 +6568,7 @@ module.exports = {
   currentUser: LocalSubscriptions.currentUser,
   Mixin: require('./Mixin'),
   Mutation: require('./Mutation') };
-},{"./LocalSubscriptions":25,"./Mixin":26,"./Mutation":27,"./ParsePatches":31}],33:[function(require,module,exports){
+},{"./LocalSubscriptions":24,"./Mixin":25,"./Mutation":26,"./ParsePatches":30}],32:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -3396,7 +6897,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
 
 module.exports = QueryTools;
 }).call(this,require('_process'))
-},{"./Id":24,"./StubParse":34,"./equalObjects":38,"_process":21}],34:[function(require,module,exports){
+},{"./Id":23,"./StubParse":33,"./equalObjects":37,"_process":19}],33:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -3434,7 +6935,7 @@ if (typeof Parse === 'undefined') {
 } else {
   module.exports = Parse;
 }
-},{"parse":41}],35:[function(require,module,exports){
+},{"parse":40}],34:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -3693,7 +7194,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
 
 module.exports = Subscription;
 }).call(this,require('_process'))
-},{"./Id":24,"./ObjectStore":30,"_process":21}],36:[function(require,module,exports){
+},{"./Id":23,"./ObjectStore":29,"_process":19}],35:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -3853,7 +7354,7 @@ if (typeof process !== 'undefined' && process.env.NODE_ENV === 'test') {
 
 module.exports = SubscriptionManager;
 }).call(this,require('_process'))
-},{"./Id":24,"./ObjectStore":30,"./QueryTools":33,"./Subscription":35,"_process":21}],37:[function(require,module,exports){
+},{"./Id":23,"./ObjectStore":29,"./QueryTools":32,"./Subscription":34,"_process":19}],36:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -4045,7 +7546,7 @@ function pushUpdates(subscribers, changes) {
 module.exports = {
   issueMutation: issueMutation
 };
-},{"./Delta":23,"./Id":24,"./LocalSubscriptions":25,"./MutationExecutor":29,"./ObjectStore":30,"./QueryTools":33,"./StubParse":34,"./SubscriptionManager":36}],38:[function(require,module,exports){
+},{"./Delta":22,"./Id":23,"./LocalSubscriptions":24,"./MutationExecutor":28,"./ObjectStore":29,"./QueryTools":32,"./StubParse":33,"./SubscriptionManager":35}],37:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -4118,7 +7619,7 @@ function equalObjects(a, b) {
 }
 
 module.exports = equalObjects;
-},{}],39:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
  *
@@ -4198,7 +7699,7 @@ function flatten(object) {
 }
 
 module.exports = flatten;
-},{"./Id":24,"./StubParse":34,"./warning":40}],40:[function(require,module,exports){
+},{"./Id":23,"./StubParse":33,"./warning":39}],39:[function(require,module,exports){
 (function (process){
 /*
  *  Copyright (c) 2015, Parse, LLC. All rights reserved.
@@ -4232,7 +7733,7 @@ try {
   module.exports = function () {};
 }
 }).call(this,require('_process'))
-},{"_process":21}],41:[function(require,module,exports){
+},{"_process":19}],40:[function(require,module,exports){
 (function (process){
 /*!
  * Parse JavaScript SDK
@@ -13865,7 +17366,154 @@ try {
 }(this));
 
 }).call(this,require('_process'))
-},{"_process":21}],42:[function(require,module,exports){
+},{"_process":19}],41:[function(require,module,exports){
+module.exports = {
+  Bar: require('./lib/bar'),
+  Doughnut: require('./lib/doughnut'),
+  Line: require('./lib/line'),
+  Pie: require('./lib/pie'),
+  PolarArea: require('./lib/polar-area'),
+  Radar: require('./lib/radar'),
+  createClass: require('./lib/core').createClass
+};
+
+},{"./lib/bar":42,"./lib/core":43,"./lib/doughnut":44,"./lib/line":45,"./lib/pie":46,"./lib/polar-area":47,"./lib/radar":48}],42:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('Bar', ['getBarsAtEvent']);
+
+},{"./core":43}],43:[function(require,module,exports){
+module.exports = {
+  createClass: function(chartType, methodNames, dataKey) {
+    var classData = {
+      displayName: chartType + 'Chart',
+      getInitialState: function() { return {}; },
+      render: function() {
+        var _props = {
+          ref: 'canvass'
+        };
+        for (var name in this.props) {
+          if (this.props.hasOwnProperty(name)) {
+            if (name !== 'data' && name !== 'options') {
+              _props[name] = this.props[name];
+            }
+          }
+        }
+        return React.createElement('canvas', _props);
+      }
+    };
+
+    var extras = ['clear', 'stop', 'resize', 'toBase64Image', 'generateLegend', 'update', 'addData', 'removeData'];
+    function extra(type) {
+      classData[type] = function() {
+        this.state.chart[name].apply(this.state.chart, arguments);
+      };
+    }
+
+    classData.componentDidMount = function() {
+      this.initializeChart(this.props);
+    };
+
+    classData.componentWillUnmount = function() {
+      var chart = this.state.chart;
+      chart.destroy();
+    };
+
+    classData.componentWillReceiveProps = function(nextProps) {
+      var chart = this.state.chart;
+      if (this.props.redraw) {
+        chart.destroy();
+        this.initializeChart(nextProps);
+      } else {
+        dataKey = dataKey || dataKeys[chart.name];
+        updatePoints(nextProps, chart, dataKey);
+        chart.update();
+      }
+    };
+
+    classData.initializeChart = function(nextProps) {
+      var Chart = require('chart.js');
+      var el = this.getDOMNode();
+      var ctx = el.getContext("2d");
+      var chart = new Chart(ctx)[chartType](nextProps.data, nextProps.options || {});
+      this.state.chart = chart;
+    };
+
+    // return the chartjs instance
+    classData.getChart = function() {
+      return this.state.chart;
+    };
+
+    // return the canvass element that contains the chart
+    classData.getCanvass = function() {
+      return this.refs.canvass.getDOMNode();
+    };
+
+    var i;
+    for (i=0; i<extras.length; i++) {
+      extra(extras[i]);
+    }
+    for (i=0; i<methodNames.length; i++) {
+      extra(methodNames[i]);
+    }
+
+    var React = require('react');
+    return React.createClass(classData);
+  }
+};
+
+var dataKeys = {
+  'Line': 'points',
+  'Radar': 'points',
+  'Bar': 'bars'
+};
+
+var updatePoints = function(nextProps, chart, dataKey) {
+  var name = chart.name;
+
+  if (name === 'PolarArea' || name === 'Pie' || name === 'Doughnut') {
+    nextProps.data.forEach(function(segment, segmentIndex) {
+      chart.segments[segmentIndex].value = segment.value;
+    });
+  } else {
+    nextProps.data.datasets.forEach(function(set, setIndex) {
+      set.data.forEach(function(val, pointIndex) {
+        chart.datasets[setIndex][dataKey][pointIndex].value = val;
+      });
+    });
+  }
+};
+
+
+
+
+
+},{"chart.js":20,"react":242}],44:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('Doughnut', ['getSegmentsAtEvent']);
+
+},{"./core":43}],45:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('Line', ['getPointsAtEvent']);
+
+},{"./core":43}],46:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('Pie', ['getSegmentsAtEvent']);
+
+},{"./core":43}],47:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('PolarArea', ['getSegmentsAtEvent']);
+
+},{"./core":43}],48:[function(require,module,exports){
+var vars = require('./core');
+
+module.exports = vars.createClass('Radar', ['getPointsAtEvent']);
+
+},{"./core":43}],49:[function(require,module,exports){
 /**
  * Represents a cancellation caused by navigating away
  * before the previous transition has fully resolved.
@@ -13875,7 +17523,7 @@ try {
 function Cancellation() {}
 
 module.exports = Cancellation;
-},{}],43:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 'use strict';
 
 var invariant = require('react/lib/invariant');
@@ -13906,7 +17554,7 @@ var History = {
 };
 
 module.exports = History;
-},{"react/lib/ExecutionEnvironment":100,"react/lib/invariant":215}],44:[function(require,module,exports){
+},{"react/lib/ExecutionEnvironment":107,"react/lib/invariant":222}],51:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -13982,7 +17630,7 @@ var Match = (function () {
 })();
 
 module.exports = Match;
-},{"./PathUtils":46}],45:[function(require,module,exports){
+},{"./PathUtils":53}],52:[function(require,module,exports){
 'use strict';
 
 var PropTypes = require('./PropTypes');
@@ -14053,7 +17701,7 @@ var Navigation = {
 };
 
 module.exports = Navigation;
-},{"./PropTypes":47}],46:[function(require,module,exports){
+},{"./PropTypes":54}],53:[function(require,module,exports){
 'use strict';
 
 var invariant = require('react/lib/invariant');
@@ -14207,7 +17855,7 @@ var PathUtils = {
 };
 
 module.exports = PathUtils;
-},{"object-assign":75,"qs":76,"react/lib/invariant":215}],47:[function(require,module,exports){
+},{"object-assign":82,"qs":83,"react/lib/invariant":222}],54:[function(require,module,exports){
 'use strict';
 
 var assign = require('react/lib/Object.assign');
@@ -14239,7 +17887,7 @@ var PropTypes = assign({}, ReactPropTypes, {
 });
 
 module.exports = PropTypes;
-},{"./Route":49,"react":235,"react/lib/Object.assign":106}],48:[function(require,module,exports){
+},{"./Route":56,"react":242,"react/lib/Object.assign":113}],55:[function(require,module,exports){
 /**
  * Encapsulates a redirect to the given route.
  */
@@ -14252,7 +17900,7 @@ function Redirect(to, params, query) {
 }
 
 module.exports = Redirect;
-},{}],49:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -14453,7 +18101,7 @@ var Route = (function () {
 })();
 
 module.exports = Route;
-},{"./PathUtils":46,"react/lib/Object.assign":106,"react/lib/invariant":215,"react/lib/warning":234}],50:[function(require,module,exports){
+},{"./PathUtils":53,"react/lib/Object.assign":113,"react/lib/invariant":222,"react/lib/warning":241}],57:[function(require,module,exports){
 'use strict';
 
 var invariant = require('react/lib/invariant');
@@ -14529,7 +18177,7 @@ var ScrollHistory = {
 };
 
 module.exports = ScrollHistory;
-},{"./getWindowScrollPosition":65,"react/lib/ExecutionEnvironment":100,"react/lib/invariant":215}],51:[function(require,module,exports){
+},{"./getWindowScrollPosition":72,"react/lib/ExecutionEnvironment":107,"react/lib/invariant":222}],58:[function(require,module,exports){
 'use strict';
 
 var PropTypes = require('./PropTypes');
@@ -14604,7 +18252,7 @@ var State = {
 };
 
 module.exports = State;
-},{"./PropTypes":47}],52:[function(require,module,exports){
+},{"./PropTypes":54}],59:[function(require,module,exports){
 /* jshint -W058 */
 
 'use strict';
@@ -14680,7 +18328,7 @@ Transition.to = function (transition, routes, params, query, callback) {
 };
 
 module.exports = Transition;
-},{"./Cancellation":42,"./Redirect":48}],53:[function(require,module,exports){
+},{"./Cancellation":49,"./Redirect":55}],60:[function(require,module,exports){
 /**
  * Actions that modify the URL.
  */
@@ -14706,7 +18354,7 @@ var LocationActions = {
 };
 
 module.exports = LocationActions;
-},{}],54:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 'use strict';
 
 var LocationActions = require('../actions/LocationActions');
@@ -14736,7 +18384,7 @@ var ImitateBrowserBehavior = {
 };
 
 module.exports = ImitateBrowserBehavior;
-},{"../actions/LocationActions":53}],55:[function(require,module,exports){
+},{"../actions/LocationActions":60}],62:[function(require,module,exports){
 /**
  * A scroll behavior that always scrolls to the top of the page
  * after a transition.
@@ -14752,7 +18400,7 @@ var ScrollToTopBehavior = {
 };
 
 module.exports = ScrollToTopBehavior;
-},{}],56:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -14791,7 +18439,7 @@ var ContextWrapper = (function (_React$Component) {
 })(React.Component);
 
 module.exports = ContextWrapper;
-},{"react":235}],57:[function(require,module,exports){
+},{"react":242}],64:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -14839,7 +18487,7 @@ DefaultRoute.defaultProps = {
 };
 
 module.exports = DefaultRoute;
-},{"../PropTypes":47,"./Route":61,"./RouteHandler":62}],58:[function(require,module,exports){
+},{"../PropTypes":54,"./Route":68,"./RouteHandler":69}],65:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -14975,7 +18623,7 @@ Link.defaultProps = {
 };
 
 module.exports = Link;
-},{"../PropTypes":47,"react":235,"react/lib/Object.assign":106}],59:[function(require,module,exports){
+},{"../PropTypes":54,"react":242,"react/lib/Object.assign":113}],66:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -15024,7 +18672,7 @@ NotFoundRoute.defaultProps = {
 };
 
 module.exports = NotFoundRoute;
-},{"../PropTypes":47,"./Route":61,"./RouteHandler":62}],60:[function(require,module,exports){
+},{"../PropTypes":54,"./Route":68,"./RouteHandler":69}],67:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -15068,7 +18716,7 @@ Redirect.propTypes = {
 Redirect.defaultProps = {};
 
 module.exports = Redirect;
-},{"../PropTypes":47,"./Route":61}],61:[function(require,module,exports){
+},{"../PropTypes":54,"./Route":68}],68:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -15160,7 +18808,7 @@ Route.defaultProps = {
 };
 
 module.exports = Route;
-},{"../PropTypes":47,"./RouteHandler":62,"react":235,"react/lib/invariant":215}],62:[function(require,module,exports){
+},{"../PropTypes":54,"./RouteHandler":69,"react":242,"react/lib/invariant":222}],69:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -15269,7 +18917,7 @@ RouteHandler.childContextTypes = {
 };
 
 module.exports = RouteHandler;
-},{"../PropTypes":47,"./ContextWrapper":56,"react":235,"react/lib/Object.assign":106}],63:[function(require,module,exports){
+},{"../PropTypes":54,"./ContextWrapper":63,"react":242,"react/lib/Object.assign":113}],70:[function(require,module,exports){
 (function (process){
 /* jshint -W058 */
 'use strict';
@@ -15786,7 +19434,7 @@ function createRouter(options) {
 
 module.exports = createRouter;
 }).call(this,require('_process'))
-},{"./Cancellation":42,"./History":43,"./Match":44,"./PathUtils":46,"./PropTypes":47,"./Redirect":48,"./Route":49,"./ScrollHistory":50,"./Transition":52,"./actions/LocationActions":53,"./behaviors/ImitateBrowserBehavior":54,"./createRoutesFromReactChildren":64,"./isReactChildren":67,"./locations/HashLocation":68,"./locations/HistoryLocation":69,"./locations/RefreshLocation":70,"./locations/StaticLocation":71,"./supportsHistory":74,"_process":21,"react":235,"react/lib/ExecutionEnvironment":100,"react/lib/invariant":215,"react/lib/warning":234}],64:[function(require,module,exports){
+},{"./Cancellation":49,"./History":50,"./Match":51,"./PathUtils":53,"./PropTypes":54,"./Redirect":55,"./Route":56,"./ScrollHistory":57,"./Transition":59,"./actions/LocationActions":60,"./behaviors/ImitateBrowserBehavior":61,"./createRoutesFromReactChildren":71,"./isReactChildren":74,"./locations/HashLocation":75,"./locations/HistoryLocation":76,"./locations/RefreshLocation":77,"./locations/StaticLocation":78,"./supportsHistory":81,"_process":19,"react":242,"react/lib/ExecutionEnvironment":107,"react/lib/invariant":222,"react/lib/warning":241}],71:[function(require,module,exports){
 /* jshint -W084 */
 'use strict';
 
@@ -15868,7 +19516,7 @@ function createRoutesFromReactChildren(children) {
 }
 
 module.exports = createRoutesFromReactChildren;
-},{"./Route":49,"./components/DefaultRoute":57,"./components/NotFoundRoute":59,"./components/Redirect":60,"react":235,"react/lib/Object.assign":106,"react/lib/warning":234}],65:[function(require,module,exports){
+},{"./Route":56,"./components/DefaultRoute":64,"./components/NotFoundRoute":66,"./components/Redirect":67,"react":242,"react/lib/Object.assign":113,"react/lib/warning":241}],72:[function(require,module,exports){
 'use strict';
 
 var invariant = require('react/lib/invariant');
@@ -15887,7 +19535,7 @@ function getWindowScrollPosition() {
 }
 
 module.exports = getWindowScrollPosition;
-},{"react/lib/ExecutionEnvironment":100,"react/lib/invariant":215}],66:[function(require,module,exports){
+},{"react/lib/ExecutionEnvironment":107,"react/lib/invariant":222}],73:[function(require,module,exports){
 'use strict';
 
 exports.DefaultRoute = require('./components/DefaultRoute');
@@ -15919,7 +19567,7 @@ exports.createRoutesFromReactChildren = require('./createRoutesFromReactChildren
 
 exports.create = require('./createRouter');
 exports.run = require('./runRouter');
-},{"./History":43,"./Navigation":45,"./Route":49,"./State":51,"./behaviors/ImitateBrowserBehavior":54,"./behaviors/ScrollToTopBehavior":55,"./components/DefaultRoute":57,"./components/Link":58,"./components/NotFoundRoute":59,"./components/Redirect":60,"./components/Route":61,"./components/RouteHandler":62,"./createRouter":63,"./createRoutesFromReactChildren":64,"./locations/HashLocation":68,"./locations/HistoryLocation":69,"./locations/RefreshLocation":70,"./locations/StaticLocation":71,"./locations/TestLocation":72,"./runRouter":73}],67:[function(require,module,exports){
+},{"./History":50,"./Navigation":52,"./Route":56,"./State":58,"./behaviors/ImitateBrowserBehavior":61,"./behaviors/ScrollToTopBehavior":62,"./components/DefaultRoute":64,"./components/Link":65,"./components/NotFoundRoute":66,"./components/Redirect":67,"./components/Route":68,"./components/RouteHandler":69,"./createRouter":70,"./createRoutesFromReactChildren":71,"./locations/HashLocation":75,"./locations/HistoryLocation":76,"./locations/RefreshLocation":77,"./locations/StaticLocation":78,"./locations/TestLocation":79,"./runRouter":80}],74:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
@@ -15933,7 +19581,7 @@ function isReactChildren(object) {
 }
 
 module.exports = isReactChildren;
-},{"react":235}],68:[function(require,module,exports){
+},{"react":242}],75:[function(require,module,exports){
 'use strict';
 
 var LocationActions = require('../actions/LocationActions');
@@ -16045,7 +19693,7 @@ var HashLocation = {
 };
 
 module.exports = HashLocation;
-},{"../History":43,"../actions/LocationActions":53}],69:[function(require,module,exports){
+},{"../History":50,"../actions/LocationActions":60}],76:[function(require,module,exports){
 'use strict';
 
 var LocationActions = require('../actions/LocationActions');
@@ -16132,7 +19780,7 @@ var HistoryLocation = {
 };
 
 module.exports = HistoryLocation;
-},{"../History":43,"../actions/LocationActions":53}],70:[function(require,module,exports){
+},{"../History":50,"../actions/LocationActions":60}],77:[function(require,module,exports){
 'use strict';
 
 var HistoryLocation = require('./HistoryLocation');
@@ -16164,7 +19812,7 @@ var RefreshLocation = {
 };
 
 module.exports = RefreshLocation;
-},{"../History":43,"./HistoryLocation":69}],71:[function(require,module,exports){
+},{"../History":50,"./HistoryLocation":76}],78:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -16214,7 +19862,7 @@ StaticLocation.prototype.replace = throwCannotModify;
 StaticLocation.prototype.pop = throwCannotModify;
 
 module.exports = StaticLocation;
-},{"react/lib/invariant":215}],72:[function(require,module,exports){
+},{"react/lib/invariant":222}],79:[function(require,module,exports){
 'use strict';
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
@@ -16309,7 +19957,7 @@ var TestLocation = (function () {
 })();
 
 module.exports = TestLocation;
-},{"../History":43,"../actions/LocationActions":53,"react/lib/invariant":215}],73:[function(require,module,exports){
+},{"../History":50,"../actions/LocationActions":60,"react/lib/invariant":222}],80:[function(require,module,exports){
 'use strict';
 
 var createRouter = require('./createRouter');
@@ -16360,7 +20008,7 @@ function runRouter(routes, location, callback) {
 }
 
 module.exports = runRouter;
-},{"./createRouter":63}],74:[function(require,module,exports){
+},{"./createRouter":70}],81:[function(require,module,exports){
 'use strict';
 
 function supportsHistory() {
@@ -16377,7 +20025,7 @@ function supportsHistory() {
 }
 
 module.exports = supportsHistory;
-},{}],75:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 'use strict';
 
 function ToObject(val) {
@@ -16405,10 +20053,10 @@ module.exports = Object.assign || function (target, source) {
 	return to;
 };
 
-},{}],76:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 module.exports = require('./lib/');
 
-},{"./lib/":77}],77:[function(require,module,exports){
+},{"./lib/":84}],84:[function(require,module,exports){
 // Load modules
 
 var Stringify = require('./stringify');
@@ -16425,7 +20073,7 @@ module.exports = {
     parse: Parse
 };
 
-},{"./parse":78,"./stringify":79}],78:[function(require,module,exports){
+},{"./parse":85,"./stringify":86}],85:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -16588,7 +20236,7 @@ module.exports = function (str, options) {
     return Utils.compact(obj);
 };
 
-},{"./utils":80}],79:[function(require,module,exports){
+},{"./utils":87}],86:[function(require,module,exports){
 // Load modules
 
 var Utils = require('./utils');
@@ -16687,7 +20335,7 @@ module.exports = function (obj, options) {
     return keys.join(delimiter);
 };
 
-},{"./utils":80}],80:[function(require,module,exports){
+},{"./utils":87}],87:[function(require,module,exports){
 // Load modules
 
 
@@ -16821,7 +20469,7 @@ exports.isBuffer = function (obj) {
         obj.constructor.isBuffer(obj));
 };
 
-},{}],81:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -16848,7 +20496,7 @@ var AutoFocusMixin = {
 
 module.exports = AutoFocusMixin;
 
-},{"./focusNode":199}],82:[function(require,module,exports){
+},{"./focusNode":206}],89:[function(require,module,exports){
 /**
  * Copyright 2013-2015 Facebook, Inc.
  * All rights reserved.
@@ -17343,7 +20991,7 @@ var BeforeInputEventPlugin = {
 
 module.exports = BeforeInputEventPlugin;
 
-},{"./EventConstants":94,"./EventPropagators":99,"./ExecutionEnvironment":100,"./FallbackCompositionState":101,"./SyntheticCompositionEvent":173,"./SyntheticInputEvent":177,"./keyOf":221}],83:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPropagators":106,"./ExecutionEnvironment":107,"./FallbackCompositionState":108,"./SyntheticCompositionEvent":180,"./SyntheticInputEvent":184,"./keyOf":228}],90:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -17468,7 +21116,7 @@ var CSSProperty = {
 
 module.exports = CSSProperty;
 
-},{}],84:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -17650,7 +21298,7 @@ var CSSPropertyOperations = {
 module.exports = CSSPropertyOperations;
 
 }).call(this,require('_process'))
-},{"./CSSProperty":83,"./ExecutionEnvironment":100,"./camelizeStyleName":188,"./dangerousStyleValue":193,"./hyphenateStyleName":213,"./memoizeStringOnly":223,"./warning":234,"_process":21}],85:[function(require,module,exports){
+},{"./CSSProperty":90,"./ExecutionEnvironment":107,"./camelizeStyleName":195,"./dangerousStyleValue":200,"./hyphenateStyleName":220,"./memoizeStringOnly":230,"./warning":241,"_process":19}],92:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -17750,7 +21398,7 @@ PooledClass.addPoolingTo(CallbackQueue);
 module.exports = CallbackQueue;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./PooledClass":107,"./invariant":215,"_process":21}],86:[function(require,module,exports){
+},{"./Object.assign":113,"./PooledClass":114,"./invariant":222,"_process":19}],93:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18132,7 +21780,7 @@ var ChangeEventPlugin = {
 
 module.exports = ChangeEventPlugin;
 
-},{"./EventConstants":94,"./EventPluginHub":96,"./EventPropagators":99,"./ExecutionEnvironment":100,"./ReactUpdates":167,"./SyntheticEvent":175,"./isEventSupported":216,"./isTextInputElement":218,"./keyOf":221}],87:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPluginHub":103,"./EventPropagators":106,"./ExecutionEnvironment":107,"./ReactUpdates":174,"./SyntheticEvent":182,"./isEventSupported":223,"./isTextInputElement":225,"./keyOf":228}],94:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -18157,7 +21805,7 @@ var ClientReactRootIndex = {
 
 module.exports = ClientReactRootIndex;
 
-},{}],88:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18295,7 +21943,7 @@ var DOMChildrenOperations = {
 module.exports = DOMChildrenOperations;
 
 }).call(this,require('_process'))
-},{"./Danger":91,"./ReactMultiChildUpdateTypes":152,"./invariant":215,"./setTextContent":229,"_process":21}],89:[function(require,module,exports){
+},{"./Danger":98,"./ReactMultiChildUpdateTypes":159,"./invariant":222,"./setTextContent":236,"_process":19}],96:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18594,7 +22242,7 @@ var DOMProperty = {
 module.exports = DOMProperty;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],90:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],97:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18786,7 +22434,7 @@ var DOMPropertyOperations = {
 module.exports = DOMPropertyOperations;
 
 }).call(this,require('_process'))
-},{"./DOMProperty":89,"./quoteAttributeValueForBrowser":227,"./warning":234,"_process":21}],91:[function(require,module,exports){
+},{"./DOMProperty":96,"./quoteAttributeValueForBrowser":234,"./warning":241,"_process":19}],98:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -18973,7 +22621,7 @@ var Danger = {
 module.exports = Danger;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":100,"./createNodesFromMarkup":192,"./emptyFunction":194,"./getMarkupWrap":207,"./invariant":215,"_process":21}],92:[function(require,module,exports){
+},{"./ExecutionEnvironment":107,"./createNodesFromMarkup":199,"./emptyFunction":201,"./getMarkupWrap":214,"./invariant":222,"_process":19}],99:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19012,7 +22660,7 @@ var DefaultEventPluginOrder = [
 
 module.exports = DefaultEventPluginOrder;
 
-},{"./keyOf":221}],93:[function(require,module,exports){
+},{"./keyOf":228}],100:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19152,7 +22800,7 @@ var EnterLeaveEventPlugin = {
 
 module.exports = EnterLeaveEventPlugin;
 
-},{"./EventConstants":94,"./EventPropagators":99,"./ReactMount":150,"./SyntheticMouseEvent":179,"./keyOf":221}],94:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPropagators":106,"./ReactMount":157,"./SyntheticMouseEvent":186,"./keyOf":228}],101:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -19224,7 +22872,7 @@ var EventConstants = {
 
 module.exports = EventConstants;
 
-},{"./keyMirror":220}],95:[function(require,module,exports){
+},{"./keyMirror":227}],102:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19314,7 +22962,7 @@ var EventListener = {
 module.exports = EventListener;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":194,"_process":21}],96:[function(require,module,exports){
+},{"./emptyFunction":201,"_process":19}],103:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19592,7 +23240,7 @@ var EventPluginHub = {
 module.exports = EventPluginHub;
 
 }).call(this,require('_process'))
-},{"./EventPluginRegistry":97,"./EventPluginUtils":98,"./accumulateInto":185,"./forEachAccumulated":200,"./invariant":215,"_process":21}],97:[function(require,module,exports){
+},{"./EventPluginRegistry":104,"./EventPluginUtils":105,"./accumulateInto":192,"./forEachAccumulated":207,"./invariant":222,"_process":19}],104:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -19872,7 +23520,7 @@ var EventPluginRegistry = {
 module.exports = EventPluginRegistry;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],98:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],105:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -20093,7 +23741,7 @@ var EventPluginUtils = {
 module.exports = EventPluginUtils;
 
 }).call(this,require('_process'))
-},{"./EventConstants":94,"./invariant":215,"_process":21}],99:[function(require,module,exports){
+},{"./EventConstants":101,"./invariant":222,"_process":19}],106:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -20235,7 +23883,7 @@ var EventPropagators = {
 module.exports = EventPropagators;
 
 }).call(this,require('_process'))
-},{"./EventConstants":94,"./EventPluginHub":96,"./accumulateInto":185,"./forEachAccumulated":200,"_process":21}],100:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPluginHub":103,"./accumulateInto":192,"./forEachAccumulated":207,"_process":19}],107:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20279,7 +23927,7 @@ var ExecutionEnvironment = {
 
 module.exports = ExecutionEnvironment;
 
-},{}],101:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20370,7 +24018,7 @@ PooledClass.addPoolingTo(FallbackCompositionState);
 
 module.exports = FallbackCompositionState;
 
-},{"./Object.assign":106,"./PooledClass":107,"./getTextContentAccessor":210}],102:[function(require,module,exports){
+},{"./Object.assign":113,"./PooledClass":114,"./getTextContentAccessor":217}],109:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20581,7 +24229,7 @@ var HTMLDOMPropertyConfig = {
 
 module.exports = HTMLDOMPropertyConfig;
 
-},{"./DOMProperty":89,"./ExecutionEnvironment":100}],103:[function(require,module,exports){
+},{"./DOMProperty":96,"./ExecutionEnvironment":107}],110:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -20737,7 +24385,7 @@ var LinkedValueUtils = {
 module.exports = LinkedValueUtils;
 
 }).call(this,require('_process'))
-},{"./ReactPropTypes":158,"./invariant":215,"_process":21}],104:[function(require,module,exports){
+},{"./ReactPropTypes":165,"./invariant":222,"_process":19}],111:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -20794,7 +24442,7 @@ var LocalEventTrapMixin = {
 module.exports = LocalEventTrapMixin;
 
 }).call(this,require('_process'))
-},{"./ReactBrowserEventEmitter":110,"./accumulateInto":185,"./forEachAccumulated":200,"./invariant":215,"_process":21}],105:[function(require,module,exports){
+},{"./ReactBrowserEventEmitter":117,"./accumulateInto":192,"./forEachAccumulated":207,"./invariant":222,"_process":19}],112:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -20852,7 +24500,7 @@ var MobileSafariClickEventPlugin = {
 
 module.exports = MobileSafariClickEventPlugin;
 
-},{"./EventConstants":94,"./emptyFunction":194}],106:[function(require,module,exports){
+},{"./EventConstants":101,"./emptyFunction":201}],113:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -20901,7 +24549,7 @@ function assign(target, sources) {
 
 module.exports = assign;
 
-},{}],107:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -21017,7 +24665,7 @@ var PooledClass = {
 module.exports = PooledClass;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],108:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],115:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -21169,7 +24817,7 @@ React.version = '0.13.3';
 module.exports = React;
 
 }).call(this,require('_process'))
-},{"./EventPluginUtils":98,"./ExecutionEnvironment":100,"./Object.assign":106,"./ReactChildren":112,"./ReactClass":113,"./ReactComponent":114,"./ReactContext":118,"./ReactCurrentOwner":119,"./ReactDOM":120,"./ReactDOMTextComponent":131,"./ReactDefaultInjection":134,"./ReactElement":137,"./ReactElementValidator":138,"./ReactInstanceHandles":146,"./ReactMount":150,"./ReactPerf":155,"./ReactPropTypes":158,"./ReactReconciler":161,"./ReactServerRendering":164,"./findDOMNode":197,"./onlyChild":224,"_process":21}],109:[function(require,module,exports){
+},{"./EventPluginUtils":105,"./ExecutionEnvironment":107,"./Object.assign":113,"./ReactChildren":119,"./ReactClass":120,"./ReactComponent":121,"./ReactContext":125,"./ReactCurrentOwner":126,"./ReactDOM":127,"./ReactDOMTextComponent":138,"./ReactDefaultInjection":141,"./ReactElement":144,"./ReactElementValidator":145,"./ReactInstanceHandles":153,"./ReactMount":157,"./ReactPerf":162,"./ReactPropTypes":165,"./ReactReconciler":168,"./ReactServerRendering":171,"./findDOMNode":204,"./onlyChild":231,"_process":19}],116:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -21200,7 +24848,7 @@ var ReactBrowserComponentMixin = {
 
 module.exports = ReactBrowserComponentMixin;
 
-},{"./findDOMNode":197}],110:[function(require,module,exports){
+},{"./findDOMNode":204}],117:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -21553,7 +25201,7 @@ var ReactBrowserEventEmitter = assign({}, ReactEventEmitterMixin, {
 
 module.exports = ReactBrowserEventEmitter;
 
-},{"./EventConstants":94,"./EventPluginHub":96,"./EventPluginRegistry":97,"./Object.assign":106,"./ReactEventEmitterMixin":141,"./ViewportMetrics":184,"./isEventSupported":216}],111:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPluginHub":103,"./EventPluginRegistry":104,"./Object.assign":113,"./ReactEventEmitterMixin":148,"./ViewportMetrics":191,"./isEventSupported":223}],118:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -21680,7 +25328,7 @@ var ReactChildReconciler = {
 
 module.exports = ReactChildReconciler;
 
-},{"./ReactReconciler":161,"./flattenChildren":198,"./instantiateReactComponent":214,"./shouldUpdateReactComponent":231}],112:[function(require,module,exports){
+},{"./ReactReconciler":168,"./flattenChildren":205,"./instantiateReactComponent":221,"./shouldUpdateReactComponent":238}],119:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -21833,7 +25481,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 }).call(this,require('_process'))
-},{"./PooledClass":107,"./ReactFragment":143,"./traverseAllChildren":233,"./warning":234,"_process":21}],113:[function(require,module,exports){
+},{"./PooledClass":114,"./ReactFragment":150,"./traverseAllChildren":240,"./warning":241,"_process":19}],120:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -22779,7 +26427,7 @@ var ReactClass = {
 module.exports = ReactClass;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./ReactComponent":114,"./ReactCurrentOwner":119,"./ReactElement":137,"./ReactErrorUtils":140,"./ReactInstanceMap":147,"./ReactLifeCycle":148,"./ReactPropTypeLocationNames":156,"./ReactPropTypeLocations":157,"./ReactUpdateQueue":166,"./invariant":215,"./keyMirror":220,"./keyOf":221,"./warning":234,"_process":21}],114:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactComponent":121,"./ReactCurrentOwner":126,"./ReactElement":144,"./ReactErrorUtils":147,"./ReactInstanceMap":154,"./ReactLifeCycle":155,"./ReactPropTypeLocationNames":163,"./ReactPropTypeLocations":164,"./ReactUpdateQueue":173,"./invariant":222,"./keyMirror":227,"./keyOf":228,"./warning":241,"_process":19}],121:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -22933,7 +26581,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactComponent;
 
 }).call(this,require('_process'))
-},{"./ReactUpdateQueue":166,"./invariant":215,"./warning":234,"_process":21}],115:[function(require,module,exports){
+},{"./ReactUpdateQueue":173,"./invariant":222,"./warning":241,"_process":19}],122:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -22980,7 +26628,7 @@ var ReactComponentBrowserEnvironment = {
 
 module.exports = ReactComponentBrowserEnvironment;
 
-},{"./ReactDOMIDOperations":124,"./ReactMount":150}],116:[function(require,module,exports){
+},{"./ReactDOMIDOperations":131,"./ReactMount":157}],123:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -23041,7 +26689,7 @@ var ReactComponentEnvironment = {
 module.exports = ReactComponentEnvironment;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],117:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],124:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -23954,7 +27602,7 @@ var ReactCompositeComponent = {
 module.exports = ReactCompositeComponent;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./ReactComponentEnvironment":116,"./ReactContext":118,"./ReactCurrentOwner":119,"./ReactElement":137,"./ReactElementValidator":138,"./ReactInstanceMap":147,"./ReactLifeCycle":148,"./ReactNativeComponent":153,"./ReactPerf":155,"./ReactPropTypeLocationNames":156,"./ReactPropTypeLocations":157,"./ReactReconciler":161,"./ReactUpdates":167,"./emptyObject":195,"./invariant":215,"./shouldUpdateReactComponent":231,"./warning":234,"_process":21}],118:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactComponentEnvironment":123,"./ReactContext":125,"./ReactCurrentOwner":126,"./ReactElement":144,"./ReactElementValidator":145,"./ReactInstanceMap":154,"./ReactLifeCycle":155,"./ReactNativeComponent":160,"./ReactPerf":162,"./ReactPropTypeLocationNames":163,"./ReactPropTypeLocations":164,"./ReactReconciler":168,"./ReactUpdates":174,"./emptyObject":202,"./invariant":222,"./shouldUpdateReactComponent":238,"./warning":241,"_process":19}],125:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -24032,7 +27680,7 @@ var ReactContext = {
 module.exports = ReactContext;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./emptyObject":195,"./warning":234,"_process":21}],119:[function(require,module,exports){
+},{"./Object.assign":113,"./emptyObject":202,"./warning":241,"_process":19}],126:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -24066,7 +27714,7 @@ var ReactCurrentOwner = {
 
 module.exports = ReactCurrentOwner;
 
-},{}],120:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -24245,7 +27893,7 @@ var ReactDOM = mapObject({
 module.exports = ReactDOM;
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./ReactElementValidator":138,"./mapObject":222,"_process":21}],121:[function(require,module,exports){
+},{"./ReactElement":144,"./ReactElementValidator":145,"./mapObject":229,"_process":19}],128:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -24309,7 +27957,7 @@ var ReactDOMButton = ReactClass.createClass({
 
 module.exports = ReactDOMButton;
 
-},{"./AutoFocusMixin":81,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137,"./keyMirror":220}],122:[function(require,module,exports){
+},{"./AutoFocusMixin":88,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144,"./keyMirror":227}],129:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -24819,7 +28467,7 @@ ReactDOMComponent.injection = {
 module.exports = ReactDOMComponent;
 
 }).call(this,require('_process'))
-},{"./CSSPropertyOperations":84,"./DOMProperty":89,"./DOMPropertyOperations":90,"./Object.assign":106,"./ReactBrowserEventEmitter":110,"./ReactComponentBrowserEnvironment":115,"./ReactMount":150,"./ReactMultiChild":151,"./ReactPerf":155,"./escapeTextContentForBrowser":196,"./invariant":215,"./isEventSupported":216,"./keyOf":221,"./warning":234,"_process":21}],123:[function(require,module,exports){
+},{"./CSSPropertyOperations":91,"./DOMProperty":96,"./DOMPropertyOperations":97,"./Object.assign":113,"./ReactBrowserEventEmitter":117,"./ReactComponentBrowserEnvironment":122,"./ReactMount":157,"./ReactMultiChild":158,"./ReactPerf":162,"./escapeTextContentForBrowser":203,"./invariant":222,"./isEventSupported":223,"./keyOf":228,"./warning":241,"_process":19}],130:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -24868,7 +28516,7 @@ var ReactDOMForm = ReactClass.createClass({
 
 module.exports = ReactDOMForm;
 
-},{"./EventConstants":94,"./LocalEventTrapMixin":104,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137}],124:[function(require,module,exports){
+},{"./EventConstants":101,"./LocalEventTrapMixin":111,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144}],131:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25036,7 +28684,7 @@ ReactPerf.measureMethods(ReactDOMIDOperations, 'ReactDOMIDOperations', {
 module.exports = ReactDOMIDOperations;
 
 }).call(this,require('_process'))
-},{"./CSSPropertyOperations":84,"./DOMChildrenOperations":88,"./DOMPropertyOperations":90,"./ReactMount":150,"./ReactPerf":155,"./invariant":215,"./setInnerHTML":228,"_process":21}],125:[function(require,module,exports){
+},{"./CSSPropertyOperations":91,"./DOMChildrenOperations":95,"./DOMPropertyOperations":97,"./ReactMount":157,"./ReactPerf":162,"./invariant":222,"./setInnerHTML":235,"_process":19}],132:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25081,7 +28729,7 @@ var ReactDOMIframe = ReactClass.createClass({
 
 module.exports = ReactDOMIframe;
 
-},{"./EventConstants":94,"./LocalEventTrapMixin":104,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137}],126:[function(require,module,exports){
+},{"./EventConstants":101,"./LocalEventTrapMixin":111,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144}],133:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25127,7 +28775,7 @@ var ReactDOMImg = ReactClass.createClass({
 
 module.exports = ReactDOMImg;
 
-},{"./EventConstants":94,"./LocalEventTrapMixin":104,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137}],127:[function(require,module,exports){
+},{"./EventConstants":101,"./LocalEventTrapMixin":111,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144}],134:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25304,7 +28952,7 @@ var ReactDOMInput = ReactClass.createClass({
 module.exports = ReactDOMInput;
 
 }).call(this,require('_process'))
-},{"./AutoFocusMixin":81,"./DOMPropertyOperations":90,"./LinkedValueUtils":103,"./Object.assign":106,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137,"./ReactMount":150,"./ReactUpdates":167,"./invariant":215,"_process":21}],128:[function(require,module,exports){
+},{"./AutoFocusMixin":88,"./DOMPropertyOperations":97,"./LinkedValueUtils":110,"./Object.assign":113,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144,"./ReactMount":157,"./ReactUpdates":174,"./invariant":222,"_process":19}],135:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -25356,7 +29004,7 @@ var ReactDOMOption = ReactClass.createClass({
 module.exports = ReactDOMOption;
 
 }).call(this,require('_process'))
-},{"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137,"./warning":234,"_process":21}],129:[function(require,module,exports){
+},{"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144,"./warning":241,"_process":19}],136:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25534,7 +29182,7 @@ var ReactDOMSelect = ReactClass.createClass({
 
 module.exports = ReactDOMSelect;
 
-},{"./AutoFocusMixin":81,"./LinkedValueUtils":103,"./Object.assign":106,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137,"./ReactUpdates":167}],130:[function(require,module,exports){
+},{"./AutoFocusMixin":88,"./LinkedValueUtils":110,"./Object.assign":113,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144,"./ReactUpdates":174}],137:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25747,7 +29395,7 @@ var ReactDOMSelection = {
 
 module.exports = ReactDOMSelection;
 
-},{"./ExecutionEnvironment":100,"./getNodeForCharacterOffset":208,"./getTextContentAccessor":210}],131:[function(require,module,exports){
+},{"./ExecutionEnvironment":107,"./getNodeForCharacterOffset":215,"./getTextContentAccessor":217}],138:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -25864,7 +29512,7 @@ assign(ReactDOMTextComponent.prototype, {
 
 module.exports = ReactDOMTextComponent;
 
-},{"./DOMPropertyOperations":90,"./Object.assign":106,"./ReactComponentBrowserEnvironment":115,"./ReactDOMComponent":122,"./escapeTextContentForBrowser":196}],132:[function(require,module,exports){
+},{"./DOMPropertyOperations":97,"./Object.assign":113,"./ReactComponentBrowserEnvironment":122,"./ReactDOMComponent":129,"./escapeTextContentForBrowser":203}],139:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -26004,7 +29652,7 @@ var ReactDOMTextarea = ReactClass.createClass({
 module.exports = ReactDOMTextarea;
 
 }).call(this,require('_process'))
-},{"./AutoFocusMixin":81,"./DOMPropertyOperations":90,"./LinkedValueUtils":103,"./Object.assign":106,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactElement":137,"./ReactUpdates":167,"./invariant":215,"./warning":234,"_process":21}],133:[function(require,module,exports){
+},{"./AutoFocusMixin":88,"./DOMPropertyOperations":97,"./LinkedValueUtils":110,"./Object.assign":113,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactElement":144,"./ReactUpdates":174,"./invariant":222,"./warning":241,"_process":19}],140:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -26077,7 +29725,7 @@ var ReactDefaultBatchingStrategy = {
 
 module.exports = ReactDefaultBatchingStrategy;
 
-},{"./Object.assign":106,"./ReactUpdates":167,"./Transaction":183,"./emptyFunction":194}],134:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactUpdates":174,"./Transaction":190,"./emptyFunction":201}],141:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -26236,7 +29884,7 @@ module.exports = {
 };
 
 }).call(this,require('_process'))
-},{"./BeforeInputEventPlugin":82,"./ChangeEventPlugin":86,"./ClientReactRootIndex":87,"./DefaultEventPluginOrder":92,"./EnterLeaveEventPlugin":93,"./ExecutionEnvironment":100,"./HTMLDOMPropertyConfig":102,"./MobileSafariClickEventPlugin":105,"./ReactBrowserComponentMixin":109,"./ReactClass":113,"./ReactComponentBrowserEnvironment":115,"./ReactDOMButton":121,"./ReactDOMComponent":122,"./ReactDOMForm":123,"./ReactDOMIDOperations":124,"./ReactDOMIframe":125,"./ReactDOMImg":126,"./ReactDOMInput":127,"./ReactDOMOption":128,"./ReactDOMSelect":129,"./ReactDOMTextComponent":131,"./ReactDOMTextarea":132,"./ReactDefaultBatchingStrategy":133,"./ReactDefaultPerf":135,"./ReactElement":137,"./ReactEventListener":142,"./ReactInjection":144,"./ReactInstanceHandles":146,"./ReactMount":150,"./ReactReconcileTransaction":160,"./SVGDOMPropertyConfig":168,"./SelectEventPlugin":169,"./ServerReactRootIndex":170,"./SimpleEventPlugin":171,"./createFullPageComponent":191,"_process":21}],135:[function(require,module,exports){
+},{"./BeforeInputEventPlugin":89,"./ChangeEventPlugin":93,"./ClientReactRootIndex":94,"./DefaultEventPluginOrder":99,"./EnterLeaveEventPlugin":100,"./ExecutionEnvironment":107,"./HTMLDOMPropertyConfig":109,"./MobileSafariClickEventPlugin":112,"./ReactBrowserComponentMixin":116,"./ReactClass":120,"./ReactComponentBrowserEnvironment":122,"./ReactDOMButton":128,"./ReactDOMComponent":129,"./ReactDOMForm":130,"./ReactDOMIDOperations":131,"./ReactDOMIframe":132,"./ReactDOMImg":133,"./ReactDOMInput":134,"./ReactDOMOption":135,"./ReactDOMSelect":136,"./ReactDOMTextComponent":138,"./ReactDOMTextarea":139,"./ReactDefaultBatchingStrategy":140,"./ReactDefaultPerf":142,"./ReactElement":144,"./ReactEventListener":149,"./ReactInjection":151,"./ReactInstanceHandles":153,"./ReactMount":157,"./ReactReconcileTransaction":167,"./SVGDOMPropertyConfig":175,"./SelectEventPlugin":176,"./ServerReactRootIndex":177,"./SimpleEventPlugin":178,"./createFullPageComponent":198,"_process":19}],142:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -26502,7 +30150,7 @@ var ReactDefaultPerf = {
 
 module.exports = ReactDefaultPerf;
 
-},{"./DOMProperty":89,"./ReactDefaultPerfAnalysis":136,"./ReactMount":150,"./ReactPerf":155,"./performanceNow":226}],136:[function(require,module,exports){
+},{"./DOMProperty":96,"./ReactDefaultPerfAnalysis":143,"./ReactMount":157,"./ReactPerf":162,"./performanceNow":233}],143:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -26708,7 +30356,7 @@ var ReactDefaultPerfAnalysis = {
 
 module.exports = ReactDefaultPerfAnalysis;
 
-},{"./Object.assign":106}],137:[function(require,module,exports){
+},{"./Object.assign":113}],144:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -27016,7 +30664,7 @@ ReactElement.isValidElement = function(object) {
 module.exports = ReactElement;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./ReactContext":118,"./ReactCurrentOwner":119,"./warning":234,"_process":21}],138:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactContext":125,"./ReactCurrentOwner":126,"./warning":241,"_process":19}],145:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -27481,7 +31129,7 @@ var ReactElementValidator = {
 module.exports = ReactElementValidator;
 
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":119,"./ReactElement":137,"./ReactFragment":143,"./ReactNativeComponent":153,"./ReactPropTypeLocationNames":156,"./ReactPropTypeLocations":157,"./getIteratorFn":206,"./invariant":215,"./warning":234,"_process":21}],139:[function(require,module,exports){
+},{"./ReactCurrentOwner":126,"./ReactElement":144,"./ReactFragment":150,"./ReactNativeComponent":160,"./ReactPropTypeLocationNames":163,"./ReactPropTypeLocations":164,"./getIteratorFn":213,"./invariant":222,"./warning":241,"_process":19}],146:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -27576,7 +31224,7 @@ var ReactEmptyComponent = {
 module.exports = ReactEmptyComponent;
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./ReactInstanceMap":147,"./invariant":215,"_process":21}],140:[function(require,module,exports){
+},{"./ReactElement":144,"./ReactInstanceMap":154,"./invariant":222,"_process":19}],147:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27608,7 +31256,7 @@ var ReactErrorUtils = {
 
 module.exports = ReactErrorUtils;
 
-},{}],141:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27658,7 +31306,7 @@ var ReactEventEmitterMixin = {
 
 module.exports = ReactEventEmitterMixin;
 
-},{"./EventPluginHub":96}],142:[function(require,module,exports){
+},{"./EventPluginHub":103}],149:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -27841,7 +31489,7 @@ var ReactEventListener = {
 
 module.exports = ReactEventListener;
 
-},{"./EventListener":95,"./ExecutionEnvironment":100,"./Object.assign":106,"./PooledClass":107,"./ReactInstanceHandles":146,"./ReactMount":150,"./ReactUpdates":167,"./getEventTarget":205,"./getUnboundedScrollPosition":211}],143:[function(require,module,exports){
+},{"./EventListener":102,"./ExecutionEnvironment":107,"./Object.assign":113,"./PooledClass":114,"./ReactInstanceHandles":153,"./ReactMount":157,"./ReactUpdates":174,"./getEventTarget":212,"./getUnboundedScrollPosition":218}],150:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -28026,7 +31674,7 @@ var ReactFragment = {
 module.exports = ReactFragment;
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./warning":234,"_process":21}],144:[function(require,module,exports){
+},{"./ReactElement":144,"./warning":241,"_process":19}],151:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28068,7 +31716,7 @@ var ReactInjection = {
 
 module.exports = ReactInjection;
 
-},{"./DOMProperty":89,"./EventPluginHub":96,"./ReactBrowserEventEmitter":110,"./ReactClass":113,"./ReactComponentEnvironment":116,"./ReactDOMComponent":122,"./ReactEmptyComponent":139,"./ReactNativeComponent":153,"./ReactPerf":155,"./ReactRootIndex":163,"./ReactUpdates":167}],145:[function(require,module,exports){
+},{"./DOMProperty":96,"./EventPluginHub":103,"./ReactBrowserEventEmitter":117,"./ReactClass":120,"./ReactComponentEnvironment":123,"./ReactDOMComponent":129,"./ReactEmptyComponent":146,"./ReactNativeComponent":160,"./ReactPerf":162,"./ReactRootIndex":170,"./ReactUpdates":174}],152:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28203,7 +31851,7 @@ var ReactInputSelection = {
 
 module.exports = ReactInputSelection;
 
-},{"./ReactDOMSelection":130,"./containsNode":189,"./focusNode":199,"./getActiveElement":201}],146:[function(require,module,exports){
+},{"./ReactDOMSelection":137,"./containsNode":196,"./focusNode":206,"./getActiveElement":208}],153:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -28539,7 +32187,7 @@ var ReactInstanceHandles = {
 module.exports = ReactInstanceHandles;
 
 }).call(this,require('_process'))
-},{"./ReactRootIndex":163,"./invariant":215,"_process":21}],147:[function(require,module,exports){
+},{"./ReactRootIndex":170,"./invariant":222,"_process":19}],154:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28588,7 +32236,7 @@ var ReactInstanceMap = {
 
 module.exports = ReactInstanceMap;
 
-},{}],148:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 /**
  * Copyright 2015, Facebook, Inc.
  * All rights reserved.
@@ -28625,7 +32273,7 @@ var ReactLifeCycle = {
 
 module.exports = ReactLifeCycle;
 
-},{}],149:[function(require,module,exports){
+},{}],156:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -28673,7 +32321,7 @@ var ReactMarkupChecksum = {
 
 module.exports = ReactMarkupChecksum;
 
-},{"./adler32":186}],150:[function(require,module,exports){
+},{"./adler32":193}],157:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -29564,7 +33212,7 @@ ReactPerf.measureMethods(ReactMount, 'ReactMount', {
 module.exports = ReactMount;
 
 }).call(this,require('_process'))
-},{"./DOMProperty":89,"./ReactBrowserEventEmitter":110,"./ReactCurrentOwner":119,"./ReactElement":137,"./ReactElementValidator":138,"./ReactEmptyComponent":139,"./ReactInstanceHandles":146,"./ReactInstanceMap":147,"./ReactMarkupChecksum":149,"./ReactPerf":155,"./ReactReconciler":161,"./ReactUpdateQueue":166,"./ReactUpdates":167,"./containsNode":189,"./emptyObject":195,"./getReactRootElementInContainer":209,"./instantiateReactComponent":214,"./invariant":215,"./setInnerHTML":228,"./shouldUpdateReactComponent":231,"./warning":234,"_process":21}],151:[function(require,module,exports){
+},{"./DOMProperty":96,"./ReactBrowserEventEmitter":117,"./ReactCurrentOwner":126,"./ReactElement":144,"./ReactElementValidator":145,"./ReactEmptyComponent":146,"./ReactInstanceHandles":153,"./ReactInstanceMap":154,"./ReactMarkupChecksum":156,"./ReactPerf":162,"./ReactReconciler":168,"./ReactUpdateQueue":173,"./ReactUpdates":174,"./containsNode":196,"./emptyObject":202,"./getReactRootElementInContainer":216,"./instantiateReactComponent":221,"./invariant":222,"./setInnerHTML":235,"./shouldUpdateReactComponent":238,"./warning":241,"_process":19}],158:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -29994,7 +33642,7 @@ var ReactMultiChild = {
 
 module.exports = ReactMultiChild;
 
-},{"./ReactChildReconciler":111,"./ReactComponentEnvironment":116,"./ReactMultiChildUpdateTypes":152,"./ReactReconciler":161}],152:[function(require,module,exports){
+},{"./ReactChildReconciler":118,"./ReactComponentEnvironment":123,"./ReactMultiChildUpdateTypes":159,"./ReactReconciler":168}],159:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30027,7 +33675,7 @@ var ReactMultiChildUpdateTypes = keyMirror({
 
 module.exports = ReactMultiChildUpdateTypes;
 
-},{"./keyMirror":220}],153:[function(require,module,exports){
+},{"./keyMirror":227}],160:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -30134,7 +33782,7 @@ var ReactNativeComponent = {
 module.exports = ReactNativeComponent;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./invariant":215,"_process":21}],154:[function(require,module,exports){
+},{"./Object.assign":113,"./invariant":222,"_process":19}],161:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -30246,7 +33894,7 @@ var ReactOwner = {
 module.exports = ReactOwner;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],155:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],162:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -30350,7 +33998,7 @@ function _noMeasure(objName, fnName, func) {
 module.exports = ReactPerf;
 
 }).call(this,require('_process'))
-},{"_process":21}],156:[function(require,module,exports){
+},{"_process":19}],163:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -30378,7 +34026,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = ReactPropTypeLocationNames;
 
 }).call(this,require('_process'))
-},{"_process":21}],157:[function(require,module,exports){
+},{"_process":19}],164:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30402,7 +34050,7 @@ var ReactPropTypeLocations = keyMirror({
 
 module.exports = ReactPropTypeLocations;
 
-},{"./keyMirror":220}],158:[function(require,module,exports){
+},{"./keyMirror":227}],165:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30751,7 +34399,7 @@ function getPreciseType(propValue) {
 
 module.exports = ReactPropTypes;
 
-},{"./ReactElement":137,"./ReactFragment":143,"./ReactPropTypeLocationNames":156,"./emptyFunction":194}],159:[function(require,module,exports){
+},{"./ReactElement":144,"./ReactFragment":150,"./ReactPropTypeLocationNames":163,"./emptyFunction":201}],166:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30807,7 +34455,7 @@ PooledClass.addPoolingTo(ReactPutListenerQueue);
 
 module.exports = ReactPutListenerQueue;
 
-},{"./Object.assign":106,"./PooledClass":107,"./ReactBrowserEventEmitter":110}],160:[function(require,module,exports){
+},{"./Object.assign":113,"./PooledClass":114,"./ReactBrowserEventEmitter":117}],167:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -30983,7 +34631,7 @@ PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 module.exports = ReactReconcileTransaction;
 
-},{"./CallbackQueue":85,"./Object.assign":106,"./PooledClass":107,"./ReactBrowserEventEmitter":110,"./ReactInputSelection":145,"./ReactPutListenerQueue":159,"./Transaction":183}],161:[function(require,module,exports){
+},{"./CallbackQueue":92,"./Object.assign":113,"./PooledClass":114,"./ReactBrowserEventEmitter":117,"./ReactInputSelection":152,"./ReactPutListenerQueue":166,"./Transaction":190}],168:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31107,7 +34755,7 @@ var ReactReconciler = {
 module.exports = ReactReconciler;
 
 }).call(this,require('_process'))
-},{"./ReactElementValidator":138,"./ReactRef":162,"_process":21}],162:[function(require,module,exports){
+},{"./ReactElementValidator":145,"./ReactRef":169,"_process":19}],169:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -31178,7 +34826,7 @@ ReactRef.detachRefs = function(instance, element) {
 
 module.exports = ReactRef;
 
-},{"./ReactOwner":154}],163:[function(require,module,exports){
+},{"./ReactOwner":161}],170:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -31209,7 +34857,7 @@ var ReactRootIndex = {
 
 module.exports = ReactRootIndex;
 
-},{}],164:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31291,7 +34939,7 @@ module.exports = {
 };
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./ReactInstanceHandles":146,"./ReactMarkupChecksum":149,"./ReactServerRenderingTransaction":165,"./emptyObject":195,"./instantiateReactComponent":214,"./invariant":215,"_process":21}],165:[function(require,module,exports){
+},{"./ReactElement":144,"./ReactInstanceHandles":153,"./ReactMarkupChecksum":156,"./ReactServerRenderingTransaction":172,"./emptyObject":202,"./instantiateReactComponent":221,"./invariant":222,"_process":19}],172:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -31404,7 +35052,7 @@ PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 module.exports = ReactServerRenderingTransaction;
 
-},{"./CallbackQueue":85,"./Object.assign":106,"./PooledClass":107,"./ReactPutListenerQueue":159,"./Transaction":183,"./emptyFunction":194}],166:[function(require,module,exports){
+},{"./CallbackQueue":92,"./Object.assign":113,"./PooledClass":114,"./ReactPutListenerQueue":166,"./Transaction":190,"./emptyFunction":201}],173:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2015, Facebook, Inc.
@@ -31703,7 +35351,7 @@ var ReactUpdateQueue = {
 module.exports = ReactUpdateQueue;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./ReactCurrentOwner":119,"./ReactElement":137,"./ReactInstanceMap":147,"./ReactLifeCycle":148,"./ReactUpdates":167,"./invariant":215,"./warning":234,"_process":21}],167:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactCurrentOwner":126,"./ReactElement":144,"./ReactInstanceMap":154,"./ReactLifeCycle":155,"./ReactUpdates":174,"./invariant":222,"./warning":241,"_process":19}],174:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -31985,7 +35633,7 @@ var ReactUpdates = {
 module.exports = ReactUpdates;
 
 }).call(this,require('_process'))
-},{"./CallbackQueue":85,"./Object.assign":106,"./PooledClass":107,"./ReactCurrentOwner":119,"./ReactPerf":155,"./ReactReconciler":161,"./Transaction":183,"./invariant":215,"./warning":234,"_process":21}],168:[function(require,module,exports){
+},{"./CallbackQueue":92,"./Object.assign":113,"./PooledClass":114,"./ReactCurrentOwner":126,"./ReactPerf":162,"./ReactReconciler":168,"./Transaction":190,"./invariant":222,"./warning":241,"_process":19}],175:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32079,7 +35727,7 @@ var SVGDOMPropertyConfig = {
 
 module.exports = SVGDOMPropertyConfig;
 
-},{"./DOMProperty":89}],169:[function(require,module,exports){
+},{"./DOMProperty":96}],176:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32274,7 +35922,7 @@ var SelectEventPlugin = {
 
 module.exports = SelectEventPlugin;
 
-},{"./EventConstants":94,"./EventPropagators":99,"./ReactInputSelection":145,"./SyntheticEvent":175,"./getActiveElement":201,"./isTextInputElement":218,"./keyOf":221,"./shallowEqual":230}],170:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPropagators":106,"./ReactInputSelection":152,"./SyntheticEvent":182,"./getActiveElement":208,"./isTextInputElement":225,"./keyOf":228,"./shallowEqual":237}],177:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32305,7 +35953,7 @@ var ServerReactRootIndex = {
 
 module.exports = ServerReactRootIndex;
 
-},{}],171:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -32733,7 +36381,7 @@ var SimpleEventPlugin = {
 module.exports = SimpleEventPlugin;
 
 }).call(this,require('_process'))
-},{"./EventConstants":94,"./EventPluginUtils":98,"./EventPropagators":99,"./SyntheticClipboardEvent":172,"./SyntheticDragEvent":174,"./SyntheticEvent":175,"./SyntheticFocusEvent":176,"./SyntheticKeyboardEvent":178,"./SyntheticMouseEvent":179,"./SyntheticTouchEvent":180,"./SyntheticUIEvent":181,"./SyntheticWheelEvent":182,"./getEventCharCode":202,"./invariant":215,"./keyOf":221,"./warning":234,"_process":21}],172:[function(require,module,exports){
+},{"./EventConstants":101,"./EventPluginUtils":105,"./EventPropagators":106,"./SyntheticClipboardEvent":179,"./SyntheticDragEvent":181,"./SyntheticEvent":182,"./SyntheticFocusEvent":183,"./SyntheticKeyboardEvent":185,"./SyntheticMouseEvent":186,"./SyntheticTouchEvent":187,"./SyntheticUIEvent":188,"./SyntheticWheelEvent":189,"./getEventCharCode":209,"./invariant":222,"./keyOf":228,"./warning":241,"_process":19}],179:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32778,7 +36426,7 @@ SyntheticEvent.augmentClass(SyntheticClipboardEvent, ClipboardEventInterface);
 
 module.exports = SyntheticClipboardEvent;
 
-},{"./SyntheticEvent":175}],173:[function(require,module,exports){
+},{"./SyntheticEvent":182}],180:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32823,7 +36471,7 @@ SyntheticEvent.augmentClass(
 
 module.exports = SyntheticCompositionEvent;
 
-},{"./SyntheticEvent":175}],174:[function(require,module,exports){
+},{"./SyntheticEvent":182}],181:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -32862,7 +36510,7 @@ SyntheticMouseEvent.augmentClass(SyntheticDragEvent, DragEventInterface);
 
 module.exports = SyntheticDragEvent;
 
-},{"./SyntheticMouseEvent":179}],175:[function(require,module,exports){
+},{"./SyntheticMouseEvent":186}],182:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33028,7 +36676,7 @@ PooledClass.addPoolingTo(SyntheticEvent, PooledClass.threeArgumentPooler);
 
 module.exports = SyntheticEvent;
 
-},{"./Object.assign":106,"./PooledClass":107,"./emptyFunction":194,"./getEventTarget":205}],176:[function(require,module,exports){
+},{"./Object.assign":113,"./PooledClass":114,"./emptyFunction":201,"./getEventTarget":212}],183:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33067,7 +36715,7 @@ SyntheticUIEvent.augmentClass(SyntheticFocusEvent, FocusEventInterface);
 
 module.exports = SyntheticFocusEvent;
 
-},{"./SyntheticUIEvent":181}],177:[function(require,module,exports){
+},{"./SyntheticUIEvent":188}],184:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33113,7 +36761,7 @@ SyntheticEvent.augmentClass(
 
 module.exports = SyntheticInputEvent;
 
-},{"./SyntheticEvent":175}],178:[function(require,module,exports){
+},{"./SyntheticEvent":182}],185:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33200,7 +36848,7 @@ SyntheticUIEvent.augmentClass(SyntheticKeyboardEvent, KeyboardEventInterface);
 
 module.exports = SyntheticKeyboardEvent;
 
-},{"./SyntheticUIEvent":181,"./getEventCharCode":202,"./getEventKey":203,"./getEventModifierState":204}],179:[function(require,module,exports){
+},{"./SyntheticUIEvent":188,"./getEventCharCode":209,"./getEventKey":210,"./getEventModifierState":211}],186:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33281,7 +36929,7 @@ SyntheticUIEvent.augmentClass(SyntheticMouseEvent, MouseEventInterface);
 
 module.exports = SyntheticMouseEvent;
 
-},{"./SyntheticUIEvent":181,"./ViewportMetrics":184,"./getEventModifierState":204}],180:[function(require,module,exports){
+},{"./SyntheticUIEvent":188,"./ViewportMetrics":191,"./getEventModifierState":211}],187:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33329,7 +36977,7 @@ SyntheticUIEvent.augmentClass(SyntheticTouchEvent, TouchEventInterface);
 
 module.exports = SyntheticTouchEvent;
 
-},{"./SyntheticUIEvent":181,"./getEventModifierState":204}],181:[function(require,module,exports){
+},{"./SyntheticUIEvent":188,"./getEventModifierState":211}],188:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33391,7 +37039,7 @@ SyntheticEvent.augmentClass(SyntheticUIEvent, UIEventInterface);
 
 module.exports = SyntheticUIEvent;
 
-},{"./SyntheticEvent":175,"./getEventTarget":205}],182:[function(require,module,exports){
+},{"./SyntheticEvent":182,"./getEventTarget":212}],189:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33452,7 +37100,7 @@ SyntheticMouseEvent.augmentClass(SyntheticWheelEvent, WheelEventInterface);
 
 module.exports = SyntheticWheelEvent;
 
-},{"./SyntheticMouseEvent":179}],183:[function(require,module,exports){
+},{"./SyntheticMouseEvent":186}],190:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -33693,7 +37341,7 @@ var Transaction = {
 module.exports = Transaction;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],184:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],191:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33722,7 +37370,7 @@ var ViewportMetrics = {
 
 module.exports = ViewportMetrics;
 
-},{}],185:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -33788,7 +37436,7 @@ function accumulateInto(current, next) {
 module.exports = accumulateInto;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],186:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],193:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33822,7 +37470,7 @@ function adler32(data) {
 
 module.exports = adler32;
 
-},{}],187:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33854,7 +37502,7 @@ function camelize(string) {
 
 module.exports = camelize;
 
-},{}],188:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -33896,7 +37544,7 @@ function camelizeStyleName(string) {
 
 module.exports = camelizeStyleName;
 
-},{"./camelize":187}],189:[function(require,module,exports){
+},{"./camelize":194}],196:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -33940,7 +37588,7 @@ function containsNode(outerNode, innerNode) {
 
 module.exports = containsNode;
 
-},{"./isTextNode":219}],190:[function(require,module,exports){
+},{"./isTextNode":226}],197:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34026,7 +37674,7 @@ function createArrayFromMixed(obj) {
 
 module.exports = createArrayFromMixed;
 
-},{"./toArray":232}],191:[function(require,module,exports){
+},{"./toArray":239}],198:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34088,7 +37736,7 @@ function createFullPageComponent(tag) {
 module.exports = createFullPageComponent;
 
 }).call(this,require('_process'))
-},{"./ReactClass":113,"./ReactElement":137,"./invariant":215,"_process":21}],192:[function(require,module,exports){
+},{"./ReactClass":120,"./ReactElement":144,"./invariant":222,"_process":19}],199:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34178,7 +37826,7 @@ function createNodesFromMarkup(markup, handleScript) {
 module.exports = createNodesFromMarkup;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":100,"./createArrayFromMixed":190,"./getMarkupWrap":207,"./invariant":215,"_process":21}],193:[function(require,module,exports){
+},{"./ExecutionEnvironment":107,"./createArrayFromMixed":197,"./getMarkupWrap":214,"./invariant":222,"_process":19}],200:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34236,7 +37884,7 @@ function dangerousStyleValue(name, value) {
 
 module.exports = dangerousStyleValue;
 
-},{"./CSSProperty":83}],194:[function(require,module,exports){
+},{"./CSSProperty":90}],201:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34270,7 +37918,7 @@ emptyFunction.thatReturnsArgument = function(arg) { return arg; };
 
 module.exports = emptyFunction;
 
-},{}],195:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34294,7 +37942,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = emptyObject;
 
 }).call(this,require('_process'))
-},{"_process":21}],196:[function(require,module,exports){
+},{"_process":19}],203:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34334,7 +37982,7 @@ function escapeTextContentForBrowser(text) {
 
 module.exports = escapeTextContentForBrowser;
 
-},{}],197:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34407,7 +38055,7 @@ function findDOMNode(componentOrElement) {
 module.exports = findDOMNode;
 
 }).call(this,require('_process'))
-},{"./ReactCurrentOwner":119,"./ReactInstanceMap":147,"./ReactMount":150,"./invariant":215,"./isNode":217,"./warning":234,"_process":21}],198:[function(require,module,exports){
+},{"./ReactCurrentOwner":126,"./ReactInstanceMap":154,"./ReactMount":157,"./invariant":222,"./isNode":224,"./warning":241,"_process":19}],205:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34465,7 +38113,7 @@ function flattenChildren(children) {
 module.exports = flattenChildren;
 
 }).call(this,require('_process'))
-},{"./traverseAllChildren":233,"./warning":234,"_process":21}],199:[function(require,module,exports){
+},{"./traverseAllChildren":240,"./warning":241,"_process":19}],206:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -34494,7 +38142,7 @@ function focusNode(node) {
 
 module.exports = focusNode;
 
-},{}],200:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34525,7 +38173,7 @@ var forEachAccumulated = function(arr, cb, scope) {
 
 module.exports = forEachAccumulated;
 
-},{}],201:[function(require,module,exports){
+},{}],208:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34554,7 +38202,7 @@ function getActiveElement() /*?DOMElement*/ {
 
 module.exports = getActiveElement;
 
-},{}],202:[function(require,module,exports){
+},{}],209:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34606,7 +38254,7 @@ function getEventCharCode(nativeEvent) {
 
 module.exports = getEventCharCode;
 
-},{}],203:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34711,7 +38359,7 @@ function getEventKey(nativeEvent) {
 
 module.exports = getEventKey;
 
-},{"./getEventCharCode":202}],204:[function(require,module,exports){
+},{"./getEventCharCode":209}],211:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34758,7 +38406,7 @@ function getEventModifierState(nativeEvent) {
 
 module.exports = getEventModifierState;
 
-},{}],205:[function(require,module,exports){
+},{}],212:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34789,7 +38437,7 @@ function getEventTarget(nativeEvent) {
 
 module.exports = getEventTarget;
 
-},{}],206:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -34833,7 +38481,7 @@ function getIteratorFn(maybeIterable) {
 
 module.exports = getIteratorFn;
 
-},{}],207:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -34952,7 +38600,7 @@ function getMarkupWrap(nodeName) {
 module.exports = getMarkupWrap;
 
 }).call(this,require('_process'))
-},{"./ExecutionEnvironment":100,"./invariant":215,"_process":21}],208:[function(require,module,exports){
+},{"./ExecutionEnvironment":107,"./invariant":222,"_process":19}],215:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35027,7 +38675,7 @@ function getNodeForCharacterOffset(root, offset) {
 
 module.exports = getNodeForCharacterOffset;
 
-},{}],209:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35062,7 +38710,7 @@ function getReactRootElementInContainer(container) {
 
 module.exports = getReactRootElementInContainer;
 
-},{}],210:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35099,7 +38747,7 @@ function getTextContentAccessor() {
 
 module.exports = getTextContentAccessor;
 
-},{"./ExecutionEnvironment":100}],211:[function(require,module,exports){
+},{"./ExecutionEnvironment":107}],218:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35139,7 +38787,7 @@ function getUnboundedScrollPosition(scrollable) {
 
 module.exports = getUnboundedScrollPosition;
 
-},{}],212:[function(require,module,exports){
+},{}],219:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35172,7 +38820,7 @@ function hyphenate(string) {
 
 module.exports = hyphenate;
 
-},{}],213:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35213,7 +38861,7 @@ function hyphenateStyleName(string) {
 
 module.exports = hyphenateStyleName;
 
-},{"./hyphenate":212}],214:[function(require,module,exports){
+},{"./hyphenate":219}],221:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35351,7 +38999,7 @@ function instantiateReactComponent(node, parentCompositeType) {
 module.exports = instantiateReactComponent;
 
 }).call(this,require('_process'))
-},{"./Object.assign":106,"./ReactCompositeComponent":117,"./ReactEmptyComponent":139,"./ReactNativeComponent":153,"./invariant":215,"./warning":234,"_process":21}],215:[function(require,module,exports){
+},{"./Object.assign":113,"./ReactCompositeComponent":124,"./ReactEmptyComponent":146,"./ReactNativeComponent":160,"./invariant":222,"./warning":241,"_process":19}],222:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35408,7 +39056,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":21}],216:[function(require,module,exports){
+},{"_process":19}],223:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35473,7 +39121,7 @@ function isEventSupported(eventNameSuffix, capture) {
 
 module.exports = isEventSupported;
 
-},{"./ExecutionEnvironment":100}],217:[function(require,module,exports){
+},{"./ExecutionEnvironment":107}],224:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35500,7 +39148,7 @@ function isNode(object) {
 
 module.exports = isNode;
 
-},{}],218:[function(require,module,exports){
+},{}],225:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35543,7 +39191,7 @@ function isTextInputElement(elem) {
 
 module.exports = isTextInputElement;
 
-},{}],219:[function(require,module,exports){
+},{}],226:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35568,7 +39216,7 @@ function isTextNode(object) {
 
 module.exports = isTextNode;
 
-},{"./isNode":217}],220:[function(require,module,exports){
+},{"./isNode":224}],227:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35623,7 +39271,7 @@ var keyMirror = function(obj) {
 module.exports = keyMirror;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],221:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],228:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35659,7 +39307,7 @@ var keyOf = function(oneKeyObj) {
 
 module.exports = keyOf;
 
-},{}],222:[function(require,module,exports){
+},{}],229:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35712,7 +39360,7 @@ function mapObject(object, callback, context) {
 
 module.exports = mapObject;
 
-},{}],223:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35745,7 +39393,7 @@ function memoizeStringOnly(callback) {
 
 module.exports = memoizeStringOnly;
 
-},{}],224:[function(require,module,exports){
+},{}],231:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -35785,7 +39433,7 @@ function onlyChild(children) {
 module.exports = onlyChild;
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./invariant":215,"_process":21}],225:[function(require,module,exports){
+},{"./ReactElement":144,"./invariant":222,"_process":19}],232:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35813,7 +39461,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = performance || {};
 
-},{"./ExecutionEnvironment":100}],226:[function(require,module,exports){
+},{"./ExecutionEnvironment":107}],233:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35841,7 +39489,7 @@ var performanceNow = performance.now.bind(performance);
 
 module.exports = performanceNow;
 
-},{"./performance":225}],227:[function(require,module,exports){
+},{"./performance":232}],234:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35869,7 +39517,7 @@ function quoteAttributeValueForBrowser(value) {
 
 module.exports = quoteAttributeValueForBrowser;
 
-},{"./escapeTextContentForBrowser":196}],228:[function(require,module,exports){
+},{"./escapeTextContentForBrowser":203}],235:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -35958,7 +39606,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = setInnerHTML;
 
-},{"./ExecutionEnvironment":100}],229:[function(require,module,exports){
+},{"./ExecutionEnvironment":107}],236:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36000,7 +39648,7 @@ if (ExecutionEnvironment.canUseDOM) {
 
 module.exports = setTextContent;
 
-},{"./ExecutionEnvironment":100,"./escapeTextContentForBrowser":196,"./setInnerHTML":228}],230:[function(require,module,exports){
+},{"./ExecutionEnvironment":107,"./escapeTextContentForBrowser":203,"./setInnerHTML":235}],237:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
  * All rights reserved.
@@ -36044,7 +39692,7 @@ function shallowEqual(objA, objB) {
 
 module.exports = shallowEqual;
 
-},{}],231:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -36148,7 +39796,7 @@ function shouldUpdateReactComponent(prevElement, nextElement) {
 module.exports = shouldUpdateReactComponent;
 
 }).call(this,require('_process'))
-},{"./warning":234,"_process":21}],232:[function(require,module,exports){
+},{"./warning":241,"_process":19}],239:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -36220,7 +39868,7 @@ function toArray(obj) {
 module.exports = toArray;
 
 }).call(this,require('_process'))
-},{"./invariant":215,"_process":21}],233:[function(require,module,exports){
+},{"./invariant":222,"_process":19}],240:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -36473,7 +40121,7 @@ function traverseAllChildren(children, callback, traverseContext) {
 module.exports = traverseAllChildren;
 
 }).call(this,require('_process'))
-},{"./ReactElement":137,"./ReactFragment":143,"./ReactInstanceHandles":146,"./getIteratorFn":206,"./invariant":215,"./warning":234,"_process":21}],234:[function(require,module,exports){
+},{"./ReactElement":144,"./ReactFragment":150,"./ReactInstanceHandles":153,"./getIteratorFn":213,"./invariant":222,"./warning":241,"_process":19}],241:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2014-2015, Facebook, Inc.
@@ -36536,7 +40184,7 @@ if ("production" !== process.env.NODE_ENV) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"./emptyFunction":194,"_process":21}],235:[function(require,module,exports){
+},{"./emptyFunction":201,"_process":19}],242:[function(require,module,exports){
 module.exports = require('./lib/React');
 
-},{"./lib/React":108}]},{},[19]);
+},{"./lib/React":115}]},{},[17]);

@@ -4,12 +4,10 @@ var ParseReact = require('parse-react');
 
 var CampaignCounter = require('./CampaignCounter.react.js');
 var ClaimsCounter = require('./ClaimsCounter.react.js');
-var DailyProfits = require('./DailyProfits.react.js');
-var WeeklyProfits = require('./WeeklyProfits.react.js');
-var MonthlyProfits = require('./MonthlyProfits.react.js');
 var Unauthorized = require('./Unauthorized.react.js');
 var AverageSales = require('./AverageSales.react.js');
 var TotalSales = require('./TotalSales.react.js');
+var SalesChart = require('./SalesChart.react.js');
 var AnalyticsContainer = React.createClass({
 
   mixins: [ParseReact.Mixin],
@@ -30,6 +28,9 @@ var AnalyticsContainer = React.createClass({
             <ClaimsCounter/>
             <AverageSales/>
             <TotalSales/>
+          </div>
+          <div className="row">
+            <SalesChart/>
           </div>
         </div>
       )
