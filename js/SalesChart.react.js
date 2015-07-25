@@ -42,7 +42,7 @@ var chartOptions = {
     tooltipCaretSize: 8,
     tooltipCornerRadius: 6,
     tooltipXOffset: 10,
-    tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
+    tooltipTemplate: "<%if (label){%><%=label%>: <%}%>$<%= value %>",
     multiTooltipTemplate: "<%= value %>",
     onAnimationProgress: function(){},
     onAnimationComplete: function(){}
