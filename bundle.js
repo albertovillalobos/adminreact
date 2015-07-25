@@ -59,9 +59,23 @@ var CampaignStatus = React.createClass({
   observe: function observe() {
     return {
       user: ParseReact.currentUser,
-      campaigns: new Parse.Query('Campaign').equalTo('merchant', this.user).descending('createdAt')
+      campaigns: new Parse.Query('Campaign').equalTo('merchant', Parse.User.current()).descending('createdAt')
     };
   },
+
+  // componentDidMount() {
+  //   this.refreshQueries;
+  //   var query = new Parse.Query('Campaign').equalTo('merchant',this.data.user).find({
+  //     success: function(result) {
+  //       console.log('found from owner', result.length);
+  //     }
+  //   })
+  //   var query2 = new Parse.Query('Campaign').find({
+  //     success: function(result) {
+  //       console.log('found from all', result.length);
+  //     }
+  //   })
+  // },
 
   _destroy: function _destroy(e) {
     var id = e.target.id.trim();
@@ -75,8 +89,8 @@ var CampaignStatus = React.createClass({
   render: function render() {
 
     var destroyMethod = this._destroy;
-
     var campaignNodes = this.data.campaigns.map(function (campaign) {
+      console.log(campaign.objectId);
 
       return React.createElement(
         'tr',
