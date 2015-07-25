@@ -38,7 +38,7 @@ var SimulationCreator = React.createClass({
         var randomDiscount = Math.random() * randomCampaign.maxDiscount + randomCampaign.initialDiscount;
         console.log('randomDiscount',randomDiscount);
 
-        var randomExpense = Math.random() * minExpense + maxExpense;
+        var randomExpense = (Math.random() * maxExpense) + minExpense;
         console.log('randomExpense',randomExpense);
 
         ParseReact.Mutation.Create('Transaction', {
