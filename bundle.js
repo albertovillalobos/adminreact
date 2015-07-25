@@ -84,7 +84,8 @@ var CampaignStatus = React.createClass({
         React.createElement(
           'td',
           null,
-          campaign.initialDiscount
+          campaign.initialDiscount,
+          '%'
         ),
         React.createElement(
           'td',
@@ -240,7 +241,7 @@ var CouponCreator = React.createClass({
     };
   },
 
-  onSubmit: function onSubmit(e) {
+  _onSubmit: function _onSubmit(e) {
     e.preventDefault();
     var initialDiscount = React.findDOMNode(this.refs.initialDiscount).value.trim();
     var maxDiscount = React.findDOMNode(this.refs.maxDiscount).value.trim();
@@ -284,7 +285,7 @@ var CouponCreator = React.createClass({
           { className: 'panel-body' },
           React.createElement(
             'form',
-            { className: 'form-group', id: 'coupon-creator-form', onSubmit: this.onSubmit },
+            { className: 'form-group', id: 'coupon-creator-form', onSubmit: this._onSubmit },
             React.createElement(
               'label',
               null,
@@ -809,15 +810,120 @@ var SimulationCreator = React.createClass({
 
   observe: function observe() {
     return {
-      user: ParseReact.currentUser
+      user: ParseReact.currentUser,
+      campaigns: new Parse.Query('Campaign').equalTo('merchant', Parse.User.current()).descending('createdAt')
     };
+  },
+
+  _onSubmit: function _onSubmit(e) {
+    // prevent default form submit
+    e.preventDefault();
+
+    // Get values from the input fields
+    var maxExpense = React.findDOMNode(this.refs.maxExpense).value.trim();
+    var minExpense = React.findDOMNode(this.refs.minExpense).value.trim();
+    var simulationsAmount = React.findDOMNode(this.refs.simulationsAmount).value.trim();
+
+    // save this.refs, because inside interval or for loop, this becomes something else
+    var muhRefs = this.refs;
+    if (this.data.campaigns.length > 0) {
+      for (var i = 0; i < simulationsAmount; i++) {
+        // pick a random  campaign from merchant's campaigns
+        var randomCampaign = this.data.campaigns[Math.floor(Math.random() * this.data.campaigns.length)];
+
+        console.log('randomCampaign', randomCampaign);
+
+        // get random percentage between initialDiscount and maxDiscount of the random campaign created
+        var randomDiscount = Math.random() * randomCampaign.maxDiscount + randomCampaign.initialDiscount;
+        console.log('randomDiscount', randomDiscount);
+
+        var randomExpense = Math.random() * minExpense + maxExpense;
+        console.log('randomExpense', randomExpense);
+
+        ParseReact.Mutation.Create('Transaction', {
+          expense: randomExpense,
+          discount: randomDiscount,
+          couponRef: randomCampaign,
+          merchant: this.data.user
+        }).dispatch().then(function () {
+          React.findDOMNode(muhRefs.maxExpense).value = '';
+          React.findDOMNode(muhRefs.minExpense).value = '';
+          React.findDOMNode(muhRefs.simulationsAmount).value = '';
+        });
+      }
+    }
   },
 
   render: function render() {
     return React.createElement(
-      'h1',
-      null,
-      'Welcome creator'
+      'div',
+      { className: 'col-md-6' },
+      React.createElement(
+        'div',
+        { className: 'panel panel-default' },
+        React.createElement(
+          'div',
+          { className: 'panel-heading text-center' },
+          'Start a simulation'
+        ),
+        React.createElement(
+          'div',
+          { className: 'panel-body' },
+          React.createElement(
+            'form',
+            { className: 'form-group', id: 'coupon-creator-form', onSubmit: this._onSubmit },
+            React.createElement(
+              'div',
+              { className: 'input-group ' },
+              React.createElement('input', {
+                type: 'number',
+                ref: 'minExpense',
+                className: 'form-control',
+                placeholder: 'Minimum expense?',
+                min: 1, max: 100, required: true }),
+              React.createElement(
+                'div',
+                { className: 'input-group-addon' },
+                '$'
+              )
+            ),
+            React.createElement('br', null),
+            React.createElement(
+              'div',
+              { className: 'input-group ' },
+              React.createElement('input', {
+                type: 'number',
+                ref: 'maxExpense',
+                className: 'form-control',
+                placeholder: 'Maximum expense',
+                min: 1,
+                max: 100, required: true }),
+              React.createElement(
+                'div',
+                { className: 'input-group-addon' },
+                '$'
+              )
+            ),
+            React.createElement('br', null),
+            React.createElement(
+              'div',
+              { className: 'input-group ' },
+              React.createElement('input', { type: 'number', ref: 'simulationsAmount', className: 'form-control', placeholder: 'How many simulations?', min: 1, max: 100, required: true }),
+              React.createElement(
+                'div',
+                { className: 'input-group-addon' },
+                'Simulated Transactions'
+              )
+            ),
+            React.createElement('br', null),
+            React.createElement(
+              'button',
+              { type: 'Update', className: 'btn btn-default' },
+              'Submit'
+            )
+          )
+        )
+      )
     );
   }
 
@@ -833,6 +939,7 @@ var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
 var Unauthorized = require('./Unauthorized.react.js');
 var SimulationCreator = require('./SimulationCreator.react.js');
+var CampaignStatus = require('./CampaignStatus.react.js');
 
 var Simulator = React.createClass({
   displayName: 'Simulator',
@@ -853,7 +960,8 @@ var Simulator = React.createClass({
         React.createElement(
           'div',
           { className: 'row' },
-          React.createElement(SimulationCreator, null)
+          React.createElement(SimulationCreator, null),
+          React.createElement(CampaignStatus, null)
         )
       );
     } else {
@@ -865,7 +973,7 @@ var Simulator = React.createClass({
 
 module.exports = Simulator;
 
-},{"./SimulationCreator.react.js":12,"./Unauthorized.react.js":14,"parse":38,"parse-react":19,"react":232}],14:[function(require,module,exports){
+},{"./CampaignStatus.react.js":2,"./SimulationCreator.react.js":12,"./Unauthorized.react.js":14,"parse":38,"parse-react":19,"react":232}],14:[function(require,module,exports){
 "use strict";
 
 var React = require("react");

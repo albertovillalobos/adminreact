@@ -12,7 +12,7 @@ var CouponCreator = React.createClass({
 		};
 	},
 
-  onSubmit(e) {
+  _onSubmit(e) {
     e.preventDefault();
     var initialDiscount = React.findDOMNode(this.refs.initialDiscount).value.trim();
     var maxDiscount = React.findDOMNode(this.refs.maxDiscount).value.trim();
@@ -49,7 +49,7 @@ var CouponCreator = React.createClass({
         <div className="panel panel-default">
           <div className="panel-heading text-center">Start a new Campaign</div>
           <div className="panel-body">
-            <form className="form-group" id="coupon-creator-form" onSubmit={this.onSubmit}>
+            <form className="form-group" id="coupon-creator-form" onSubmit={this._onSubmit}>
               <label>Inital Discount</label>
               <div className="input-group ">
                 <input type="number"  ref="initialDiscount" className="form-control" placeholder="Initial percentage off" min={1} max={100} required/>

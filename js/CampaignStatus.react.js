@@ -30,7 +30,7 @@ var CampaignStatus = React.createClass({
 
       return(
         <tr key={campaign.objectId}>
-          <td>{campaign.initialDiscount}</td>
+          <td>{campaign.initialDiscount}%</td>
           <td>{campaign.maxDiscount}%</td>
           <td>{campaign.startTime}</td>
           <td>{campaign.endTime}</td>
