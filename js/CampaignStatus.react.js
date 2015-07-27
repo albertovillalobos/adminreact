@@ -26,7 +26,7 @@ var CampaignStatus = React.createClass({
 
     var destroyMethod = this._destroy;
     var campaignNodes = this.data.campaigns.map( function(campaign) {
-      console.log(campaign.objectId);
+      // console.log(campaign.objectId);
 
       return(
         <tr key={campaign.objectId}>

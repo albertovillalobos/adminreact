@@ -249,7 +249,7 @@ var CampaignStatus = React.createClass({
 
     var destroyMethod = this._destroy;
     var campaignNodes = this.data.campaigns.map(function (campaign) {
-      console.log(campaign.objectId);
+      // console.log(campaign.objectId);
 
       return React.createElement(
         'tr',
@@ -692,6 +692,7 @@ module.exports = LoginContainer;
 var React = require('react');
 var Parse = require('parse').Parse;
 var ParseReact = require('parse-react');
+// var $ = require('jquery');
 
 var NavBar = React.createClass({
   displayName: 'NavBar',
@@ -704,23 +705,66 @@ var NavBar = React.createClass({
     };
   },
 
+  getInitialState: function getInitialState() {
+    return {
+      userData: null,
+      loggedIn: false
+    };
+  },
+
   _logOut: function _logOut(e) {
     e.preventDefault();
     Parse.User.logOut();
+    this.setState({ loggedIn: false });
   },
 
   _facebookLogin: function _facebookLogin(e) {
+    var _this = this;
     e.preventDefault();
     Parse.FacebookUtils.logIn('public_profile,email,user_about_me', {
-      success: function success(user) {},
+      success: function success(user) {
+        _this.setState({ loggedIn: true });
+        var facebook = user.attributes.authData.facebook;
+        var apiCall = 'https://graph.facebook.com/v2.3/' + facebook.id + '?fields=name,email&access_token=' + facebook.access_token;
+        _this._fetchUserData(apiCall);
+      },
       error: function error(user, _error) {}
     });
   },
 
+  _fetchUserData: function _fetchUserData(api) {
+    var _this = this;
+    if (this.state.loggedIn) {
+      $.get(api, function (result) {
+        _this.setState({
+          userData: {
+            name: result.name,
+            email: result.email
+          }
+        });
+      });
+    }
+    // fetch(api)
+    //   .then((response) => response.json())
+    //   .then((responseData) => {
+    //     _this.setState({
+    //       userData : {
+    //         name : responseData.name,
+    //         email: responseData.email,
+    //       },
+    //     });
+    //   })
+    //   .done();
+  },
+
   render: function render() {
-    var RightNavbar = {};
-    if (this.data.user) {
-      RightNavbar = React.createElement(
+    var _this = this;
+    var _userData = this.state.userData;
+    var _loggedIn = this.state.loggedIn;
+    var logButtons = {};
+
+    if (this.state.loggedIn) {
+      logButtons = React.createElement(
         'li',
         null,
         React.createElement(
@@ -731,7 +775,7 @@ var NavBar = React.createClass({
         )
       );
     } else {
-      RightNavbar = React.createElement(
+      logButtons = React.createElement(
         'li',
         null,
         React.createElement(
@@ -813,7 +857,17 @@ var NavBar = React.createClass({
             React.createElement(
               'ul',
               { className: 'nav navbar-nav navbar-right' },
-              RightNavbar
+              _userData ? React.createElement(
+                'li',
+                null,
+                React.createElement(
+                  'p',
+                  { className: 'navbar-text' },
+                  'Welcome ',
+                  _userData.name
+                )
+              ) : React.createElement('li', null),
+              logButtons
             )
           )
         )
@@ -822,8 +876,6 @@ var NavBar = React.createClass({
   }
 });
 module.exports = NavBar;
-
-// console.log(user);
 
 },{"parse":40,"parse-react":21,"react":242}],11:[function(require,module,exports){
 "use strict";
